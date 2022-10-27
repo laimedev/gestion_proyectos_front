@@ -1,0 +1,75 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">CREAR UBIGEO:</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+        
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Codigo Departamento</mat-label>
+                        <input autocomplete="off" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Departamento</mat-label>
+                        <input autocomplete="off" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Codigo Provincia</mat-label>
+                        <input autocomplete="off" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Provincia</mat-label>
+                        <input autocomplete="off" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Codigo Distrito</mat-label>
+                        <input autocomplete="off" matInput>
+                    </mat-form-field>
+                </div>
+                <div class="form-group col-md-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Distrito</mat-label>
+                        <input autocomplete="off" matInput>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <section class="example-section">
+            <mat-slide-toggle
+                class="example-margin">
+                Estado
+            </mat-slide-toggle>
+            </section>
+
+    <ng-template #loading>
+        <div class="container-fluid">
+            <div class="col-12">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+    </ng-template>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" (click)="closeMOdal()">REGISTRAR</button>
+    <button class="btn btn-success" (click)="closeMOdal()">CERRAR</button>
+  </div>

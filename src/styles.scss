@@ -1,0 +1,132 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    // font-size: 14px;
+    //line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+
+@import url('https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
+@import 'all.min.css';
+@import 'theme.scss';
+@import 'primary.scss';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+.btn-primary {
+    color: white;
+    background-color: #045bfc;
+    border-color: #045bfc
+}
+
+.btn-primary:hover {
+    color: white;
+    background-color: #045bfc;
+    border-color: #045bfc
+}
+
+.btn-success {
+    color: white;
+    background-color: #ff6c04;
+    border-color: #ff6c04
+}
+
+.btn-success:hover {
+    color: white;
+    background-color: #ff3d00;
+    border-color: #ff3d00
+}
+/*
+td.mat-cell {
+    /* row padding 
+    padding: 16px 0;
+    /* row border 
+    border-bottom: 2px solid #ff6c04;
+    border-top: 1px solid #ff6c04;
+   }
+   
+   td.mat-cell:first-child {
+     /* row border 
+     border-left: 1px solid #ff6c04;
+   }
+   
+   td.mat-cell:last-child {
+     /* row border 
+     border-right: 2px solid #ff6c04;
+   }
+   
+   table {
+     /* row spacing / margin 
+     border-spacing: 0 8px !important;
+   } 
+*/
+   .mat-cell {
+    min-height: 48px;
+    text-align: center;
+    border-right: 1px solid rgb(138, 135, 135);
+}
+
+.letra-entel{
+color: #ffff;
+font-weight: bold;
+font-size: 20px;
+font-family:sans-serif;
+}
+
+.letra-cabecera{
+  color: #7c8185;
+  font-weight: bold;
+  font-size: 16px;
+  font-family:sans-serif;
+  }
+
+
+  .color-menu{
+    color: #0854a4; 
+  }
+
+  .color-menu:hover{
+color: #ff6c04;
+  }
+
+  .icon_dash{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 60px;
+    color: #045bfc ;
+  }
+  .title_dash {
+    font-size: 18px;
+    font-weight: bold;
+    color: #045bfc ;
+    margin-bottom: 10px;
+  }
+
+  .icon-power   {
+    color: #fff;
+    font-size: 20px;
+    margin-left: 10px;
+  }
+
+  .center-card {
+    align-items: center;
+     display: flex;
+     justify-content: center;
+     padding-top: 10px;
+     padding-bottom: 10px;
+     cursor: pointer;
+  }
+
+  
+  th.mat-header-cell, td.mat-cell, td.mat-footer-cell { 
+    border-color: transparent!important;
+  }
+  
+  
+

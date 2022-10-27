@@ -1,0 +1,97 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray">
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera">MANTENIMIENTO DE PERFILES</span>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 text-right">
+                            <span *authorize="'security_roles_search'">
+                                <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Seleccione un rango</mat-label>
+                                    <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                        <input noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                        <input noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+                            </span>
+                        </div>
+                        <div class="col-12 text-right">
+                            <button *authorize="'security_roles_store'" (click)="openDialog()" class="btn btn-primary">NUEVO</button>&nbsp;
+                            <button *authorize="'security_roles_search'" (click)="search()" class="btn btn-primary">BUSCAR</button>&nbsp;
+                            <button (click)="export()" *authorize="'security_roles_export'" class="btn btn-success">EXPORTAR</button>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row card-header bg-gray">
+                        <div class="col-12">
+                            <div *authorize="'security_roles'" class="table-responsive mat-elevation-z8">
+                                <table #tmr style="width: 100%;" (matSortChange)="dataSource.sortByFromMatSort($event)"
+                                    mat-table [dataSource]="dataSource" matSort>
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="description">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DESCRIPCIÓN </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                                    </ng-container>
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="displayName">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'>
+                                            PERFIL</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.displayName}} </td>
+                                    </ng-container>
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="createdAt">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> FECHA DE CREACIÓN </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.createdAt}} </td>
+                                    </ng-container>
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="options">
+                                        <th class="font-weight-bold text-muted text-center" mat-header-cell *matHeaderCellDef class='btn-primary'>
+                                            OPCIONES
+                                        </th>
+                                        <td mat-cell *matCellDef="let rol">
+                                            <div class="tool-inside-table">
+                                                <a *authorize="'security_roles_show'" (click)="openInfo(rol)" title="Ver información"
+                                                    class="btn btn-light btn-sm"><i class="fas fa-info-circle"></i></a>
+                                                <a *authorize="'security_roles_update'" (click)="openEdit(rol)" title="Editar Información"
+                                                    class="btn btn-light btn-sm"><i class="far fa-edit"></i></a>
+                                                <a *authorize="'security_roles_destroy'" (click)="openDelete(rol)" title="Eliminar Información"
+                                                    class="btn btn-light btn-sm"><i class="far fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <mat-paginator *ngIf="dataSource.page$ | async as page" [length]="page.total"
+                                    [pageSize]="page.pageSize" [pageIndex]="page.pageNumber" [hidePageSize]="false"
+                                    (page)="dataSource.fetch($event.pageIndex)">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-12">
+                            <mat-paginator *ngIf="dataSource.page$ | async as page" [length]="page.total"
+                                [pageSize]="page.pageSize" [pageIndex]="page.pageNumber" [hidePageSize]="false"
+                                (page)="dataSource.fetch($event.pageIndex)">
+                            </mat-paginator>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

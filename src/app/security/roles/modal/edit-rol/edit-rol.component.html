@@ -1,0 +1,12 @@
+<app-role-form *ngIf="formLoaded; else loading" [formGroup]="formGroup" [disableControl]="disableControl" 
+(closeEvent)="onClose($event)"
+[formTitle]="'EDITAR PERFIL'"
+    (submitEvent)="onSubmit($event)" [serverResponseJSON]="serverResponseJSON"></app-role-form>
+
+    <ng-template #loading>
+        <div class="modal-header">
+        <div class="col-12">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        </div>
+      </ng-template>

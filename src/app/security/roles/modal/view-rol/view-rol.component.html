@@ -1,0 +1,56 @@
+<div class="modal-header">
+    <h4 class="modal-title">INFORMACIÓN DE PERFIL</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div *ngIf="rolName; else loading" class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <strong>Nombre del Perfil: </strong> {{rolName}}
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-12">
+                <mat-tree #tree [dataSource]="dataSource" [treeControl]="treeControl" [trackBy]="fn" class="tree-list">
+                    <mat-nested-tree-node *matTreeNodeDef="let node">
+                        <li class="mat-tree-node">
+                            <button type="button" mat-icon-button disabled></button>
+                            <i class="{{ node.icon }}"></i> {{node.text}}
+                        </li>
+                    </mat-nested-tree-node>
+                    <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                        <li>
+                            <div>
+                                <button type="button" mat-icon-button matTreeNodeToggle
+                                    [attr.aria-label]="'toggle ' + node.text">
+                                    <mat-icon class="mat-icon-rtl-mirror">
+                                        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                                    </mat-icon>
+                                </button>
+
+                                <i class="{{ node.icon }}"></i> {{node.text}}
+
+                            </div>
+                            <ul style="padding-left: 18px;" [class.tree-invisible]="!treeControl.isExpanded(node)">
+                                <ng-container matTreeNodeOutlet></ng-container>
+                            </ul>
+                        </li>
+                    </mat-nested-tree-node>
+                </mat-tree>
+            </div>
+        </div>
+    </div>
+    <ng-template #loading>
+        <div class="container-fluid">
+            <div class="col-12">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+    </ng-template>
+</div>
+<div class="modal-footer">
+    <button type="button" (click)="closeMOdal()" class="btn btn-light">CERRAR</button>
+
+</div>

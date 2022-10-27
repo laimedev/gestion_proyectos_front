@@ -1,0 +1,77 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header btn-primary">
+                    <div class="row">
+                        <div class="col-12">
+                            <span style="font-size: 1rem;">DETALLE SEGUIMIENTO RAN</span>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="seg$ | async as data" class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <form [formGroup]="form">
+                                <div class="form-group row">
+                                    <label for="seg_file" class="col-sm-2 col-form-label">ARCHIVO SEGUIMIENTO</label>
+                                    <div class="col-sm-3">
+                                        <input readonly value="{{ data.filename}}" type="text" class="form-control" id="seg_file">
+                                    </div>
+                                    <label for="seg_fecha" class="col-sm-2 col-form-label text-right">FECHA</label>
+                                    <div class="col-sm-3">
+                                        <input value="{{data.created_at}}" readonly type="text" class="form-control" id="seg_fecha">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <label for="seg_ev" class="col-sm-2 col-form-label">CELDAS EVALUADAS</label>
+                                    <div class="col-sm-3">
+                                        <input value='{{ data.celdas_evaluadas}}' readonly type="text" class="form-control" id="seg_ev">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <label for="seg_ing" class="col-sm-2 col-form-label">CELDAS INGENIERO</label>
+                                    <div class="col-sm-3">
+                                        <input value='{{data.celdas_derivadas}}' readonly type="text" class="form-control" id="seg_ing">
+                                    </div>
+                                </div>
+                                <div class="form-group row mt-2">
+                                    <label for="seg_tot" class="col-sm-2 col-form-label">CELDAS_TOTALES</label>
+                                    <div class="col-sm-3">
+                                        <input value='{{data.celdas_number}}' readonly type="text" class="form-control" id="seg_tot">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row mt-5">
+                        <div class="col-12 font-weight-bold">
+                            CELDAS PARA EVALUACIÓN
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <app-ran-info-tabla [ds]='data.arr_celdas_evaluacion' [cols]='displayedColumns'></app-ran-info-tabla>                             
+                        </div>
+                    </div>
+
+                    <div class="row mt-5">
+                        <div class="col-12 font-weight-bold">
+                            CELDAS DERIVADAS A ING.
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12">
+                            <app-ran-info-tabla [ds]='data.arr_celdas_derivadas' [cols]='displayedColumns'></app-ran-info-tabla>                             
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-12 text-right">
+                            <a [routerLink]="['/admin/seguimiento']" class="btn btn-light" >SALIR</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

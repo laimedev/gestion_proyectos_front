@@ -1,0 +1,56 @@
+[
+    {
+        "id": "000001",
+        "username": "Julia Villalba",
+        "password": "*_u4Nx2lol",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000001",
+        "username": "Juan Villalba",
+        "password": "j$.4Nx2lol",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000001",
+        "username": "Carlos Villalba",
+        "password": "ju4Nx2lol",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000001",
+        "username": "Jacky Villalba",
+        "password": "ju4Nx2lol",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000001",
+        "username": "Juan Villalba",
+        "password": "ju4Nx2lol",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000001",
+        "username": "Juan Villalba",
+        "password": "ju4Nx2lol",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    }
+]

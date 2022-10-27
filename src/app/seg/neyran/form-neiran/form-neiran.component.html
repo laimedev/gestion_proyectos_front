@@ -1,0 +1,76 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">{{ formTitle }}</h4>
+    <button (click)="closeMOdal(ff)" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form #ff="ngForm" (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Tipo MML</mat-label>
+                    <mat-select formControlName="prefix">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of params$ | async" [value]="wType">
+                            {{wType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>MO</mat-label>
+                    <input autocomplete="off" matInput formControlName="mo">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Parámetro</mat-label>
+                    <input autocomplete="off" matInput formControlName="parameter">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>N. Parámetro</mat-label>
+                    <input autocomplete="off" matInput formControlName="name_parameter">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>T. PARÁMETRO</mat-label>
+                    <input autocomplete="off" matInput formControlName="type_parameter">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Objeto</mat-label>
+                    <input autocomplete="off" matInput formControlName="object">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Search Name</mat-label>
+                    <input autocomplete="off" matInput formControlName="search_name">
+                </mat-form-field>
+            </div>            
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Comando MML</mat-label>
+                    <input autocomplete="off" matInput formControlName="mml">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="disableControl" (click)="closeMOdal(ff)">CANCELAR</button>
+    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+        class="btn btn-primary" [disabled]="disableControl" form="formUser">
+        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i>
+        {{ disableControl === true ? 'ENVIANDO' : 'ACEPTAR' }}</button>
+</div>

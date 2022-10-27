@@ -1,0 +1,155 @@
+<!-- <div class="app-body">
+
+<div class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="card">
+                <div class="card-header text-white btn-primary">Inicio de Sesión - ATP Certificaciones 2022</div>
+                <div class="card-body">
+                    <form (ngSubmit)="submit()" #theForm="ngForm">
+                        <div *ngIf="invalidUser" class="alert alert-danger" role="alert">
+                            Usuario y/o contraseña incorrecta 
+                          </div>
+                        <div class="form-group row">
+                            <label for="username"
+                                class="col-sm-4 col-form-label text-right font-weight-bold">Correo electronico</label>
+                            <div class="col-sm-6">
+                                <input [(ngModel)]="login.userName" #userName="ngModel" required name="userName"
+                                    type="text"
+                                    [ngClass]="{'is-invalid' : (userName.dirty || userName.touched)  && userName.errors?.required}"
+                                    class="form-control" autocomplete="off" id="userName">
+                                <div *ngIf="(userName.dirty || userName.touched)  && userName.errors?.required"
+                                    class="invalid-feedback">
+                                    Ingrese un nombre de usuario válido.
+                                </div>
+                                <div *ngIf="userName.valid || (!userName.dirty && !userName.touched) ">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="password"
+                                class="col-sm-4 col-form-label text-right font-weight-bold">Contraseña</label>
+                            <div class="col-sm-6">
+                                <input [(ngModel)]="login.password" #password="ngModel" name="password" required
+                                [ngClass]="{'is-invalid' : (password.dirty || password.touched)  && password.errors?.required}"
+                                    type="password" class="form-control" id="password">
+                                <div
+                                *ngIf="(password.dirty || password.touched)  && password.errors?.required"
+                                class="invalid-feedback">
+                                    Ingrese una contraseña válida.
+                                </div>
+                                <div *ngIf="password.valid || (!password.dirty && !password.touched) ">&nbsp;</div>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-4 offset-sm-8">
+                                <button type="submit" class="btn btn-primary"
+                                [ngClass]="{'btn-primary': (disableButton === false), 'btn-success': (disableButton === true)}"
+                                    [disabled]="!theForm.form.valid || disableButton">
+                                    <i *ngIf="disableButton" class="fas fa-spin fa-cog"></i>
+                                    INGRESAR</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</div> -->
+
+
+
+
+<div class="app-body">
+<div class="container">
+
+    <main class="main d-flex align-items-center" >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-9 mx-auto">
+            <div class="card-group">
+              <div class="card p-4">
+                <div class="card-body">
+                    <form (ngSubmit)="submit()" #theForm="ngForm">
+                    <h1> <b>Bienvenido</b> </h1>
+                    <p class="text-muted">Iniciar sesión en su cuenta</p>
+                    <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                      </div>
+                      <input [(ngModel)]="login.email" #email="ngModel" required name="email"
+                      type="text" placeholder="Usuario"
+                      [ngClass]="{'is-invalid' : (email.dirty || email.touched)  && email.errors?.required}"
+                      class="form-control" autocomplete="off" id="email">
+                    </div>
+                    <div class="input-group mb-4">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+                      </div>
+                      <input [(ngModel)]="login.password" #password="ngModel" name="password" required 
+                      [ngClass]="{'is-invalid' : (password.dirty || password.touched)  && password.errors?.required}"
+                          type="password" class="form-control" id="password" placeholder="Contraseña">
+                    </div>
+
+
+                    
+                   
+                      
+                    <div class="row">
+                      <div class="col-5">
+                        <button type="submit" class="btn btn-primary"
+                                [ngClass]="{'btn-primary': (disableButton === false), 'btn-success': (disableButton === true)}"
+                                    [disabled]="!theForm.form.valid || disableButton">
+                                    <i *ngIf="disableButton" class="fas fa-spin fa-cog"></i>
+                                    INGRESAR</button>
+                      </div>
+
+                      <div class="col-7" >
+                          <select name="" id="" class="form-control" (change)="onChange($event)">
+                            <option value="Administrador">Administrador</option>
+                            <option value="Personal">Personal</option>
+                          </select>
+                      </div>
+                      
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="card text-white bg-primary py-5 d-md-down-none" style="width:30%">
+                <div class="card-body text-center">
+                  <div  style="margin-top: -10px;">
+                    <h2>GESTIÓN DE PROYECTOS</h2>
+                    <img src="assets/menu/gestion-de-proyectos.png"
+                            style="width: 90px;">
+                         
+                    <p style="padding-top: 20px">Powered by: Alexis & Marcos</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <br>
+            <div class="row tex-center">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <div *ngIf="invalidUser" class="alert alert-danger" role="alert" >
+                        Usuario y/o contraseña incorrecta 
+                      </div>
+                </div>
+            </div>
+            
+
+          </div>
+
+          
+
+        </div>
+      </div>
+    </main>
+
+</div>
+
+  </div>
+  

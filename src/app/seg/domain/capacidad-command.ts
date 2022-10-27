@@ -1,0 +1,23 @@
+export interface CapacidadCommand {
+    id: number,
+    proyecto: string,
+    tipo_de_celda: string,
+    cell_name: string,
+    banda_cell: string,
+    co_cell_name: string,
+    banda_cocell: string,
+    vecino_cell_name: string,
+    banda_vecino: string,
+    frb: string,
+    nombre_de_sitio: string,
+    th_cell:  number,
+    th_cocell: number,
+    th_vecino: number,
+    az_cell: number,
+    az_cocell: number,
+    az_vecino: number,
+    set_number: string,
+    eval_control: string,
+    result: string,
+    created_at: Date
+}

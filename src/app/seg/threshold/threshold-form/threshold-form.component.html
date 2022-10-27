@@ -1,0 +1,70 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">{{ formTitle }}</h4>
+    <button (click)="closeMOdal(ff)" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <form #ff="ngForm" (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+        <div class="form-row">
+            <div class="form-group col-md-1"></div>
+            <div class="form-group col-md-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>NOMBRE</mat-label>
+                    <input autocomplete="off" [readonly]="edit" matInput formControlName="name_threshold">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-1"></div>
+            <div class="form-group col-md-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>FLUJO</mat-label>
+                    <mat-select formControlName="flow">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of flujo$ | async" [value]="wType">
+                            {{wType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group col-md-1"></div>
+            <div class="form-group col-md-5">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>VALOR</mat-label>
+                    <input type="number"  autocomplete="off" matInput formControlName="value_threshold">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-1"></div>
+            <div class="form-group col-md-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>UNIDAD</mat-label>
+                    <mat-select formControlName="unit">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of unidad$ | async" [value]="wType">
+                            {{wType}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-1"></div>
+            <div class="form-group col-md-10">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>DESCRIPCION</mat-label>
+                    <input autocomplete="off" matInput formControlName="description">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="disableControl" (click)="closeMOdal(ff)">CANCELAR</button>
+    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+        class="btn btn-primary" [disabled]="disableControl" form="formUser">
+        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i>
+        {{ disableControl === true ? 'ENVIANDO' : 'ACEPTAR' }}</button>
+</div>

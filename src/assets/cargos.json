@@ -1,0 +1,47 @@
+[
+    {
+        "id": "000001",
+        "job_title_name": "Administracion",
+        "description": "Lorem ipsum...",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000002",
+        "job_title_name": "Quimico",
+        "description": "Lorem ipsum...",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000003",
+        "job_title_name": "Contabilidad",
+        "description": "Lorem ipsum...",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000004",
+        "job_title_name": "Recursos",
+        "description": "Lorem ipsum...",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000005",
+        "job_title_name": "Mecanico",
+        "description": "Lorem ipsum...",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    }
+]

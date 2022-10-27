@@ -1,0 +1,60 @@
+[
+    {
+        "id": "000001",
+        "property_id": "26",
+        "producer_id": "12",
+        "slope_id": "LIMA",
+        "altitude": "-77.042793",
+        "longitude": "-77.042793",
+        "latitude": "-12.046374",
+        "shape_area": "7653",
+        "dimension_ha": "-150ms, 230alt",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000002",
+        "property_id": "26",
+        "producer_id": "12",
+        "slope_id": "LIMA",
+        "altitude": "-77.042793",
+        "longitude": "-77.042793",
+        "latitude": "-12.046374",
+        "shape_area": "7653",
+        "dimension_ha": "-150ms, 230alt",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000003",
+        "property_id": "26",
+        "producer_id": "12",
+        "slope_id": "LIMA",
+        "altitude": "-77.042793",
+        "longitude": "-77.042793",
+        "latitude": "-12.046374",
+        "shape_area": "7653",
+        "dimension_ha": "-150ms, 230alt",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000004",
+        "property_id": "26",
+        "producer_id": "12",
+        "slope_id": "LIMA",
+        "altitude": "-77.042793",
+        "longitude": "-77.042793",
+        "latitude": "-12.046374",
+        "shape_area": "7653",
+        "dimension_ha": "-150ms, 230alt",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    }
+
+
+]

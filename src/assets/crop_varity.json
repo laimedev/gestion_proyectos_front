@@ -1,0 +1,29 @@
+[
+    {
+        "id": "000001",
+        "crop_varity_id": "0123",
+        "crop_varity_name": "23",
+        "description": "3",
+        "situation": "Activo",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022"
+    },
+    {
+        "id": "000001",
+        "crop_varity_id": "0123",
+        "crop_varity_name": "23",
+        "description": "3",
+        "situation": "Activo",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022"
+    },
+    {
+        "id": "000001",
+        "crop_varity_id": "0123",
+        "crop_varity_name": "23",
+        "description": "3",
+        "situation": "Activo",
+        "create_date": "23/02/2022",
+        "update_date": "23/02/2022"
+    }
+]

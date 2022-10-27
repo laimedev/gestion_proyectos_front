@@ -1,0 +1,263 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">{{ formTitle }}</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>KPI</mat-label>
+                    <input autocomplete="off" matInput formControlName="kpi">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>BANDA</mat-label>
+                    <mat-select formControlName="banda">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let b of cbBanda" [value]="b">
+                            {{b}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>POLÍGONO</mat-label>
+                    <mat-select formControlName="poligono">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let p of cbPoligono" [value]="p">
+                            {{p}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-12"><strong>Condición #1</strong></div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>TIPO</mat-label>
+                    <mat-select formControlName="source_1_type">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let t of cbTipo" [value]="t">
+                            {{t}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>FUENTE</mat-label>
+                    <mat-select formControlName="source_1_cell">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let f of cbFuente" [value]="f">
+                            {{f}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>KPI</mat-label>
+                    <mat-select formControlName="source_1_value">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let k of cbKpi" [value]="k">
+                            {{k}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>CONDICIÓN</mat-label>
+                    <mat-select formControlName="source_1_criterio">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let c of cbCondicion" [value]="c">
+                            {{c}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>THRESHOLD</mat-label>
+                    <input autocomplete="off" matInput formControlName="ref_1_value">
+                </mat-form-field>
+            </div>
+        </div>
+
+        
+        <div class="form-row">
+            <div class="form-group col-md-12"><strong>Condición #2</strong></div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>TIPO</mat-label>
+                    <mat-select formControlName="source_2_type">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let t of cbTipo" [value]="t">
+                            {{t}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>FUENTE</mat-label>
+                    <mat-select formControlName="source_2_cell">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let f of cbFuente" [value]="f">
+                            {{f}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>KPI</mat-label>
+                    <mat-select formControlName="source_2_value">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let k of cbKpi" [value]="k">
+                            {{k}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>CONDICIÓN</mat-label>
+                    <mat-select formControlName="source_2_criterio">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let c of cbCondicion" [value]="c">
+                            {{c}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>THRESHOLD</mat-label>
+                    <input autocomplete="off" matInput formControlName="ref_2_value">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12"><strong>Condición #3</strong></div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>TIPO</mat-label>
+                    <mat-select formControlName="source_3_type">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let t of cbTipo" [value]="t">
+                            {{t}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>FUENTE</mat-label>
+                    <mat-select formControlName="source_3_cell">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let f of cbFuente" [value]="f">
+                            {{f}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>KPI</mat-label>
+                    <mat-select formControlName="source_3_value">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let k of cbKpi" [value]="k">
+                            {{k}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>CONDICIÓN</mat-label>
+                    <mat-select formControlName="source_3_criterio">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let c of cbCondicion" [value]="c">
+                            {{c}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>THRESHOLD</mat-label>
+                    <input autocomplete="off" matInput formControlName="ref_3_value">
+                </mat-form-field>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12"><strong>Condición #4</strong></div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>TIPO</mat-label>
+                    <mat-select formControlName="source_4_type">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let t of cbTipo" [value]="t">
+                            {{t}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>FUENTE</mat-label>
+                    <mat-select formControlName="source_4_cell">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let f of cbFuente" [value]="f">
+                            {{f}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>KPI</mat-label>
+                    <mat-select formControlName="source_4_value">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let k of cbKpi" [value]="k">
+                            {{k}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-2">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>CONDICIÓN</mat-label>
+                    <mat-select formControlName="source_4_criterio">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let c of cbCondicion" [value]="c">
+                            {{c}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-3">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>THRESHOLD</mat-label>
+                    <input autocomplete="off" matInput formControlName="ref_4_value">
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="disableControl" (click)="closeMOdal()">CANCELAR</button>
+    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+        class="btn btn-primary" [disabled]="disableControl" form="formUser">
+        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i>
+        {{ disableControl === true ? 'ENVIANDO' : 'ACEPTAR' }}</button>
+</div>

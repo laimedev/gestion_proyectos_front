@@ -1,0 +1,75 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">USUARIO:</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <div *ngIf="userData; else loading" class="container-fluid">
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Usuario</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.username }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Nombres y apellidos</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.fullname }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Email</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.email }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Colaborador</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.company }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Celular</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.cellphone }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Comentario</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.commentUser }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Estado</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.status=='1'?'Activo': 'Inactivo' }}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-5 col-md-4">
+                <strong>Perfiles</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">
+                <div class="row">
+                    <div *ngFor="let rol of userData.roles; index as i" class="col-md-4">
+                        <mat-checkbox [disabled]="true" [value]="rol.displayName"  [checked]="true" class="rol-box w-100">
+                            {{ rol.displayName }}</mat-checkbox>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-template #loading>
+        <div class="container-fluid">
+            <div class="col-12">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+    </ng-template>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" (click)="closeMOdal()">CERRAR</button>
+  </div>

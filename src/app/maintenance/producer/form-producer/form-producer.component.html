@@ -1,0 +1,195 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+                    <div class="card mt-4">
+
+                        <form class="form-horizontal form-material"
+                                id="loginform" 
+                                [formGroup]="registerForm"  
+                                autocomplete="off">
+
+
+                        <div class="card-header bg-gray" >
+                            <div class="row">
+                                <div class="col-12">
+                                    <span class="letra-cabecera">Información Personal</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-body" >
+
+                            
+
+
+                            <div class="row">
+                                <div class="col-12">
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>ID Productor</mat-label>
+                                                <input autocomplete="off" matInput  formControlName="id_productor">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Nombres Completos</mat-label>
+                                                <input autocomplete="off" matInput formControlName="nombres">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Apellido Paterno</mat-label>
+                                                <input autocomplete="off" matInput formControlName="apellido_p">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Apellido Materno</mat-label>
+                                                <input autocomplete="off" matInput formControlName="apellido_m">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>DNI</mat-label>
+                                                <input autocomplete="off" matInput formControlName="dni">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Sexo</mat-label>
+                                                <mat-select formControlName="sexo">
+                                                    <mat-option>--</mat-option>
+                                                    <mat-option *ngFor="let ts of tipoSexo" [value]="ts.value">
+                                                        {{ts.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Estado Civil</mat-label>
+                                                <mat-select formControlName="estado">
+                                                    <mat-option>--</mat-option>
+                                                    <mat-option *ngFor="let ts of estadoCivil" [value]="ts.value">
+                                                        {{ts.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Grado de Instrucción</mat-label>
+                                                <input autocomplete="off" matInput formControlName="grado_instruccion">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Fecha de Inscripción</mat-label>
+                                                <input autocomplete="off" matInput   formControlName="fecha_inscripcion">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Correo Electronico</mat-label>
+                                                <input autocomplete="off" matInput formControlName="correo">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Número de Telefono</mat-label>
+                                                <input autocomplete="off" matInput formControlName="telefono">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Número de Celular</mat-label>
+                                                <input autocomplete="off" matInput formControlName="celular">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+                                    <hr>
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Ubigeo</mat-label>
+                                                <input autocomplete="off" matInput  formControlName="ubigeo">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Departamento</mat-label>
+                                                <input autocomplete="off" matInput formControlName="departamento">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Provincia</mat-label>
+                                                <input autocomplete="off" matInput formControlName="provincia">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Distrito</mat-label>
+                                                <input autocomplete="off" matInput formControlName="distrito">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-3">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Estado</mat-label>
+                                                <mat-select formControlName="status">
+                                                    <mat-option>--</mat-option>
+                                                    <mat-option *ngFor="let ts of estado" [value]="ts.value">
+                                                        {{ts.name}}
+                                                    </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <mat-form-field class="w-100" appearance="outline">
+                                                <mat-label>Dirección</mat-label>
+                                                <input autocomplete="off" matInput formControlName="direccion">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                           
+
+                        </div>
+
+                        <div class="modal-footer">
+                                    <button *ngIf="!btnForm" type="button"  (click)="crear()" class="btn btn-primary" > <i class="fas fa-plus mr-1"> </i> CREAR PROPIETARIO</button>
+                                    <button *ngIf="btnForm" type="button" (click)="editar()" class="btn btn-primary" > <i class="fas fa-save mr-1"> </i> ACTUALIZAR PROPIETARIO</button>
+                                    <button (click)="cancel()" type="button" class="btn btn-success" > <i class="fas fa-list mr-1"> </i> LISTA PROPIETARIOS</button>
+
+                        </div>
+
+                        </form>
+                    </div>
+          
+
+              
+            
+        </div>
+    </div>
+</div>

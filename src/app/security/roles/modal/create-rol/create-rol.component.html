@@ -1,0 +1,4 @@
+<app-role-form [formGroup]="formGroup" [disableControl]="disableControl"
+ (closeEvent)="onClose($event)"
+ [formTitle]="'NUEVO REGISTRO DE PERFIL'" 
+ (submitEvent)="onSubmit($event)" [serverResponseJSON]="serverResponseJSON"></app-role-form>

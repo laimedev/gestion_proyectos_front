@@ -1,0 +1,12 @@
+<app-user-form *ngIf="formLoaded; else loading" 
+(submitEvent)="onSubmit($event)" [disableControl]="disableControl"  
+[formTitle]="'EDITAR USUARIO'"
+(closeEvent)="onClose($event)" [formGroup]="formGroup" [selectedRols]="selectedRols" ></app-user-form>
+
+<ng-template #loading>
+    <div class="modal-header">
+    <div class="col-12">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    </div>
+  </ng-template>

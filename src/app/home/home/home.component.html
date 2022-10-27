@@ -1,0 +1,93 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+
+                <div class="card-body p-4 justify-content-between">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4>Bienvenido, {{ user }}</h4>
+                        </div>
+                        <div class="col-6 text-right">
+                            <h4 class="">{{ today | today }}</h4>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer bg-white">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    </div>
+
+     
+
+
+
+
+    <div class="row" >
+        <div  class="col-3  mt-3 cursor-pointer" >
+            <div class="card" routerLink="proyecto.list">
+                <div class="center-card">
+                    <img src="assets/menu/nuevo-documento.png" width="100px">
+                </div>
+                <button class="btn btn-primary">PROYECTOS NUEVOS</button>&nbsp;
+            </div>
+        </div>
+
+        <div  class="col-3  mt-3 cursor-pointer" >
+            <div class="card" >
+                <div class="center-card">
+                    <img src="assets/menu/trabajo-en-progreso.png" width="100px">
+                </div>
+                <button class="btn btn-primary">PROYECTOS EN PROCESO</button>&nbsp;
+            </div>
+        </div>
+
+        <div class="col-3  mt-3 cursor-pointer" >
+            <div class="card" >
+                <div class="center-card">
+                    <img src="assets/menu/terminar.png" width="100px">
+                </div>
+                <button class="btn btn-primary">PROYECTOS CERRADOS</button>&nbsp;
+            </div>
+        </div>
+
+        <div  class="col-3  mt-3 cursor-pointer" routerLink="empleado.list">
+            <div class="card" >
+                <div class="center-card">
+                    <img src="assets/menu/empleados.png" width="100px">
+                </div>
+                <button class="btn btn-primary">PERSONAL</button>&nbsp;
+            </div>
+        </div>
+
+        <div  class="col-3  mt-3 cursor-pointer">
+            <div class="card" >
+                <div class="center-card">
+                    <img src="assets/menu/estadisticas.png" width="100px">
+                </div>
+                <button class="btn btn-primary">REPORTES</button>&nbsp;
+            </div>
+        </div>
+
+
+        <div  class="col-3  mt-3 cursor-pointer" >
+            <div class="card" >
+                <div class="center-card">
+                    <img src="assets/menu/settings_2.png" width="100px">
+                </div>
+                <button class="btn btn-primary">CONFIGURACIONES</button>&nbsp;
+            </div>
+        </div>
+
+
+
+       
+        
+    </div>
+
+
+
+</div>

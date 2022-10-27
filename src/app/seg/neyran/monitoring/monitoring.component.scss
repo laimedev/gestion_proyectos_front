@@ -1,0 +1,21 @@
+table {
+    border-collapse: collapse;
+  }
+  
+  th.mat-header-cell {
+    /* row border */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  td.mat-cell {
+    /* row padding */
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+  }
+  
+  tr.mat-row {
+    /* row border */
+    padding: 0px;
+  }

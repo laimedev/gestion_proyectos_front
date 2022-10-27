@@ -1,0 +1,521 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray">
+                    <div class="row">
+                        <div class="col-12"></div>
+                        <div class="col-12">
+                            <span class="letra-cabecera">MONITOREO RADAR</span>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 text-right">
+                            <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Seleccione un rango</mat-label>
+                                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                    <input required noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                    <input required noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 text-right">
+                            <button (click)="search()" *authorize="'module_seguimiento_search'" class="btn btn-primary">BUSCAR</button>&nbsp;
+                            <button (click)="export()"  class="btn btn-success" >EXPORTAR</button>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row card-header bg-gray">
+                        <div class="col-12">
+                            <div *authorize="'module_seguimiento'" class="table-responsive mat-elevation-z8 ">
+                                <table (matSortChange)="dataSource.sortByFromMatSort($event)" style="width: 100%;" mat-table [dataSource]="dataSource" matSort class="">
+                                    <ng-container matColumnDef="id">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.id}}</td>
+                                    </ng-container>
+
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="cell_name">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CELL_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.cell_name}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="sector">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> SECTOR </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.sector}}  &nbsp;</td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="year">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> YEAR </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.year}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="month">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> MONTH </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.month}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="day">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DAY </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.day}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="hour">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> HOUR </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.hour}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="dia_de_evaluacion">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DIA_EVALUACION</th>
+                                        <td mat-cell *matCellDef="let element"> {{element.dia_de_evaluacion}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_csfb_e2w">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CSFB_E2W </th>
+                                        <td mat-cell *matCellDef="let element">{{element.l_csfb_e2w}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_csfb_prepatt">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CSFB_PREPATT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_csfb_prepatt}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_csfb_lcs_prepatt">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CSFB_LCS_PREPATT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_csfb_lcs_prepatt}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_succ_emc">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_SUCC_EMC </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_succ_emc}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_succ_highpri">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_SUCC_HIGHPRI </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_succ_highpri}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_succ_mt">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_SUCC_MT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_succ_mt}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_att_emc">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_ATT_EMC </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_att_emc}} </td>
+                                    </ng-container> 
+
+                                    <ng-container matColumnDef="l_rrc_connreq_att_highpri">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_ATT_HIGHPRI </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_att_highpri}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_att_mt">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_ATT_MT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_att_mt}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_att_modata">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_ATT_MODATA </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_att_modata}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_rrc_connreq_att_delaytol">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RRC_CONNREQ_ATT_DELAYTOL </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_rrc_connreq_att_delaytol}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_succest">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_SUCCEST </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_succest}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_attest">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_ATTEST </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_attest}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_s1sig_connest_succ">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_S1SIG_CONNEST_SUCC </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_s1sig_connest_succ}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_s1sig_connest_att">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_S1SIG_CONNEST_ATT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_s1sig_connest_att}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_abnormrel">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_ABNORMREL </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_abnormrel}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_normrel">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_NORMREL </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_normrel}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl_qci_6">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL_QCI_6 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl_qci_6}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl_qci_7">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL_QCI_7 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl_qci_7}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl_qci_8">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL_QCI_8 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl_qci_8}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl_lasttti_qci_6">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL_LASTTTI_QCI_6 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl_lasttti_qci_6}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl_lasttti_qci_7">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL_LASTTTI_QCI_7 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl_lasttti_qci_7}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl_lasttti_qci_8">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL_LASTTTI_QCI_8 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl_lasttti_qci_8}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_time_dl_rmvlasttti_qci_6">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_TIME_DL_RMVLASTTTI_QCI_6 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.L_THRP_TIME_DL_RMVLASTTTI_QCI_6}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_time_dl_rmvlasttti_qci_7">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_TIME_DL_RMVLASTTTI_QCI_7 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_time_dl_rmvlasttti_qci_7}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_time_dl_rmvlasttti_qci_8">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_TIME_DL_RMVLASTTTI_QCI_8 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_time_dl_rmvlasttti_qci_8}} </td>
+                                    </ng-container>
+                                    
+                                    <ng-container matColumnDef="l_e_rab_succest_qci_1">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_SUCCEST_QCI_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_succest_qci_1}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_attest_qci_1">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_ATTEST_QCI_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_attest_qci_1}} </td>
+                                    </ng-container>
+
+
+                                    <ng-container matColumnDef="l_e_rab_succest_qci_5">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_SUCCEST_QCI_5 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_succest_qci_5}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_attest_qci_5">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_ATTEST_QCI_5 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_attest_qci_5}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_e_rab_abnormrel_qci_1">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_E_RAB_ABNORMREL_QCI_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_e_rab_abnormrel_qci_1}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_iratho_srvcc_e2w_execsuccout">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_IRATHO_SRVCC_E2W_EXECSUCCOUT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_iratho_srvcc_e2w_execsuccout}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_iratho_srvcc_e2w_mmeabnormrsp">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_IRATHO_SRVCC_E2W_MMEABNORMRSP </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_iratho_srvcc_e2w_mmeabnormrsp}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_iratho_srvcc_e2w_execattout">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_IRATHO_SRVCC_E2W_EXECATTOUT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_iratho_srvcc_e2w_execattout}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_iratho_srvcc_e2w_prepattout">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_IRATHO_SRVCC_E2W_PREPATTOUT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_iratho_srvcc_e2w_prepattout}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ul_interference_avg">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_UL_INTERFERENCE_AVG </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ul_interference_avg}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_0">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_ </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_0}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_1">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_1}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_2">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_2 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_2}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_3">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_3 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_3}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_4">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_4 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_4}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_5">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_5 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_5}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_6">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_6 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_6}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_7">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_7 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_7}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_8">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_8 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_8}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_9">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_9 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_9}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_10">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_10 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_10}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_11">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_11 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_11}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_12">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_12 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_12}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_13">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_13 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_13}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_14">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_14 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_14}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_cqi_dl_15">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_CQI_DL_15 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_chmeas_cqi_dl_15}} </td>
+                                    </ng-container>
+
+
+                                    <ng-container matColumnDef="l_thrp_bits_dl">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_DL </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_dl}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_thrp_bits_ul">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_THRP_BITS_UL </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_thrp_bits_ul}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_traffic_user_avg">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_TRAFFIC_USER_AVG </th>
+                                        <td mat-cell *matCellDef="let element"> {{roundTo(element.l_traffic_user_avg,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_traffic_user_max">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_TRAFFIC_USER_MAX </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_traffic_user_max}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_chmeas_prb_dl_used_avg">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_CHMEAS_PRB_DL_USED_AVG </th>
+                                        <td mat-cell *matCellDef="let element"> {{roundTo(element.l_chmeas_prb_dl_used_avg,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index0">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX0 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index0}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index1">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index1}} </td>
+                                    </ng-container>
+                                    
+                                    <ng-container matColumnDef="l_ra_ta_ue_index2">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX2 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index2}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index3">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX3 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index3}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index4">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX4 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index4}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index5">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX5 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index5}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index6">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX6 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index6}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index7">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX7 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index7}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index8">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX8 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index8}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index9">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX9 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index9}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index10">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX10 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index10}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="l_ra_ta_ue_index11">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> L_RA_TA_UE_INDEX11 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.l_ra_ta_ue_index11}} </td>
+                                    </ng-container>
+                                    
+                                    <ng-container matColumnDef="createdat">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> FECHA_CREACION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                                        <td mat-cell *matCellDef="let element">{{element.createdat}} </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <mat-paginator *ngIf="dataSource.page$ | async as page" [length]="page.total"
+                                    [pageSize]="page.pageSize" [pageIndex]="page.pageNumber" [hidePageSize]="false"
+                                    (page)="dataSource.fetch($event.pageIndex)">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

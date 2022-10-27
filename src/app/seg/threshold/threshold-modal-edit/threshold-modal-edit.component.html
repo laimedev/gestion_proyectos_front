@@ -1,0 +1,13 @@
+<app-threshold-form *ngIf="formLoaded; else loading" [formGroup]="formGroup" (submitEvent)="onSubmit($event)"
+[disableControl]="disableControl"
+[formTitle]="'EDITAR THRESHOLDS DE EVALUACION'"
+[edit] = "true"
+(closeEvent)="onClose($event)"></app-threshold-form>
+
+<ng-template #loading>
+    <div class="modal-header">
+    <div class="col-12">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    </div>
+  </ng-template>

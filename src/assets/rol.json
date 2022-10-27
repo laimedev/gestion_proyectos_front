@@ -1,0 +1,42 @@
+[
+    {
+        "id": "000001",
+        "rol_name": "Administrador",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000002",
+        "rol_name": "Tecnico",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000003",
+        "rol_name": "Supervisor",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000004",
+        "rol_name": "Soporte",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    },
+    {
+        "id": "000005",
+        "rol_name": "Editor",
+        "create_date": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2022",
+        "situation": "Activo"
+    }
+]

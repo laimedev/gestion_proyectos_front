@@ -1,0 +1,131 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray" >
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera ">Engineering VPN Request</span>
+                        </div>
+                    </div>
+                    
+                        <div class="row mt-4">
+                            <div class="col-12 text-right">
+                                <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Seleccione un rango</mat-label>
+                                    <mat-date-range-input>
+                                        <input noKeyEventsHere matStartDate  placeholder="Inicio">
+                                        <input noKeyEventsHere matEndDate  placeholder="Fin">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix ></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+                            </div>
+
+                           
+                            
+                            <div class="col-12 text-right">
+                                <button class="btn btn-primary" (click)="irForm()">NUEVO</button>&nbsp;
+                                <button class="btn btn-primary">BUSCAR</button>&nbsp;
+                                <button  class="btn btn-success">EXPORTAR</button>&nbsp;
+                            </div>
+                        </div>
+                </div>
+
+
+
+
+
+                <div class="card-body">
+                    <div class="row card-header bg-gray">
+                        <div class="col-12">
+                            <div  class="table-responsive  table-striped mat-elevation-z8 ">
+                               
+                                <table  style="width: 100%;" mat-table [dataSource]="dataSource" matSort class="" >
+      
+                                    <ng-container matColumnDef="request">
+                                      <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                      mat-sort-header class='btn-primary'> REQUEST </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.request}} </td>
+                                    </ng-container>
+                                  
+                                     <ng-container matColumnDef="customer">
+                                      <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                      mat-sort-header class='btn-primary'> CUSTOMER </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.customer}} </td>
+                                    </ng-container>
+                                  
+                                     <ng-container matColumnDef="project"> 
+                                      <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                      mat-sort-header class='btn-primary'> PROJECT </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.project}} </td>
+                                    </ng-container>
+                                  
+                                    <ng-container matColumnDef="requested">
+                                      <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                      mat-sort-header class='btn-primary'> REQUESTED </th>
+                                      <td mat-cell *matCellDef="let element"> {{element.requested}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="responsabledas">
+                                        <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                        mat-sort-header class='btn-primary'> RESPONSABLE </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.responsabledas}} </td>
+                                      </ng-container>
+
+
+                                      <ng-container matColumnDef="assigment">
+                                        <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                        mat-sort-header class='btn-primary'> ASSIGMENT </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.assigment}} </td>
+                                      </ng-container>
+
+
+                                      <ng-container matColumnDef="execution">
+                                        <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                        mat-sort-header class='btn-primary'> EXECUTION </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.execution}} </td>
+                                      </ng-container>
+
+
+                                      <ng-container matColumnDef="stateofre">
+                                        <th  id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                        mat-sort-header class='btn-primary'> STATE OF RE </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.stateofre}} </td>
+                                      </ng-container>
+
+
+                                      <ng-container matColumnDef="options">
+                                        <th  id class="font-weight-bold text-muted text-center" mat-header-cell *matHeaderCellDef
+                                        mat-sort-header class='btn-primary'>OPCIONES </th>
+                                        <td mat-cell *matCellDef="let element" > 
+                                            <a   class="btn btn-light btn-sm"   ><i
+                                                class="fas fa-info-circle"></i></a>
+                                        <a  class="btn btn-light btn-sm"><i
+                                                class="fas fa-download"></i></a>
+                                        <a class="btn btn-light btn-sm"><i
+                                                class="far fa-trash-alt"></i></a>
+                                        </td>
+                                    </ng-container>
+
+                                  
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                  </table>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

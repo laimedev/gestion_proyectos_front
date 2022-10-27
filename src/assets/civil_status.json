@@ -1,0 +1,38 @@
+[
+    {
+        "id": "000001",
+        "name": "Soltero",
+        "abrev": "S",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000002",
+        "name": "Casado",
+        "abrev": "C",
+        "created": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000003",
+        "name": "Divorciado",
+        "abrev": "D",
+        "created": "23/02/2022",
+        "update_user": "Laura Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000004",
+        "name": "Viudo",
+        "abrev": "V",
+        "created": "23/02/2022",
+        "update_user": "Lucas Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    }
+]

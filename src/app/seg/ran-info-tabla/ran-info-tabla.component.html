@@ -1,0 +1,47 @@
+<table mat-table style="width: 100%;" [dataSource]="dataSource" class="mat-elevation-z8">
+                               
+    <ng-container matColumnDef="proyecto">
+      <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Proyecto </th>
+      <td mat-cell *matCellDef="let element"> {{element.proyecto}} &nbsp;&nbsp;&nbsp;</td>
+    </ng-container>
+    <ng-container matColumnDef="anio">
+      <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Año </th>
+      <td mat-cell *matCellDef="let element"> {{element.year}} &nbsp;&nbsp;&nbsp;</td>
+    </ng-container>
+    <ng-container matColumnDef="nombre_sitio">
+      <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Nombre de sitio </th>
+      <td mat-cell *matCellDef="let element"> {{element.nombre_de_sitio}}&nbsp;&nbsp;&nbsp; </td>
+    </ng-container>
+    <ng-container matColumnDef="celda">
+      <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Celda </th>
+      <td mat-cell *matCellDef="let element"> {{element.celda}} &nbsp;&nbsp;&nbsp; </td>
+    </ng-container>
+    <ng-container matColumnDef="tipo_celda">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Tipo celda  </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipo_de_celda}}&nbsp;&nbsp;&nbsp;  </td>
+      </ng-container><ng-container matColumnDef="sector">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Sector </th>
+        <td mat-cell *matCellDef="let element"> &nbsp;{{element.sector}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container><ng-container matColumnDef="tipo_solucion">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Tipo de solución </th>
+        <td mat-cell *matCellDef="let element"> {{element.tipo_de_solucion}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container><ng-container matColumnDef="estado_proyecto">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Estado de Proyecto </th>
+        <td mat-cell *matCellDef="let element"> {{element.estado_de_proyecto}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container><ng-container matColumnDef="servicio">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Servicio </th>
+        <td mat-cell *matCellDef="let element"> {{element.servicio}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container><ng-container matColumnDef="fecha_on_air">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Fecha OnAir </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha_on_air}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container><ng-container matColumnDef="fecha_evaluacion">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Fecha de Activación </th>
+        <td mat-cell *matCellDef="let element"> {{element.fecha_activacion}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container><ng-container matColumnDef="dia_evaluacion">
+        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef class='btn-primary'> Día Evaluación </th>
+        <td mat-cell *matCellDef="let element"> {{element.dia_de_evaluacion}} &nbsp;&nbsp;&nbsp; </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table> 

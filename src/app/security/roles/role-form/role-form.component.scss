@@ -1,0 +1,23 @@
+.tree-invisible {
+    display: none;
+  }
+  
+  .tree-list ul,
+  .tree-list li {
+    margin-top: 0;
+    margin-bottom: 0;
+    list-style-type: none;
+  }
+
+  .mat-tree-node {
+     min-height: auto
+}
+
+.tree-list i {
+    width: 20px;
+}
+
+.mat-icon-button{
+    line-height: 26px;
+    height: 25.9px;
+}

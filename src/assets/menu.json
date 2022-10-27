@@ -1,0 +1,57 @@
+[
+    
+        {
+            "id": 8,
+            "url": null,
+            "icon": "fa fa-users",
+            "displayName": "ADMINISTRACION",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "",
+                    "icon": "fa fa-users",
+                    "displayName": "Usuarios",
+                    "subMenu": []
+                },
+                {
+                    "id": 2,
+                    "url": "",
+                    "icon": "fa fa-users",
+                    "displayName": "Roles",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "url": null,
+            "icon": "fa fa-home",
+            "displayName": "PROYECTOS",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "proyecto.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de proyectos",
+                    "subMenu": []
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "url": null,
+            "icon": "fa fa-database",
+            "displayName": "EMPLEADOS",
+            "subMenu": [
+                {
+                    "id": 2,
+                    "url": "empleado.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de empleados",
+                    "subMenu": []
+                }
+            ]
+        }
+        
+       
+]

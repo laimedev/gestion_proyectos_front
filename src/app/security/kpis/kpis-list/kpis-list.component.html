@@ -1,0 +1,91 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray">
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera">MANTENIMIENTO DE KPIS</span>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 text-right">
+                            <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Seleccione un rango</mat-label>
+                                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                    <input noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                    <input noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 text-right">
+                            <button (click)="openCreate()" *authorize="'security_kpis_store'" class="btn btn-primary">NUEVO</button>&nbsp;
+                            <button (click)="search()" *authorize="'security_kpis_search'" class="btn btn-primary">BUSCAR</button>&nbsp;
+                            <button (click)="export()" *authorize="'security_kpis_export'" class="btn btn-success">EXPORTAR</button>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row card-header bg-gray">
+                        <div class="col-12">
+                            <div *authorize="'security_kpis'" class="table-responsive mat-elevation-z8 ">
+                                <table (matSortChange)="dataSource.sortByFromMatSort($event)" style="width: 100%;" mat-table [dataSource]="dataSource" matSort class="">
+                                    <ng-container matColumnDef="kpi">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> KPI </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.kpi}} </td>
+                                    </ng-container>
+
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="contador_radar">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CONTADOR RADAR </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.contador_radar}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="contador_huawei">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CONTADOR HUAWEI </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.contador_huawei}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="createdAt">
+                                        <th class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> FECHA DE CREACIÓN </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.createdat}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="options">
+                                        <th class="font-weight-bold text-muted text-center" mat-header-cell
+                                            *matHeaderCellDef class='btn-primary'>
+                                            OPCIONES
+                                        </th>
+                                        <td mat-cell *matCellDef="let kpi">
+                                            <div class="tool-inside-table">
+                                                <!--<a *authorize="'security_kpis_show'" (click)="openInfo(kpi)" class="btn btn-light btn-sm"><i
+                                                        class="fas fa-info-circle"></i></a>-->
+                                                <a *authorize="'security_kpis_update'" (click)="openEdit(kpi)" class="btn btn-light btn-sm"><i
+                                                        class="far fa-edit"></i></a>
+                                                <a *authorize="'security_kpis_destroy'" (click)="openDelete(kpi)" class="btn btn-light btn-sm"><i
+                                                        class="far fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <mat-paginator *ngIf="dataSource.page$ | async as page" [length]="page.total"
+                                    [pageSize]="page.pageSize" [pageIndex]="page.pageNumber" [hidePageSize]="false"
+                                    (page)="dataSource.fetch($event.pageIndex)">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

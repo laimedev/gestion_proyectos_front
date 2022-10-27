@@ -1,0 +1,38 @@
+[
+    {
+        "id": "000001",
+        "name": "Primaria",
+        "abrev": "P",
+        "created": "23/02/2022",
+        "update_user": "Luis Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000002",
+        "name": "Secundaria",
+        "abrev": "S",
+        "created": "23/02/2022",
+        "update_user": "Lucia Campos",
+        "update_date": "23/02/2020",
+        "situation": "Activo"
+    },
+    {
+        "id": "000003",
+        "name": "Tecnico Superior",
+        "abrev": "T",
+        "created": "23/02/2022",
+        "update_user": "Laura Campos",
+        "update_date": "23/02/2020",
+        "situation": "Inactivo"
+    },
+    {
+        "id": "000003",
+        "name": "Universitario",
+        "abrev": "U",
+        "created": "23/02/2022",
+        "update_user": "Laura Campos",
+        "update_date": "23/02/2020",
+        "situation": "Inactivo"
+    }
+]

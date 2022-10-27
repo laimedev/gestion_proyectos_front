@@ -1,0 +1,254 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray">
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera">MONITOREO KPIs EN BUSY HOUR</span>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 text-right">
+                            <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Seleccione un rango</mat-label>
+                                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                    <input required noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                    <input required noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 text-right">
+                            <button (click)="search()" *authorize="'module_seguimiento_search'" class="btn btn-primary">BUSCAR</button>&nbsp;
+                            <button (click)="export()" class="btn btn-success">EXPORTAR</button>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row card-header bg-gray">
+                        <div class="col-12">
+                            <div *authorize="'module_seguimiento'" class="table-responsive mat-elevation-z8 ">
+                                <table (matSortChange)="dataSource.sortByFromMatSort($event)" fixedLayout="true" style="width: 100%;" mat-table [dataSource]="dataSource" matSort class="">
+                                    <ng-container matColumnDef="id">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                                    </ng-container>
+
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="nombre_de_sitio">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> NOMBRE_SITIO </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp;&nbsp; {{element.nombre_de_sitio}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="cell_name">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CELL_NAME </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.cell_name}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="sector">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> SECTOR </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.sector}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="local_cell_id">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> LOCAL_CELL_ID </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.local_cell_id}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="year">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> YEAR </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.year}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="month">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> MONTH </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.month}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="day">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DAY </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.day}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="hour">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> HORA </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.hour}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> VALOR_BUSY </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.value}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="dia_de_evaluacion">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DIA_EVALUACION </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{element.dia_de_evaluacion}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="acccsfb">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ACCCSFB </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{roundTo(element.acccsfb,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="acclte">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ACCLTE </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{roundTo(element.acclte,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="accvolte">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ACCVOLTE </th>
+                                        <td mat-cell *matCellDef="let element"> &nbsp;&nbsp;{{roundTo(element.accvolte,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="cqiavg">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CQIAVG </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.cqiavg,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="droplte">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DROPLTE </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.droplte,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="dropvolte">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> DROPVOLTE </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.dropvolte,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="hosrvcc">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> HOSRVCC </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.hosrvcc,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="prbdl">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> PRBDL </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.prbdl,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="thdlusermovil">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> THDLUSERMOVIL </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.thdlusermovil,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="trafficpsuldl">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> TRAFFICPSULDL </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.trafficpsuldl,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="ulinterference">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ULINTERFERENCE </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{element.ulinterference}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="trafficusermax">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> TRAFFICUSERMAX </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.trafficusermax,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="cellcov">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CELLCOV </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.cellcov,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="rrcreq">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> RRCREQ </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.rrcreq,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="erabreq">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ERABREQ </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.erabreq,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="s1req">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> S1REQ </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.s1req,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="csfbreq">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CSFBREQ </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.csfbreq,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="voltereq">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> VOLTEREQ </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.voltereq,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="erabnorm">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ERABNORM </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.erabnorm,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="voltenorm">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> VOLTENORM </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.voltenorm,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="hosrvccreq">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> HOSRVCCREQ </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.hosrvccreq,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="trafficusermaxsector">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> TRAFFICUSERMAXSECTOR </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{roundTo(element.trafficusermaxsector,2)}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="createdat">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> FECHA_CREACION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                                        <td mat-cell *matCellDef="let element">&nbsp; {{element.createdat}} </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <mat-paginator *ngIf="dataSource.page$ | async as page" [length]="page.total"
+                                    [pageSize]="page.pageSize" [pageIndex]="page.pageNumber" [hidePageSize]="false"
+                                    (page)="dataSource.fetch($event.pageIndex)">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,165 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray" >
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera">Mantenimiento de Productores -  Total {{totalProductor}}</span>
+                        </div>
+                    </div>
+                
+                        <div class="row mt-4">
+
+                            <div style="float: left;">
+                                <!-- <h4 class="card-title">Total Administradores   (  {{totalAdministradores }} )    - {{desde}}</h4> -->
+                                <!-- <h6 class="card-subtitle">Usuarios registrados en mi aplicación</h6>     -->
+                            </div>
+
+
+                            <!-- <div class="col-12 text-right">
+                                <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Seleccione un rango</mat-label>
+                                    <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                        <input noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                        <input noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+                            </div> -->
+
+                            <!-- <div class="form-group col-md-3">
+                                <mat-form-field class="w-100" appearance="outline">
+                                    <mat-label>Buscar por nombre</mat-label>
+                                    <input autocomplete="off" matInput >
+                                </mat-form-field>
+                            </div> -->
+
+                            <!-- <input type="text" class="form-control" (keyup)="buscarDNI(txtTerminoDNI.value)" #txtTerminoDNI aria-describedby="basic-addon3" placeholder="Buscar por DNI"> -->
+                            
+                            <div class="col-12 text-right">
+
+
+                                
+
+
+                                <mat-form-field class="w-40 mr-4" appearance="outline">
+                                    <mat-label>Buscar por ID productor</mat-label>
+                                    <input autocomplete="off" matInput  (keyup)="buscarID(txtTerminoID.value)" #txtTerminoID >
+                                </mat-form-field>
+
+                                <mat-form-field class="w-40 mr-4" appearance="outline">
+                                    <mat-label>Buscar por DNI</mat-label>
+                                    <input autocomplete="off" matInput  (keyup)="buscarDNI(txtTerminoDNI.value)" #txtTerminoDNI >
+                                </mat-form-field>
+
+                                <mat-form-field class="w-40 mr-4" appearance="outline">
+                                    <form [formGroup]="formSede" >
+                                    <!-- <mat-label>Estado</mat-label> -->
+                                    <mat-select  (selectionChange)="buscarSEDE($event)"  formControlName="sede" placeholder="Buscar por Sede" >
+                                        <mat-option value="">Busqueda por Sede</mat-option>
+                                        <mat-option *ngFor="let ts of sede" [value]="ts.value">
+                                            {{ts.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                    </form>
+                                </mat-form-field>
+
+
+                                <mat-form-field class="mr-4" appearance="outline">
+                                    <mat-label>Seleccione un rango</mat-label>
+                                    <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                        <input noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                        <input noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                    </mat-date-range-input>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-date-range-picker #picker></mat-date-range-picker>
+                                </mat-form-field>
+
+                                
+
+
+                                <button class="btn btn-primary" (click)="irForm()"><i class="fas fa-plus mr-1"> </i> NUEVO</button>&nbsp;
+                                <!-- <button (click)="search()"  class="btn btn-primary">BUSCAR</button>&nbsp; -->
+                                <button  class="btn btn-success" (click)="cargarTodo()"><i class="fas fa-file-excel mr-2"> </i>EXPORTAR</button>&nbsp;
+                            </div>
+                        </div>
+                </div>
+
+
+
+                <div class="card-body">
+
+
+
+
+                    <div class="table-responsive">
+                        <br>
+                        <table class="table table-bordered">
+                            <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                                <tr>
+                                    <th>ID Productor</th>
+                                    <th>Nombres</th>
+                                    <th>Apellido P</th>
+                                    <!-- <th>Apellido M</th> -->
+                                    <th>Sexo</th>
+                                    <th>DNI</th>
+                                    <th>Celular</th>
+                                    <th>Direcccion</th>
+                                    <th>Fecha Ins.</th>
+                                    <th>Estado</th>
+                                    <th class="text-nowrap text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let data of productor">
+
+                                    <td>{{data.id_productor}}</td>
+                                    <td>{{data.nombres}}</td>
+                                    <td>{{data.apellido_p}}</td>
+                                    <!-- <td>{{data.apellido_m}}</td> -->
+                                    <td>{{data.sexo}}</td>
+                                    <td>{{data.dni}}</td>
+                                    <td>{{data.celular}}</td>
+                                    <td>{{data.direccion}}</td>
+                                    <td>{{data.fecha_inscripcion}}</td>
+                                    <td>{{data.status}}</td>
+
+                                
+                
+                                    <td class="text-nowrap text-center">
+                                        <button  class="cursor btn btn-secondary mr-2" (click)="irEdit(data)"  > <i class="fas fa-info-circle"> </i>  </button> 
+                                        <button  class="cursor btn btn-danger mr-2"  (click)="delete()" > <i class="fas fa-trash-alt"> </i>  </button> 
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
+
+                <button (click)="cambiarPagina(-5)" class="btn btn-secondary"> <i class="fas fa-arrow-left mr-1"> </i> Anteriores</button>
+                    &nbsp;
+                    <button (click)="cambiarPagina(5)" class="btn btn-success">Siguientes  <i class="fas fa-arrow-right mr-1"> </i> </button> 
+
+
+
+
+
+
+
+
+
+
+
+
+                    
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

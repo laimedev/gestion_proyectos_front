@@ -1,0 +1,170 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray">
+                    <div class="row">
+                        <div class="col-12">
+                            <span style="font-size: 1rem;">MANTENIMIENTO KPIS THRESHOLDS</span>
+                        </div>
+
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-12 text-right">
+                            <label class="font-weight-bold">Fecha: &nbsp;&nbsp;</label>
+                            <mat-form-field appearance="outline">
+                                <mat-label>Seleccione un rango</mat-label>
+                                <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                                    <input required noKeyEventsHere matStartDate formControlName="start" placeholder="Inicio">
+                                    <input required noKeyEventsHere matEndDate formControlName="end" placeholder="Fin">
+                                </mat-date-range-input>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-date-range-picker #picker></mat-date-range-picker>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 text-right">
+                            <button (click)="openCreate()" class="btn btn-primary">                                
+                                NUEVO</button>&nbsp;
+                            <button (click)="search()" *authorize="'module_seguimiento_search'" class="btn btn-primary">BUSCAR</button>&nbsp;
+                            <button (click)="export()" class="btn btn-success">EXPORTAR</button>&nbsp;
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row card-header bg-gray">
+                        <div class="col-12">
+                            <div *authorize="'module_seguimiento'" class="table-responsive mat-elevation-z8 ">
+                                <table (matSortChange)="dataSource.sortByFromMatSort($event)" style="width: 100%;" mat-table [dataSource]="dataSource" matSort class="">
+                                    <ng-container matColumnDef="id">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> ID </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                                    </ng-container>
+
+                                    <!-- Position Column -->
+                                    <ng-container matColumnDef="kpi">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> KPI </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.kpi}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="kpi_unit">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> UNIDAD </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.kpi_unit}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="banda">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> BANDA </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.banda}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="poligono">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> POLÍGONO </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.poligono}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="n_cond">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> CONDICIONES </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.n_cond}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_1_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> KPI_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_1_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_1_criterio">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> COND_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_1_criterio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="ref_1_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> THRESHOLD_1 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.ref_1_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_2_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> KPI_2 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_2_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_2_criterio">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> COND_2 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_2_criterio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="ref_2_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> THRESHOLD_2 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.ref_2_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_3_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> KPI_3 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_3_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_3_criterio">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> COND_3 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_3_criterio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="ref_3_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> THRESHOLD_3 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.ref_3_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_4_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> KPI_4 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_4_value}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="source_4_criterio">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> COND_4 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.source_4_criterio}} </td>
+                                    </ng-container>
+                                    <ng-container matColumnDef="ref_4_value">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> THRESHOLD_4 </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.ref_4_value}} </td>
+                                    </ng-container>
+
+                                    <ng-container matColumnDef="created_at">
+                                        <th id class="font-weight-bold text-dark" mat-header-cell *matHeaderCellDef
+                                            mat-sort-header class='btn-primary'> FECHA_CREACION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </th>
+                                        <td mat-cell *matCellDef="let element"> {{element.created_at}} </td>
+                                    </ng-container>
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="options">
+                                        <th id class="font-weight-bold text-muted text-center" mat-header-cell
+                                            *matHeaderCellDef class='btn-primary'>
+                                            OPCIONES
+                                        </th>
+                                        <td mat-cell *matCellDef="let m">
+                                            <div class="tool-inside-table">
+                                                <a *authorize="'module_seguimiento_show'" (click)="openEdit(m)" class="btn btn-light btn-sm"><i
+                                                        class="fas far fa-edit"></i></a>
+                                                
+                                                <a *authorize="'module_seguimiento_destroy'" (click)="openDelete(m)" class="btn btn-light btn-sm"><i
+                                                        class="far fa-trash-alt"></i></a>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                                </table>
+                                <mat-paginator *ngIf="dataSource.page$ | async as page" [length]="page.total"
+                                    [pageSize]="page.pageSize" [pageIndex]="page.pageNumber" [hidePageSize]="false"
+                                    (page)="dataSource.fetch($event.pageIndex)">
+                                </mat-paginator>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

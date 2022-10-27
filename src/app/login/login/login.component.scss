@@ -1,0 +1,51 @@
+
+  
+  .container {
+	flex-flow: row wrap;
+	width: 110%;
+	padding-right: 15px;
+	padding-left: 15px;
+	margin-right: auto;
+	margin-left: auto;
+  }
+  
+  .logo{
+	  width: 50%;
+	  height: 63%;
+  }
+  
+  
+  .app-body{
+    //   background-image: url("../../../assets/img/back2.jpg");
+	//   background-color: #fff;
+	  margin: 0;
+	  background-position: center;
+	  min-height: 100vh;
+	  display: flex;
+	  flex-direction: column;
+	  justify-content: center;
+	  align-items: center;
+	  background-repeat: no-repeat;
+	  background-attachment: fixed;
+	  background-size: cover;
+  }
+  
+  @media (min-width: 481px) and (max-width: 767px) {
+	.container-sign-up {
+		display: none!important;
+	}
+  }
+  
+  
+  @media (min-width: 320px) and (max-width: 480px) {
+	  .container-sign-up {
+		  display: none!important;
+	  }
+	}
+	
+
+
+
+
+
+
