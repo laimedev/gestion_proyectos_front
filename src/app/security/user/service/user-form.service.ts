@@ -14,37 +14,22 @@ export class UserFormService {
 
     this.formGroup = this.fb.group({
      
-           username: ['', [Validators.required]],
-           company: ['', [Validators.required]],
-           fullname: ['', [Validators.required]],
-           password: ['', []],
-           passwordr: ['', []],
+           nombre: ['', [Validators.required]],
            email: ['', [Validators.required]],
-           emailr: ['', [Validators.required]],
-           area: ['', [Validators.required]],
-           cellphone: ['', []],
-           commentUser: ['', []],
-           status: ['', [Validators.required]],
-           roleIds: [[], [ Validators.required]]
-         }, {validators: [confirmValidator('password', 'passwordr'), confirmValidator('email', 'emailr')]}
+           role: ['', [Validators.required]],
+           password_show: [''],
+         }
        )      
    }
 
    get form (): FormGroup { return this.formGroup; }
 
    set fillForm(user: User) {
-    this.formGroup.get('username').setValue(user.username)
-    this.formGroup.get('company').setValue(user.company)
-    this.formGroup.get('fullname').setValue(user.fullname)
+    this.formGroup.get('nombre').setValue(user.nombre)
     this.formGroup.get('email').setValue(user.email)
-    this.formGroup.get('emailr').setValue(user.emailr)
-    this.formGroup.get('area').setValue(user.area)
-    this.formGroup.get('cellphone').setValue(user.cellphone)
-    this.formGroup.get('commentUser').setValue(user.commentUser)
-    this.formGroup.get('status').setValue(user.status?'1':'2')
-    this.formGroup.get('roleIds').setValue(Util.onlyIds(user.roles))
-
-   }
+    this.formGroup.get('role').setValue(user.role)
+    this.formGroup.get('password_show').setValue(user.password_show)
+    }
    
 
 

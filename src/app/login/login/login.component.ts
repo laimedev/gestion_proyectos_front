@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
       // console.log('admin')
       this.loginService.login(this.login).subscribe(e => {
       console.log(e)
+        localStorage.setItem('token', e.token)
         this.sessionStorage.setSession(e)
         this.router.navigate([this.returnUrl]);
         this.disableButton = false

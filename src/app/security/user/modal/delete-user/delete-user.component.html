@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row">
             <div *ngIf="deleted=== false; else elseBlock" class="col-12">
-                Eliminar Usuario <strong>{{ user.username }}</strong>
+                Eliminar Usuario <strong>{{ user.nombre }}</strong>
                 <div *ngIf="deleting">
                     <mat-progress-bar mode="indeterminate"></mat-progress-bar>
                 </div>

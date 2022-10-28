@@ -6,7 +6,46 @@
 </div>
 <div class="modal-body">
     <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+
+
         <div class="form-row">
+            <div class="form-group col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Nombre de Usuario</mat-label>
+                    <input autocomplete="off" matInput formControlName="nombre">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Rol</mat-label>
+                    <mat-select (selectionChange)="changePwValidators($event)" formControlName="role">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of role" [value]="wType.value">
+                            {{wType.label}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Correo electronico</mat-label>
+                    <input autocomplete="off" matInput formControlName="email">
+                </mat-form-field>
+            </div>
+            <div class="form-group col-md-6">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input autocomplete="off" matInput formControlName="password_show">
+                </mat-form-field>
+            </div>
+        </div>
+        
+        
+        <!-- <div class="form-row">
             <div class="form-group col-md-6">
                 <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Nombre de Usuario</mat-label>
@@ -82,32 +121,11 @@
                     <input autocomplete="off" matInput formControlName="cellphone">
                 </mat-form-field>
             </div>
-        </div>
+        </div> -->
         
        
 
-        <!-- <div class="form-row">
-            <div class="col-md-3 text-right">
-                <strong class="text-secondary">
-                    Perfiles:
-                </strong>
-            </div>
-            <div *ngIf="roles; else loading" class="col-md-9">
-                <div class="text-danger" *ngIf="formGroup.controls.roleIds.errors?.ee">Seleccionar perfil</div>
-                <div class="row">
-                    <div *ngFor="let rol of roles; index as i" class="col-md-4">
-                        <mat-checkbox [value]="rol.id" (change)="checked($event)" [checked]="checkedIf(rol.id)" class="rol-box w-100">
-                            {{ rol.displayName }}</mat-checkbox>
-                    </div>
-                </div>
-            </div>
-            <ng-template #loading>
-                <div class="col-md-4">
-                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-                </div>
-            </ng-template>
-
-        </div> -->
+        
     </form>
 </div>
 <div class="modal-footer">

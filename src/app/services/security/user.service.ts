@@ -13,16 +13,30 @@ import { map } from 'rxjs/operators';
 })
 export class UserService {
 
+
+  public admin: any;
+  mostrarAdmin = false;
+  serSel: any;
+
+
+
   constructor(protected client: HttpClient) { }
 
+
+
+
+
+
+
+
   createUser(entity: User): Observable<User> {
-    return this.client.post<User>(`${environment.baseUrl}/security/users`, entity)
+    return this.client.post<User>(`${environment.baseUrl}admin`, entity)
   }
 
-  getById(user: User): Observable<User> {
+  // getById(user: User): Observable<User> {
 
-    return this.client.get<User>(environment.baseUrl + '/security/users/' + user.id)
-  }
+  //   return this.client.get<User>(environment.baseUrl + '/security/users/' + user.id)
+  // }
 
   editUser(user: User): Observable<User> {
 
@@ -49,9 +63,9 @@ export class UserService {
 
 
 
-  delete(user: User): Observable<User> {
-    return this.client.delete<User>(environment.baseUrl + '/security/users/' + user.id)
-  }
+  // delete(user: User): Observable<User> {
+  //   return this.client.delete<User>(environment.baseUrl + '/security/users/' + user.id)
+  // }
 
   public export(filter: PageRequest<User>): Observable<any> {
 
@@ -92,6 +106,63 @@ export class UserService {
       })
       return data;
     }))
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+  // cargarUsuarios(desde: number = 0){
+  //   const url = `${environment.baseUrl}admin?desde=${desde}`; 
+  //   return this.client.get<any>(url)
+  // }
+
+  cargarAdministradores(desde: number = 0){
+    const url = `${environment.baseUrl}admin?desde=${desde}`; 
+    return this.client.get<any>(url, this.headers)
+  }
+
+
+  getById(admin: User): Observable<User> {
+    return this.client.post<User>(environment.baseUrl + 'admin/showByID', {"_id": admin.id})
+  }
+
+
+  edit(admin: User): Observable<User> {
+    return this.client.post<User>(environment.baseUrl + 'admin/update/' + admin.id, admin);
+  }
+
+  delete(admin: User): Observable<User> {
+    return this.client.delete<User>(environment.baseUrl + 'admin/' + admin.id)
+  }
+
+
+  get token(): string {
+    return localStorage.getItem('token') || '';
+  }
+  
+
+  get id():string{
+    return this.admin.id || '';
+  }
+
+  get role(): '0' | '1' | '2' {
+    return this.admin.role;
+  }
+
+  get headers () {
+    return{
+        headers: {
+        'x-token': this.token
+    }
+  }
   }
 
 }

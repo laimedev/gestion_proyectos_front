@@ -18,6 +18,12 @@ export class UserFormComponent implements OnInit {
         {value: '2', label: 'Inactivo'}
     ]
 
+
+    role = [
+      {value: '1', label: 'Staf'},
+      {value: '2', label: 'Administrador'}
+  ]
+
     areas: Params[]
     workerType: Params[]
     roles: Rol[]
@@ -38,12 +44,12 @@ export class UserFormComponent implements OnInit {
   constructor(protected paramService: ParamService) { }
 
   ngOnInit(): void {
-    console.log("ppasa usuario");
-    this.paramService.getParams().subscribe(data => {
-      this.areas = data.area
-      this.workerType = data.userType
-      this.roles = data.roles
-    }) 
+    // console.log("ppasa usuario");
+    // this.paramService.getParams().subscribe(data => {
+    //   this.areas = data.area
+    //   this.workerType = data.userType
+    //   this.roles = data.roles
+    // }) 
       
   }
 
@@ -86,14 +92,16 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.refreshTable = true
-    this.formGroup.get('roleIds').setValue(this.selectedRols)
-    if (this.selectedRols.length<1)
-      this.formGroup.get('roleIds').setErrors({'ee': true})
+    // this.refreshTable = true
+    // this.formGroup.get('roleIds').setValue(this.selectedRols)
+    // if (this.selectedRols.length<1)
+      // this.formGroup.get('roleIds').setErrors({'ee': true})
     if (this.formGroup.valid) {
 
       this.submitEvent.emit(this.formGroup.value)
     }
+
+    console.log(this.formGroup.value)
 
     
   }

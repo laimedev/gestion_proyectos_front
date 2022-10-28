@@ -28,6 +28,16 @@ export class EmpleadoFormComponent implements OnInit {
     public empleadoService: EmpleadoService) { }
 
   ngOnInit(): void {
+    this.formGroup.reset();
+    if(this.formTitle === 'EDITAR EMPLEADO'){
+      // this.formGroup.get('username').disable();
+      this.statusActive = false;
+      // this.formLDAP = false;
+    } else{
+      // this.newUser = false;
+      this.statusActive = true;
+
+    }
   }
 
 
@@ -51,5 +61,5 @@ export class EmpleadoFormComponent implements OnInit {
     this.closeEvent.emit(this.refreshTable)
     this.modalService.dismissAll();
   }
-  
+
 }

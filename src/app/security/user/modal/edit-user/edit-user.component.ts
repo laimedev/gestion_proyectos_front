@@ -37,15 +37,30 @@ export class EditUserComponent implements OnInit {
 
     this.userService.getById(this.user).subscribe(data => {
       console.log("cargo editar")
-      this.formService.fillForm = data
-      this.selectedRols = this.formGroup.get('roleIds').value as number[]
+      console.log(data)
+      this.formService.fillForm = data['admin'][0]
+      // this.selectedRols = this.formGroup.get('roleIds').value as number[]
       this.formLoaded = true
 
     })
 
     this.formGroup = this.formService.form;
 
+
+
+    // this.formService.getById({ "_id": this.proyecto._id}).subscribe(data => {
+    //   console.log(data)
+    //   console.log("cargo editar")
+    //   this.formService.fillForm = data['proyecto'][0]
+    //   this.formLoaded = true
+    // })
+    // this.formGroup = this.formService.form;
+
   }
+
+
+
+  
 
   onClose($res: any) {
     this.activeModal.close($res)
@@ -54,7 +69,7 @@ export class EditUserComponent implements OnInit {
   onSubmit(value: User) {console.log("enviar")
 this.disableForm()
     value.id = this.user.id
-    this.userService.editUser(value).subscribe(data => {
+    this.userService.edit(value).subscribe(data => {
       SnackbarHelper.show(this.snackBar, { msg: 'Editó con éxito', })
       this.enableForm()
       this.activeModal.close(true)

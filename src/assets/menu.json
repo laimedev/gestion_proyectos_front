@@ -8,7 +8,7 @@
             "subMenu": [
                 {
                     "id": 2,
-                    "url": "",
+                    "url": "security.users",
                     "icon": "fa fa-users",
                     "displayName": "Usuarios",
                     "subMenu": []
