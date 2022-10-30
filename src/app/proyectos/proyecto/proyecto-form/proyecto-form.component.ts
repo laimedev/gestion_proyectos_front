@@ -17,8 +17,15 @@ export class ProyectoFormComponent implements OnInit {
   @Input() disableControl: boolean
   @Input() formTitle: string
   refreshTable = false
-
   statusActive: boolean = false;
+
+  statusEntity = [
+    {value: 'Nuevo', label: 'Nuevo'},
+    {value: 'En curso', label: 'En curso'},
+    {value: 'Pendiente', label: 'Pendiente'},
+    {value: 'Cerrado', label: 'Cerrado'}
+]
+
 
   constructor(protected fb: FormBuilder,
               protected activeModal: NgbActiveModal,

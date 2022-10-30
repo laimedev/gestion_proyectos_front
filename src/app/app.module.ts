@@ -22,6 +22,8 @@ import { MaintenanceModule } from './maintenance/maintenance.module';
 import { MantenimientoModule } from './mantenimiento/mantenimiento.module';
 import { ProyectoModule } from './proyectos/proyecto.module';
 import { EmpleadoModule } from './empleados/empleado.module';
+import { TrabajoModule } from './trabajos/trabajo/trabajo.module';
+import { ConfiguracionModule } from './configuracion/configuracion.module';
 
 
 import { OrganizacionModule } from './organizacion/organizacion.module';
@@ -48,6 +50,8 @@ import { UnproductivaModule } from './unproductiva/unproductiva.module';
     MantenimientoModule,
     ProyectoModule,
     EmpleadoModule,
+    TrabajoModule,
+    ConfiguracionModule,
     OrganizacionModule,
     CertificacionModule,
     SecurityModule,

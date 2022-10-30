@@ -44,7 +44,8 @@
 
                                     <td>{{data.nombre}}</td>
                                     <td>{{data.email}}</td>
-                                    <td>{{data.role}}</td>
+                                    <td *ngIf="data.role == 2">Administrador</td>
+                                    <td *ngIf="data.role == 1">Staff</td>
 
                                     <td class="text-nowrap text-center">
                                         <button  class="cursor btn btn-secondary mr-2"   > <i class="fas fa-info-circle"> </i>  </button> 

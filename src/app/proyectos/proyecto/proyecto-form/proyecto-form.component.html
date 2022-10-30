@@ -8,14 +8,12 @@
 
 <div class="modal-body">
     <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
-
             <div class="" >
                 <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Nombre proyecto:</mat-label>
                     <input name="nombre" autocomplete="off" matInput formControlName="nombre" >
                 </mat-form-field>
             </div>
-
 
             <div class="" >
                 <mat-form-field class="w-100" appearance="outline">
@@ -25,13 +23,21 @@
             </div>
 
             <div class="" *ngIf="!statusActive" >
+                
+                
                 <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Estado proyecto:</mat-label>
-                    <input name="estado" autocomplete="off" matInput formControlName="estado" >
+                    <!-- <input name="estado" autocomplete="off" matInput formControlName="estado" > -->
+                    <mat-select  formControlName="estado">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of statusEntity" [value]="wType.value">
+                            {{wType.label}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
+
+
             </div>
-
-
     </form>
 </div>
 

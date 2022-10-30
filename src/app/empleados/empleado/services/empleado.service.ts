@@ -15,6 +15,10 @@ const base_url = environment.url;
 })
 export class EmpleadoService {
 
+
+  
+
+
   formGroup: FormGroup;
 
   constructor(protected http: HttpClient,
@@ -25,13 +29,13 @@ export class EmpleadoService {
         nombres: ['', [Validators.required]],
         apellidos: ['', [Validators.required]],
         fecha_nacimiento: [''],
-        sexo: [''],
-        departamento: [''],
-        cargo: [''],
-        email: [''],
+        sexo: ['', [Validators.required]],
+        departamento: ['', [Validators.required]],
+        cargo: ['', [Validators.required]],
+        email: ['', [Validators.required]],
         avatar: [''],
-        password_show: [''],
-        estado: [''],
+        password_show: ['', [Validators.required]],
+        estado: ['', [Validators.required]],
       })      
       
       
