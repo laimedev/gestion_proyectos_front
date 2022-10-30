@@ -22,6 +22,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CreateProyectoComponent } from './proyecto/modal/create-proyecto/create-proyecto.component';
 import { EditProyectoComponent } from './proyecto/modal/edit-proyecto/edit-proyecto.component';
 import { ProyectoFormComponent } from './proyecto/proyecto-form/proyecto-form.component';
+import { ClienteFormComponent } from './cliente/cliente-form/cliente-form.component';
+import { ClienteListComponent } from './cliente/cliente-list/cliente-list.component';
+import { CreateClienteComponent } from './cliente/modal/create-cliente/create-cliente.component';
+import { DeleteClienteComponent } from './cliente/modal/delete-cliente/delete-cliente.component';
+import { EditClienteComponent } from './cliente/modal/edit-cliente/edit-cliente.component';
+import { ViewClienteComponent } from './cliente/modal/view-cliente/view-cliente.component';
 
 
 @NgModule({
@@ -30,7 +36,13 @@ import { ProyectoFormComponent } from './proyecto/proyecto-form/proyecto-form.co
     DeleteProyectoComponent,
     CreateProyectoComponent,
     EditProyectoComponent,
-    ProyectoFormComponent
+    ProyectoFormComponent,
+    ClienteFormComponent,
+    ClienteListComponent,
+    CreateClienteComponent,
+    DeleteClienteComponent,
+    EditClienteComponent,
+    ViewClienteComponent
   ],
   imports: [
     CommonModule,

@@ -1,1 +1,4 @@
-<p>edit-cargo works!</p>
+<app-cargo-form  
+(submitEvent)="onSubmit($event)" [disableControl]="disableControl"  
+[formTitle]="'EDITAR CARGO'"
+(closeEvent)="onClose($event)" [formGroup]="formGroup"  ></app-cargo-form>

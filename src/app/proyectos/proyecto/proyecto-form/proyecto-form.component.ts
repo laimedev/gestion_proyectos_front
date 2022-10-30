@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProyectoService } from '../services/proyecto.service';
 import { Proyecto } from '../../../entities/modulos/proyecto';
+import { EmpleadoService } from 'src/app/empleados/empleado/services/empleado.service';
+import { ClienteService } from '../../cliente/services/cliente.service';
 
 @Component({
   selector: 'app-proyecto-form',
@@ -26,13 +28,21 @@ export class ProyectoFormComponent implements OnInit {
     {value: 'Cerrado', label: 'Cerrado'}
 ]
 
+  public responsable: any [] = []; 
+  public cliente: any [] = []; 
 
   constructor(protected fb: FormBuilder,
               protected activeModal: NgbActiveModal,
               private modalService: NgbModal,
-              public proyectoService: ProyectoService) { }
+              public proyectoService: ProyectoService,
+              public empleadoService: EmpleadoService,
+              public clienteService: ClienteService) { }
 
   ngOnInit(): void {
+
+    this.cargarEmpleado();
+    this.cargarCliente();
+
     this.formGroup.reset();
     if(this.formTitle === 'EDITAR PROYECTO'){
       // this.formGroup.get('username').disable();
@@ -47,6 +57,20 @@ export class ProyectoFormComponent implements OnInit {
   }
 
 
+  cargarEmpleado(){
+    this.empleadoService.cargarEmpleados().subscribe(resp => {
+      console.log(resp)
+      this.responsable = resp['personal']
+    })
+  }
+
+
+  cargarCliente(){
+    this.clienteService.cargarClientes().subscribe(resp => {
+      console.log(resp)
+      this.cliente = resp['cliente']
+    })
+  }
 
 
   onSubmit() {

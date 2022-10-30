@@ -3,21 +3,20 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
-import { CargoService } from '../../services/cargo.service';
+import { ClienteService } from '../../services/cliente.service';
 
 @Component({
-  selector: 'app-create-cargo',
-  templateUrl: './create-cargo.component.html',
-  styleUrls: ['./create-cargo.component.scss']
+  selector: 'app-create-cliente',
+  templateUrl: './create-cliente.component.html',
+  styleUrls: ['./create-cliente.component.scss']
 })
-export class CreateCargoComponent implements OnInit {
+export class CreateClienteComponent implements OnInit {
 
-  
   formGroup: FormGroup;
   disableControl = false;
 
 
-  constructor(protected formService: CargoService, 
+  constructor(protected formService: ClienteService, 
     protected activeModal: NgbActiveModal,
     private snackBar: MatSnackBar) {
 

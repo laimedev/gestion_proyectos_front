@@ -19,8 +19,15 @@
             "id": 7,
             "url": null,
             "icon": "fa fa-home",
-            "displayName": "PROYECTOS",
+            "displayName": "CLIENTES",
             "subMenu": [
+                {
+                    "id": 2,
+                    "url": "cliente.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Listado de clientes",
+                    "subMenu": []
+                },
                 {
                     "id": 2,
                     "url": "proyecto.list",
@@ -34,7 +41,7 @@
             "id": 6,
             "url": null,
             "icon": "fa fa-database",
-            "displayName": "EMPLEADOS",
+            "displayName": "PERSONAL",
             "subMenu": [
                 {
                     "id": 2,

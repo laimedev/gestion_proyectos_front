@@ -3,6 +3,11 @@ export interface Proyecto {
     nombre?: string;
     descripcion?: string;
     created?: string;
+    responsable?: string;
+    presupuesto?: string;
+    fecha_inicio?: string;
+    fecha_fin?: string;
+    cliente?: string;
     estado?: string;
 }
 

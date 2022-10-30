@@ -2,23 +2,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DateAdapter } from '@angular/material/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { CargoService } from 'src/app/configuracion/cargo/services/cargo.service';
-import { DepartamentoService } from 'src/app/configuracion/departamento/services/departamento.service';
-import { Empleado } from 'src/app/entities/modulos/empleado';
-import { EmpleadoService } from '../services/empleado.service';
-
-
+import { Cliente } from 'src/app/entities/modulos/cliente';
+import { ClienteService } from '../services/cliente.service';
 
 @Component({
-  selector: 'app-empleado-form',
-  templateUrl: './empleado-form.component.html',
-  styleUrls: ['./empleado-form.component.scss']
+  selector: 'app-cliente-form',
+  templateUrl: './cliente-form.component.html',
+  styleUrls: ['./cliente-form.component.scss']
 })
-export class EmpleadoFormComponent implements OnInit {
+export class ClienteFormComponent implements OnInit {
 
-
+  
   @Input() formGroup: FormGroup;
-  @Output() submitEvent = new EventEmitter<Empleado>()
+  @Output() submitEvent = new EventEmitter<Cliente>()
   @Output() closeEvent =  new EventEmitter<boolean>()
   @Input() disableControl: boolean
   @Input() formTitle: string
@@ -38,15 +34,10 @@ export class EmpleadoFormComponent implements OnInit {
   ]
 
 
-  public departamento: any [] = [];
-  public cargo: any [] = [];
-
   constructor(protected fb: FormBuilder,
     protected activeModal: NgbActiveModal,
     private modalService: NgbModal,
-    public empleadoService: EmpleadoService,
-    public departamentoService: DepartamentoService,
-    public cargoService: CargoService,
+    public clienteService: ClienteService,
     private dateAdapter: DateAdapter<Date>) {
       
       this.dateAdapter.setLocale('en-GB'); 
@@ -54,13 +45,8 @@ export class EmpleadoFormComponent implements OnInit {
     }
 
   ngOnInit(): void {
-
-
-    this.cargarDepartamento();
-    this.cargarCargo();
-
     this.formGroup.reset();
-    if(this.formTitle === 'EDITAR EMPLEADO'){
+    if(this.formTitle === 'EDITAR CLIENTE'){
       // this.formGroup.get('username').disable();
       this.statusActive = false;
       // this.formLDAP = false;
@@ -73,26 +59,10 @@ export class EmpleadoFormComponent implements OnInit {
 
 
 
-  cargarDepartamento(){
-    this.departamentoService.cargarDepartamento().subscribe(resp => {
-      console.log(resp)
-      this.departamento = resp['departamento']
-    })
-  }
-
-  cargarCargo(){
-    this.cargoService.cargarCargo().subscribe(resp => {
-      console.log(resp)
-      this.cargo = resp['cargo']
-    })
-  }
-
-
-
   onSubmit() {
 
-    const date = new Date(Date.parse(this.formGroup.get('fecha_nacimiento').value))
-    this.formGroup.get('fecha_nacimiento')?.setValue(date);
+    // const date = new Date(Date.parse(this.formGroup.get('fecha_nacimiento').value))
+    // this.formGroup.get('fecha_nacimiento')?.setValue(date);
     console.log(this.formGroup.value);
       this.submitEvent.emit(this.formGroup.value)
       this.formGroup.reset();
@@ -109,4 +79,29 @@ export class EmpleadoFormComponent implements OnInit {
     this.modalService.dismissAll();
   }
 
+
+  buscarRuc(ruc: string){
+
+    this.formGroup = this.clienteService.form;
+
+
+    this.clienteService.buscarRuc(ruc).subscribe(r => {
+      console.log(r)
+      if(!r.success){
+        // alert(r.message);
+        // this.empresa.razonSocial = "";
+      }
+      else{
+        // this.formGroup = r.result;
+        this.formGroup.get('razonSocial')?.setValue(r.result.razonSocial);
+        this.formGroup.get('condicion')?.setValue(r.result.condicion);
+        this.formGroup.get('departamento')?.setValue(r.result.departamento);
+        this.formGroup.get('provincia')?.setValue(r.result.provincia);
+        this.formGroup.get('distrito')?.setValue(r.result.distrito);
+        this.formGroup.get('direccion')?.setValue(r.result.direccion);
+      }
+    });
+  }
+  
 }
+

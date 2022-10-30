@@ -62,7 +62,7 @@ import { UnproductivaModule } from './unproductiva/unproductiva.module';
   ],
   providers: [
     Title,
-    { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: JwtTokenInterceptor, multi: true },
     {provide: LocationStrategy, useClass: HashLocationStrategy,}
   ],
   bootstrap: [AppComponent]

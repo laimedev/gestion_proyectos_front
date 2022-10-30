@@ -26,6 +26,11 @@ export class ProyectoService {
                 this.formGroup = this.fb.group({
                   nombre: ['', [Validators.required]],
                   descripcion: ['', [Validators.required]],
+                  responsable: ['', [Validators.required]],
+                  presupuesto: ['', [Validators.required]],
+                  fecha_inicio: ['', [Validators.required]],
+                  fecha_fin: ['', [Validators.required]],
+                  cliente: ['', [Validators.required]],
                   estado: [''],
                 })      
                 
@@ -39,6 +44,13 @@ export class ProyectoService {
   set fillForm(proyecto: Proyecto) {
   this.formGroup.get('nombre').setValue(proyecto.nombre)
   this.formGroup.get('descripcion').setValue(proyecto.descripcion)
+
+  this.formGroup.get('responsable').setValue(proyecto.responsable)
+  this.formGroup.get('presupuesto').setValue(proyecto.presupuesto)
+  this.formGroup.get('fecha_inicio').setValue(proyecto.fecha_inicio)
+  this.formGroup.get('fecha_fin').setValue(proyecto.fecha_fin)
+  this.formGroup.get('cliente').setValue(proyecto.cliente)
+
   this.formGroup.get('estado').setValue(proyecto.estado)
   }
 
@@ -46,14 +58,11 @@ export class ProyectoService {
  cargarProyectos(desde: number = 0){
     const url = `${ base_url}proyecto/show?desde=${desde}`; 
     return this.http.get<any>(url)
-    // return this.http.get<CargarCurso>(url)
   }
-
 
   getById(proyecto: Proyecto): Observable<Proyecto> {
     return this.http.post<Proyecto>(environment.baseUrl + 'proyecto/showByID', proyecto)
   }
-
 
   create(proyecto: Proyecto): Observable<Proyecto> {
     return this.http.post<Proyecto>(`${environment.baseUrl}proyecto`, proyecto)

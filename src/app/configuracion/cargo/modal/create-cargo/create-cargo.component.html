@@ -1,1 +1,4 @@
-<p>create-cargo works!</p>
+<app-cargo-form [formGroup]="formGroup" (submitEvent)="onSubmit($event)"
+[disableControl]="disableControl"
+[formTitle]="'NUEVO REGISTRO DE CARGO'"
+(closeEvent)="onClose($event)"></app-cargo-form>

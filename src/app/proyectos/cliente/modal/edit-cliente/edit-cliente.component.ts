@@ -2,36 +2,35 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { Cargo } from 'src/app/entities/modulos/cargo';
-import { Proyecto } from 'src/app/entities/modulos/proyecto';
+import { Cliente } from 'src/app/entities/modulos/cliente';
 import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
-import { CargoService } from '../../services/cargo.service';
+import { ClienteService } from '../../services/cliente.service';
 
 
 @Component({
-  selector: 'app-edit-cargo',
-  templateUrl: './edit-cargo.component.html',
-  styleUrls: ['./edit-cargo.component.scss']
+  selector: 'app-edit-cliente',
+  templateUrl: './edit-cliente.component.html',
+  styleUrls: ['./edit-cliente.component.scss']
 })
-export class EditCargoComponent implements OnInit {
+export class EditClienteComponent implements OnInit {
 
   formGroup: FormGroup;
   formLoaded = false
   disableControl = false;
   serverResponseJSON: any
-  @Input() cargo: Cargo
+  @Input() cliente: Cliente
 
   constructor(
-    protected formService: CargoService,
+    protected formService: ClienteService,
     protected activeModal: NgbActiveModal,
     private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void {
-    this.formService.getById({ "_id": this.cargo._id}).subscribe(data => {
+    this.formService.getById({ "_id": this.cliente._id}).subscribe(data => {
       console.log(data)
       console.log("cargo editar")
-      this.formService.fillForm = data['cargo'][0]
+      this.formService.fillForm = data['cliente'][0]
       this.formLoaded = true
     })
     this.formGroup = this.formService.form;
@@ -40,8 +39,8 @@ export class EditCargoComponent implements OnInit {
 
   onSubmit(value: any) {
     console.log("enviar")
-    this.disableForm()
-      value._id = this.cargo._id
+  this.disableForm()
+      value._id = this.cliente._id
       this.formService.edit(value).subscribe(data => {
         SnackbarHelper.show(this.snackBar, { msg: 'Editó con éxito', })
         this.enableForm()

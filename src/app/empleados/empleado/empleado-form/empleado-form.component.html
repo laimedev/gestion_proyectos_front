@@ -63,14 +63,26 @@
                 <div class="col-6" >
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Departamento:</mat-label>
-                        <input name="nombre" autocomplete="off" matInput formControlName="departamento" >
+                        <!-- <input name="nombre" autocomplete="off" matInput formControlName="departamento" > -->
+                        <mat-select  formControlName="departamento">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let wType of departamento" [value]="wType._id">
+                                {{wType.nombre}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
 
                 <div class="col-6" >
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Cargo:</mat-label>
-                        <input name="nombre" autocomplete="off" matInput formControlName="cargo" >
+                        <!-- <input name="nombre" autocomplete="off" matInput formControlName="cargo" > -->
+                        <mat-select  formControlName="cargo">
+                            <mat-option>--</mat-option>
+                            <mat-option *ngFor="let wType of cargo" [value]="wType._id">
+                                {{wType.nombre}}
+                            </mat-option>
+                        </mat-select>
                     </mat-form-field>
                 </div>
             </div>
