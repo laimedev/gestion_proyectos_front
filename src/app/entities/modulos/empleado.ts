@@ -12,6 +12,7 @@ export interface Empleado {
     password?: string;
     avatar?: string;
     cargo?: string;
+    pago?: number;
     estado?: string;
     role?: string;
     created?: string;

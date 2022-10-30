@@ -32,6 +32,7 @@ export class EmpleadoService {
         sexo: ['', [Validators.required]],
         departamento: ['', [Validators.required]],
         cargo: ['', [Validators.required]],
+        pago: ['', [Validators.required]],
         email: ['', [Validators.required]],
         avatar: [''],
         password_show: ['', [Validators.required]],
@@ -52,6 +53,7 @@ export class EmpleadoService {
     this.formGroup.get('sexo').setValue(empleado.sexo)
     this.formGroup.get('departamento').setValue(empleado.departamento)
     this.formGroup.get('cargo').setValue(empleado.cargo)
+    this.formGroup.get('pago').setValue(empleado.pago)
     this.formGroup.get('email').setValue(empleado.email)
     this.formGroup.get('avatar').setValue(empleado.avatar)
     this.formGroup.get('password_show').setValue(empleado.password_show)
