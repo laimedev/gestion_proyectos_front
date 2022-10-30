@@ -37,6 +37,8 @@
                                     <th>Fecha de creación</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin **Ref</th>
                                     <th>Estado</th>
                                     <th class="text-nowrap text-center">Acciones</th>
                                 </tr>
@@ -48,9 +50,10 @@
                                     <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td>
                                     <td>{{data.nombre}}</td>
                                     <td>{{data.descripcion}}</td>
+                                    <td>{{data.fecha_inicio | date: 'dd/MM/yyyy'}}</td>
+                                    <td>{{data.fecha_fin | date: 'dd/MM/yyyy'}}</td>
                                     <td>
                                         {{data.estado}}
-                                    
                                     </td>
 
                                     <td class="text-nowrap text-center">
