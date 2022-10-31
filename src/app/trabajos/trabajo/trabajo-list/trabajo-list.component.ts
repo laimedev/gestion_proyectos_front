@@ -89,6 +89,8 @@ export class TrabajoListComponent implements OnInit {
 
 
   buscar(termino: string) {
+
+    
     if(termino.length === 0 ) {
       return this.trabajo = this.trabajoTemp;
     }

@@ -13,10 +13,8 @@ import { InformacionService } from '../services/informacion.service';
 export class InformacionListComponent implements OnInit {
 
   formGroup: FormGroup;
-
   @Input() disableControl: boolean
   @Input() formTitle: string
-
   public informacion: Configuracion
 
   public portada: any;

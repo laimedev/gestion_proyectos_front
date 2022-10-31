@@ -46,6 +46,7 @@ export class CreateReportComponent implements OnInit {
 
 
     console.log(this.proyecto);
+    // console.log(this.proyecto);
   }
 
 

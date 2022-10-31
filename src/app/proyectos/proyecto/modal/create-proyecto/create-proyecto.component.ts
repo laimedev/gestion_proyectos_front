@@ -22,7 +22,6 @@ export class CreateProyectoComponent implements OnInit {
     private snackBar: MatSnackBar) {
 
       this.formGroup = formService.form;
-      // this.formGroup.get('estado').disable()
 
      }
 
