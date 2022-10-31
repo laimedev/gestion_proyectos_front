@@ -11,6 +11,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/datetime-picker": "^8.0.0",
     "@angular/animations": "~10.0.0",
     "@angular/cdk": "^10.0.1",
     "@angular/common": "~10.0.0",
@@ -30,6 +31,7 @@
     "leaflet": "^0.7.2",
     "leaflet-draw": "^0.2.4",
     "leaflet-illustrate": "^0.0.3",
+    "moment": "^2.29.4",
     "popper.js": "^1.16.1",
     "rxjs": "~6.5.5",
     "sweetalert2": "^9.17.1",

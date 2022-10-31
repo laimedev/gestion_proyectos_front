@@ -3,7 +3,7 @@
         style="border: 0;background-color: transparent; margin-left: 10px;">
         <i style="color: #fff;" class="fa fa-bars icon"></i>
     </button>
-    <a class="navbar-brand" href="#"><span class="letra-entel">Gestión de Proyectos</span></a>
+    <a class="navbar-brand" href="#"><span class="letra-entel">{{informacion.titulo}} - </span> <span class="letra-entel" *ngIf="typeUser === '2'">Administrador</span> <span class="letra-entel" *ngIf="typeUser === '1'">Staff</span> <span class="letra-entel" *ngIf="typeUser === '0'">Personal</span></a>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <div class=" dropdown__ navbar-nav">

@@ -28,6 +28,9 @@ import { CreateClienteComponent } from './cliente/modal/create-cliente/create-cl
 import { DeleteClienteComponent } from './cliente/modal/delete-cliente/delete-cliente.component';
 import { EditClienteComponent } from './cliente/modal/edit-cliente/edit-cliente.component';
 import { ViewClienteComponent } from './cliente/modal/view-cliente/view-cliente.component';
+import { MisProyectosListComponent } from './proyecto/mis-proyectos-list/mis-proyectos-list.component';
+import { CreateReportComponent } from './proyecto/modal/create-report/create-report.component';
+import { ViewProyectoComponent } from './proyecto/modal/view-proyecto/view-proyecto.component';
 
 
 @NgModule({
@@ -42,7 +45,10 @@ import { ViewClienteComponent } from './cliente/modal/view-cliente/view-cliente.
     CreateClienteComponent,
     DeleteClienteComponent,
     EditClienteComponent,
-    ViewClienteComponent
+    ViewClienteComponent,
+    MisProyectosListComponent,
+    CreateReportComponent,
+    ViewProyectoComponent
   ],
   imports: [
     CommonModule,

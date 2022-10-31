@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Proyecto } from 'src/app/entities/modulos/proyecto';
+import { Util } from 'src/app/utils/helpers/util';
 import { CreateProyectoComponent } from '../modal/create-proyecto/create-proyecto.component';
 import { DeleteProyectoComponent } from '../modal/delete-proyecto/delete-proyecto.component';
 import { EditProyectoComponent } from '../modal/edit-proyecto/edit-proyecto.component';
@@ -15,9 +17,6 @@ export class ProyectoListComponent implements OnInit {
 
 
   public data: any = [];
-
-
-  // public proyecto: Curso[] = [];
   public proyecto: any[] = [];
   public proyectoTemp: any[] = [];
   
@@ -32,6 +31,14 @@ export class ProyectoListComponent implements OnInit {
   ngOnInit(): void {
     this.cargarProyectos();
   }
+
+
+  statusEntity = [
+    {value: 'Nuevo', label: 'Nuevo'},
+    {value: 'En curso', label: 'En curso'},
+    {value: 'Cerrado', label: 'Cerrado'}
+  ]
+
 
 
   cargarProyectos(){
@@ -52,7 +59,6 @@ export class ProyectoListComponent implements OnInit {
   openCreate(){
     const modalRef = this.modalService.open(CreateProyectoComponent, { size: 'lg', backdrop: 'static' });
       modalRef.result.then(res => {
-        // this.dataSource.updateTable(0)
         this.cargarProyectos();
       })
   }
@@ -85,5 +91,63 @@ export class ProyectoListComponent implements OnInit {
     }
     this.cargarProyectos();
   }
+
+
+  export(){
+    this.proyectoService.export()
+        .subscribe(res => { Util.download(res['data'], 'proyectos'); console.log(res)});
+  }
+
+
+  buscar(termino: string) {
+    if(termino.length === 0 ) {
+      return this.proyecto = this.proyectoTemp;
+    }
+    this.proyectoService.buscar('proyecto', termino)
+    .subscribe(resultados => {
+      this.proyecto = resultados;
+    });
+  }
+ 
+
+
+  selectStatus(value){
+    this.proyectoService.getByStatus({ "estado":  value}).subscribe(data => {
+      console.log(data)
+      // console.log("cargo editar")
+      // this.proyectoService.fillForm = data['proyecto'][0]
+      // this.formLoaded = true
+    })
+  }
+
+
+
+  changePwValidators($res: MatSelectChange){
+    // console.log($res.value)
+
+    if(!$res.value ) {
+      // return this.proyecto = this.proyectoTemp;
+      return this.cargarProyectos();
+    }
+
+
+    // this.proyectoService.buscar('proyecto', termino)
+    // .subscribe(resultados => {
+    //   this.proyecto = resultados;
+    // });
+
+
+    this.proyectoService.getByStatus({ "estado":  $res.value}).subscribe(data => {
+      console.log(data['proyecto'])
+      this.proyecto = data['proyecto'];
+      // console.log("cargo editar")
+      // this.proyectoService.fillForm = data['proyecto'][0]
+      // this.formLoaded = true
+    })
+  }
+
+
+ 
+
 
 }

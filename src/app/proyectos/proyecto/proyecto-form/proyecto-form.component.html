@@ -30,7 +30,7 @@
                     <mat-select  formControlName="responsable">
                         <mat-option>--</mat-option>
                         <mat-option *ngFor="let wType of responsable" [value]="wType._id">
-                            {{wType.nombres}} {{wType.apellidos}} - [ {{wType.cargo}} ]
+                            {{wType.nombres}} {{wType.apellidos}}
                         </mat-option>
                     </mat-select>
                 

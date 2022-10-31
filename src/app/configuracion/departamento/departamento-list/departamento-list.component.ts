@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Departamento } from 'src/app/entities/modulos/departamento';
 import { Proyecto } from 'src/app/entities/modulos/proyecto';
+import { Util } from 'src/app/utils/helpers/util';
 import { CreateDepartamentoComponent } from '../modal/create-departamento/create-departamento.component';
 import { DeleteDepartamentoComponent } from '../modal/delete-departamento/delete-departamento.component';
 import { EditDepartamentoComponent } from '../modal/edit-departamento/edit-departamento.component';
@@ -81,5 +82,23 @@ export class DepartamentoListComponent implements OnInit {
     }
     this.cargarDepartamentos();
   }
+
+
+  export(){
+    this.departamentoService.export()
+        .subscribe(res => { Util.download(res['data'], 'departamentos'); console.log(res)});
+  }
+
+
+  buscar(termino: string) {
+    if(termino.length === 0 ) {
+      return this.departamento = this.departamentoTemp;
+    }
+    this.departamentoService.buscar('departamento', termino)
+    .subscribe(resultados => {
+      this.departamento = resultados;
+    });
+  }
+
 
 }

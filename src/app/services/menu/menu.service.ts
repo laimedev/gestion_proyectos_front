@@ -19,5 +19,13 @@ export class MenuService {
     return this.client.get<Menu[]>('assets/menu.json')
   }
 
+  getMenuJSONStaff(): Observable<Menu[]> {
+    return this.client.get<Menu[]>('assets/menu_staff.json')
+  }
+
+  getMenuJSONPersonal(): Observable<Menu[]> {
+    return this.client.get<Menu[]>('assets/menu_personal.json')
+  }
+
 }
 

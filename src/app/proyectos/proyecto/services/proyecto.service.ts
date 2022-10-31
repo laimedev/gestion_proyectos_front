@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Proyecto } from 'src/app/entities/modulos/proyecto';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const base_url = environment.url;
 
@@ -64,6 +65,15 @@ export class ProyectoService {
     return this.http.post<Proyecto>(environment.baseUrl + 'proyecto/showByID', proyecto)
   }
 
+  getByStatus(proyecto: any): Observable<any> {
+    return this.http.post<any>(environment.baseUrl + 'proyecto/showByStatus', proyecto)
+  }
+
+
+  getByPersonal(desde: number = 0, proyecto: any): Observable<any> {
+    return this.http.post<any>(environment.baseUrl + `proyecto/showByPersonal?desde=${desde}`, proyecto)
+  }
+
   create(proyecto: Proyecto): Observable<Proyecto> {
     return this.http.post<Proyecto>(`${environment.baseUrl}proyecto`, proyecto)
   }
@@ -75,6 +85,24 @@ export class ProyectoService {
   delete(proyecto: Proyecto): Observable<Proyecto> {
     return this.http.delete<Proyecto>(environment.baseUrl + 'proyecto/' + proyecto._id)
   }
+
+  export(): Observable<Proyecto> {
+    return this.http.get<Proyecto>(environment.baseUrl + 'proyecto/exportar')
+  }
+
+
+  buscar(
+    tipo: 'proyecto'|'tecnico'|'sede' |'usuario' |'dni' | 'email' | 'compra' | '_id',
+    termino: string
+  ) {
+    const url = `${base_url}todo/coleccion/${tipo}/${termino}`;
+    return this.http.get<any[]>(url)
+    .pipe(
+      map( (resp: any) => resp.resultados)
+    );
+  }
+
+
 
 
 }

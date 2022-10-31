@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Empleado } from 'src/app/entities/modulos/empleado';
+import { Util } from 'src/app/utils/helpers/util';
 import { CreateEmpleadoComponent } from '../modal/create-empleado/create-empleado.component';
 import { DeleteEmpleadoComponent } from '../modal/delete-empleado/delete-empleado.component';
 import { EditEmpleadoComponent } from '../modal/edit-empleado/edit-empleado.component';
@@ -79,6 +80,23 @@ export class EmpleadoListComponent implements OnInit {
       this.desde -= valor;
     }
     this.cargarEmpleado();
+  }
+
+
+  export(){
+    this.empleadoService.export()
+        .subscribe(res => { Util.download(res['data'], 'personal'); console.log(res)});
+  }
+
+
+  buscar(termino: string) {
+    if(termino.length === 0 ) {
+      return this.empleado = this.empleadoTemp;
+    }
+    this.empleadoService.buscar('personal', termino)
+    .subscribe(resultados => {
+      this.empleado = resultados;
+    });
   }
 
 }

@@ -31,6 +31,7 @@ import { AdministracionModule } from './administracion/administracion.module';
 import { CertificacionModule } from './certificacion/certificacion.module';
 import { UnproductivaModule } from './unproductiva/unproductiva.module';
 
+
 @NgModule({
   declarations: [
     AppComponent,

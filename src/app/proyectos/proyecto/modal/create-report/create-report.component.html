@@ -1,0 +1,68 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">REGISTRAR TRABAJO AL PROYECTO - {{proyecto.nombre}}</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+
+
+            <div class="" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Tipo de trabajo:</mat-label>
+                    <mat-select  formControlName="trabajo">
+                        <mat-option>--</mat-option>
+                        <mat-option *ngFor="let wType of trabajos" [value]="wType.nombre">
+                            {{wType.nombre}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="row">
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha desde:</mat-label>
+                        <input type="datetime-local"    name="nombre" autocomplete="off" matInput formControlName="fecha_desde" >
+                    </mat-form-field>
+                </div>
+
+                <div class="col-6" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Fecha hasta:</mat-label>
+                        <input type="datetime-local"  (change)="hora1()"  name="nombre" autocomplete="off" matInput formControlName="fecha_hasta" >
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+
+
+            <div class="" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Horas de trabajo:</mat-label>
+                    <input name="presupuesto" autocomplete="off" matInput formControlName="horas" disable readonly>
+                </mat-form-field>
+            </div> 
+
+
+             <div class="" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Observacion:</mat-label>
+                    <textarea name="description" autocomplete="off" matInput formControlName="observacion" rows="5" ></textarea>
+                </mat-form-field>
+            </div>
+
+    </form>
+</div>
+
+
+<div class="modal-footer">
+    <button type="button" class="btn btn-success" [disabled]="disableControl" (click)="closeMOdal()">CANCELAR</button>
+    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+        class="btn btn-primary" [disabled]="disableControl" form="formUser">
+        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i>
+        {{ disableControl === true ? 'ENVIANDO' : 'ACEPTAR' }}</button>
+</div>

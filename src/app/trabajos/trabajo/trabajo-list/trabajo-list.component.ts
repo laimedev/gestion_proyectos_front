@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Trabajo } from 'src/app/entities/modulos/trabajo';
+import { Util } from 'src/app/utils/helpers/util';
 import { CreateTrabajoComponent } from '../modal/create-trabajo/create-trabajo.component';
 import { DeleteTrabajoComponent } from '../modal/delete-trabajo/delete-trabajo.component';
 import { EditTrabajoComponent } from '../modal/edit-trabajo/edit-trabajo.component';
@@ -79,5 +80,24 @@ export class TrabajoListComponent implements OnInit {
     }
     this.cargarTrabajos();
   }
+
+
+  export(){
+    this.trabajoService.export()
+        .subscribe(res => { Util.download(res['data'], 'trabajos'); console.log(res)});
+  }
+
+
+  buscar(termino: string) {
+    if(termino.length === 0 ) {
+      return this.trabajo = this.trabajoTemp;
+    }
+    this.trabajoService.buscar('trabajo', termino)
+    .subscribe(resultados => {
+      this.trabajo = resultados;
+    });
+  }
+  
+
 
 }

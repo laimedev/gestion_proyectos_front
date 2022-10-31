@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Departamento } from 'src/app/entities/modulos/departamento';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const base_url = environment.url;
 
@@ -60,6 +61,23 @@ export class DepartamentoService {
 
   delete(departamento: Departamento): Observable<Departamento> {
     return this.http.delete<Departamento>(environment.baseUrl + 'departamento/' + departamento._id)
+  }
+
+
+  export(): Observable<Departamento> {
+    return this.http.get<Departamento>(environment.baseUrl + 'departamento/exportar')
+  }
+
+
+  buscar(
+    tipo: 'departamento'|'tecnico'|'sede' |'usuario' |'dni' | 'email' | 'compra' | '_id',
+    termino: string
+  ) {
+    const url = `${base_url}todo/coleccion/${tipo}/${termino}`;
+    return this.http.get<any[]>(url)
+    .pipe(
+      map( (resp: any) => resp.resultados)
+    );
   }
 
 

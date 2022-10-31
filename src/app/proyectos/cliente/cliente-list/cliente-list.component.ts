@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Empleado } from 'src/app/entities/modulos/empleado';
+import { Util } from 'src/app/utils/helpers/util';
 import { CreateClienteComponent } from '../modal/create-cliente/create-cliente.component';
 import { DeleteClienteComponent } from '../modal/delete-cliente/delete-cliente.component';
 import { EditClienteComponent } from '../modal/edit-cliente/edit-cliente.component';
@@ -81,5 +82,23 @@ export class ClienteListComponent implements OnInit {
     }
     this.cargarCliente();
   }
+
+
+  export(){
+    this.clienteService.export()
+        .subscribe(res => { Util.download(res['data'], 'clientes'); console.log(res)});
+  }
+
+
+  buscar(termino: string) {
+    if(termino.length === 0 ) {
+      return this.cliente = this.clienteTemp;
+    }
+    this.clienteService.buscar('cliente', termino)
+    .subscribe(resultados => {
+      this.cliente = resultados;
+    });
+  }
+ 
 
 }

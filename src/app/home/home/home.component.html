@@ -27,43 +27,55 @@
 
 
     <div class="row" >
-        <div  class="col-3  mt-3 cursor-pointer" >
+        <div  class="col-3  mt-3 cursor-pointer" *ngIf="typeUser === '2' || typeUser === '1'">
             <div class="card" routerLink="proyecto.list">
                 <div class="center-card">
                     <img src="assets/menu/nuevo-documento.png" width="100px">
                 </div>
-                <button class="btn btn-primary">PROYECTOS NUEVOS</button>&nbsp;
+                <button class="btn btn-primary">PROYECTOS NUEVOS - {{totalNuevo}}</button>&nbsp;
             </div>
         </div>
 
-        <div  class="col-3  mt-3 cursor-pointer" >
-            <div class="card" >
+        <div  class="col-3  mt-3 cursor-pointer" *ngIf="typeUser === '2' || typeUser === '1'" >
+            <div class="card" routerLink="proyecto.list">
                 <div class="center-card">
                     <img src="assets/menu/trabajo-en-progreso.png" width="100px">
                 </div>
-                <button class="btn btn-primary">PROYECTOS EN PROCESO</button>&nbsp;
+                <button class="btn btn-primary">PROYECTOS EN PROCESO - {{totalProceso}}</button>&nbsp;
             </div>
         </div>
 
-        <div class="col-3  mt-3 cursor-pointer" >
-            <div class="card" >
+        <div class="col-3  mt-3 cursor-pointer" *ngIf="typeUser === '2' || typeUser === '1'">
+            <div class="card" routerLink="proyecto.list">
                 <div class="center-card">
                     <img src="assets/menu/terminar.png" width="100px">
                 </div>
-                <button class="btn btn-primary">PROYECTOS CERRADOS</button>&nbsp;
+                <button class="btn btn-primary">PROYECTOS CERRADOS - {{totalCerrado}}</button>&nbsp;
             </div>
         </div>
 
-        <div  class="col-3  mt-3 cursor-pointer" routerLink="empleado.list">
+
+        <div  class="col-3  mt-3 cursor-pointer" routerLink="cliente.list" *ngIf="typeUser === '2' || typeUser === '1'">
             <div class="card" >
                 <div class="center-card">
                     <img src="assets/menu/empleados.png" width="100px">
                 </div>
-                <button class="btn btn-primary">PERSONAL</button>&nbsp;
+                <button class="btn btn-primary">CLIENTES - {{totalCliente}}</button>&nbsp;
             </div>
         </div>
 
-        <div  class="col-3  mt-3 cursor-pointer">
+
+
+        <div  class="col-3  mt-3 cursor-pointer" routerLink="empleado.list" *ngIf="typeUser === '2'">
+            <div class="card" >
+                <div class="center-card">
+                    <img src="assets/menu/users.png" width="100px">
+                </div>
+                <button class="btn btn-primary">PERSONAL - {{totalEmpleado}}</button>&nbsp;
+            </div>
+        </div>
+
+        <div  class="col-3  mt-3 cursor-pointer" *ngIf="typeUser === '2' || typeUser === '1'">
             <div class="card" >
                 <div class="center-card">
                     <img src="assets/menu/estadisticas.png" width="100px">
@@ -73,7 +85,7 @@
         </div>
 
 
-        <div  class="col-3  mt-3 cursor-pointer" >
+        <div  class="col-3  mt-3 cursor-pointer"  routerLink="informacion.list"  *ngIf="typeUser === '2'">
             <div class="card" >
                 <div class="center-card">
                     <img src="assets/menu/settings_2.png" width="100px">
@@ -85,6 +97,20 @@
 
 
        
+
+
+
+        <div  class="col-3  mt-3 cursor-pointer" *ngIf="typeUser === '0'">
+            <div class="card" routerLink="mis.proyectos.list">
+                <div class="center-card">
+                    <img src="assets/menu/nuevo-documento.png" width="100px">
+                </div>
+                <button class="btn btn-primary">PROYECTOS</button>&nbsp;
+            </div>
+        </div>
+
+
+
         
     </div>
 

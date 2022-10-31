@@ -1,1 +1,105 @@
-<p>informacion-list works!</p>
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray" >
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera">Información Empresa</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+                        
+                    
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="text-input">Titulo del sistema: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control" formControlName="titulo">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="text-input" >Descripción: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control"  formControlName="descripcion">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mt-2">
+                            <label class="col-md-2 col-form-label" for="text-input">Ruc: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control" formControlName="ruc">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="text-input" >Razon Social: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control"  formControlName="razonSocial">
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group row mt-2">
+                            <label class="col-md-2 col-form-label" for="text-input">Dirección: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control" formControlName="direccion">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="text-input" >Telefono: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control"  formControlName="telefono">
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row mt-2">
+                            <label class="col-md-2 col-form-label" for="text-input">Correo: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control" formControlName="correo">
+                            </div>
+                            <label class="col-md-2 col-form-label" for="text-input" >Web: </label>
+                            <div class="col-md-4">
+                                <input  autocomplete="off" type="text" id="text-input" name="text-input" class="form-control"  formControlName="web">
+                            </div>
+                        </div>
+
+
+
+                        <div class="row mt-2 text-center" style="text-align: center;">
+                            <div class="col-4"></div>
+                            <div class="col-4 text-center" style="text-align: center;" >
+                                <br>
+                                <label class="col-form-label" for="text-input">Logotipo del Sistema</label>
+                                <br>
+                                <!-- <img  src="{{configuracion.foto}}"  width="150" height="150"  style="margin-right: 10px;"> -->
+                                <img *ngIf="portadaEdit" src="{{portadaEdit}}"  width="150" height="150" >
+                                <!-- <img *ngIf="!portadaEdit" src="{{noportadaEdit}}"  width="150" height="150"> -->
+                                <input style="padding-top: 10px;" type="file" (change)="changeFotoUpdate()" id="fupFoto1" class="form-control" accept="image/*" > <br><br>
+                                <input style="display: none!important;" class="form-control"  name="icono" [(ngModel)]="portadaEdit" value="{{portadaEdit}}" type="text" formControlName="logo"   >
+                            </div>
+                            <div class="col-4"></div>
+                        </div>
+
+
+        
+                    </form>
+    
+                    
+                </div>
+
+
+
+                <div class="modal-footer">
+                    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+                        class="btn btn-success" [disabled]="disableControl" form="formUser">
+                        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i>
+                        {{ disableControl === true ? 'ENVIANDO' : 'ACTUALIZAR' }}</button>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

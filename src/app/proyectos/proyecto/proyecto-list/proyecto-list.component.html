@@ -11,12 +11,28 @@
                 
                         <div class="row mt-4">
 
-                            <div style="float: left;">
+                            <div class="col-12 text-right">
+                                <mat-form-field class="w-25" appearance="outline">
+                                    <mat-label>Buscar por nombre de proyecto:</mat-label>
+                                    <input name="proyecto" autocomplete="off" matInput (keyup)="buscar(txtTermino.value)" #txtTermino >
+                                </mat-form-field>
+
+                                <mat-form-field class="w-25 ml-4" appearance="outline">
+                                    <mat-label>Filtrar por estado:</mat-label>
+                                    <mat-select  (selectionChange)="changePwValidators($event)">
+                                        <mat-option>--</mat-option>
+                                        <mat-option *ngFor="let wType of statusEntity" [value]="wType.value">
+                                            {{wType.label}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
+                                <!-- <input type="text" class="form-control" (keyup)="buscar(txtTermino.value)" #txtTermino  aria-describedby="basic-addon3"  placeholder="Buscar proyecto"> -->
                             </div>
 
                             <div class="col-12 text-right">
                                 <button class="btn btn-primary" (click)="openCreate()" ><i class="fas fa-plus mr-1"> </i> NUEVO</button>&nbsp;
-                                <button  class="btn btn-success" ><i class="fas fa-file-excel mr-2"> </i>EXPORTAR</button>&nbsp;
+                                <button  class="btn btn-success"  (click)="export()"><i class="fas fa-file-excel mr-2" > </i>EXPORTAR</button>&nbsp;
                             </div>
                         </div>
                 </div>

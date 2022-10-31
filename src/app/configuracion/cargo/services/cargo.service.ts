@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cargo } from 'src/app/entities/modulos/cargo';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const base_url = environment.url;
 
@@ -60,6 +61,23 @@ export class CargoService {
 
   delete(cargo: Cargo): Observable<Cargo> {
     return this.http.delete<Cargo>(environment.baseUrl + 'cargo/' + cargo._id)
+  }
+
+
+  export(): Observable<Cargo> {
+    return this.http.get<Cargo>(environment.baseUrl + 'cargo/exportar')
+  }
+
+
+  buscar(
+    tipo: 'cargo'|'tecnico'|'sede' |'usuario' |'dni' | 'email' | 'compra' | '_id',
+    termino: string
+  ) {
+    const url = `${base_url}todo/coleccion/${tipo}/${termino}`;
+    return this.http.get<any[]>(url)
+    .pipe(
+      map( (resp: any) => resp.resultados)
+    );
   }
 
 

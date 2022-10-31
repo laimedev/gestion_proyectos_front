@@ -7,6 +7,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Title } from '@angular/platform-browser';
+import { InformacionService } from 'src/app/configuracion/informacion/services/informacion.service';
 
 @Component({
   selector: 'app-login',
@@ -22,14 +23,25 @@ export class LoginComponent implements OnInit {
 
   typeLogin =  "Administrador"
 
+  public informacion = JSON.parse(localStorage.getItem('informacion'))
+
   constructor(protected loginService: LoginService, 
     protected sessionStorage: SessionStorageService, 
     private route: ActivatedRoute,
     private router: Router,
-    private docTitleService: Title) { }
+    private docTitleService: Title,
+    public configService: InformacionService) { }
 
 
   ngOnInit(): void {
+
+    this.configService.cargarConfiguracion().subscribe(resp => {
+      console.log(resp.configuracion[0])
+      this.informacion = resp.configuracion[0];
+      localStorage.setItem('informacion', JSON.stringify(resp.configuracion[0]))
+    })
+
+
     this.docTitleService.setTitle('Iniciar Sesión - ' + environment.appTitle)
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
 

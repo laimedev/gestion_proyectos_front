@@ -10,6 +10,10 @@ import { LoginService } from '../services/security/login.service';
 export class HeaderComponent implements OnInit {
 
   user: string
+  typeUser: string
+
+  public informacion = JSON.parse(localStorage.getItem('informacion'))
+
 
   constructor(private toggleMenuService:ToggleMenuService, protected loginService: LoginService) {
    }
@@ -17,6 +21,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.user = this.loginService.getLogin()?.user
+    this.typeUser = this.loginService.getLogin()?.role
     this.toggleMenu();
 
   }

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Empleado } from 'src/app/entities/modulos/empleado';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 
 const base_url = environment.url;
@@ -83,4 +84,22 @@ export class EmpleadoService {
     }
 
 
+
+    export(): Observable<Empleado> {
+      return this.http.get<Empleado>(environment.baseUrl + 'personal/exportar')
+    }
+
+
+    buscar(
+      tipo: 'personal'|'tecnico'|'sede' |'usuario' |'dni' | 'email' | 'compra' | '_id',
+      termino: string
+    ) {
+      const url = `${base_url}todo/coleccion/${tipo}/${termino}`;
+      return this.http.get<any[]>(url)
+      .pipe(
+        map( (resp: any) => resp.resultados)
+      );
+    }
+  
+    
 }

@@ -165,4 +165,10 @@ export class UserService {
   }
   }
 
+
+
+  exportar(): Observable<User> {
+    return this.client.get<User>(environment.baseUrl + 'cargo/exportar')
+  }
+
 }

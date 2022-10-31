@@ -4,6 +4,7 @@ import {Menu} from 'src/app/entities/menu'
 
 import {MenuService} from 'src/app/services/menu/menu.service'
 import { Observable } from 'rxjs';
+import { LoginService } from '../services/security/login.service';
 
 
 @Component({
@@ -27,8 +28,16 @@ export class SidebarComponent implements OnInit {
   ]
 
   menu$: Observable<Menu[]>
+  typeUser
 
-  constructor(protected menuService: MenuService) { }
+
+  public informacion = JSON.parse(localStorage.getItem('informacion'))
+
+
+  constructor(protected menuService: MenuService,
+    protected loginService: LoginService) {
+      this.typeUser = this.loginService.getLogin()?.role
+     }
 
   ngOnInit(): void {
 
@@ -37,9 +46,20 @@ export class SidebarComponent implements OnInit {
     //   this.menu = data
     // })
 
-    this.menuService.getMenuJSON().subscribe((data) => {
-      this.menu = data
-    })
+    if(this.typeUser === '2'){
+      this.menuService.getMenuJSON().subscribe((data) => {
+        this.menu = data
+      })
+    } else if (this.typeUser === '1') {
+      this.menuService.getMenuJSONStaff().subscribe((data) => {
+        this.menu = data
+      })
+    } else if (this.typeUser === '0') {
+      this.menuService.getMenuJSONPersonal().subscribe((data) => {
+        this.menu = data
+      })
+
+    }
 
   }
 

@@ -6,17 +6,23 @@ import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { ProyectoListComponent } from './proyecto/proyecto-list/proyecto-list.component';
 import { ClienteListComponent } from './cliente/cliente-list/cliente-list.component';
+import { MisProyectosListComponent } from './proyecto/mis-proyectos-list/mis-proyectos-list.component';
 
 const routes: Routes = [
   {
     path: 'admin', canActivate: [AuthGuard], children: [
       { path: 'proyecto.list', component: ProyectoListComponent },
+      { path: 'mis.proyectos.list', component: MisProyectosListComponent },
       { path: 'cliente.list', component: ClienteListComponent },
       { path: '', component: HeaderComponent, outlet: 'header' },
       { path: '', component: SidebarComponent, outlet: 'sidebar' }
     ]
   },
 ];
+
+
+
+
 
 @NgModule({
   declarations: [],

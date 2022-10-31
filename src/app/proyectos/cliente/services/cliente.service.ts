@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Cliente } from 'src/app/entities/modulos/cliente';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 const base_url = environment.url;
 
@@ -84,6 +85,22 @@ export class ClienteService {
     return this.http.post(url, data, {headers: _headers});
 }
 
+
+  export(): Observable<Cliente> {
+    return this.http.get<Cliente>(environment.baseUrl + 'cliente/exportar')
+  }
+
+
+  buscar(
+    tipo: 'cliente'|'tecnico'|'sede' |'usuario' |'dni' | 'email' | 'compra' | '_id',
+    termino: string
+  ) {
+    const url = `${base_url}todo/coleccion/${tipo}/${termino}`;
+    return this.http.get<any[]>(url)
+    .pipe(
+      map( (resp: any) => resp.resultados)
+    );
+  }
 
 
 }

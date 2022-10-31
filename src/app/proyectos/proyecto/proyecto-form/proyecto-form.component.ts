@@ -24,7 +24,6 @@ export class ProyectoFormComponent implements OnInit {
   statusEntity = [
     {value: 'Nuevo', label: 'Nuevo'},
     {value: 'En curso', label: 'En curso'},
-    {value: 'Pendiente', label: 'Pendiente'},
     {value: 'Cerrado', label: 'Cerrado'}
 ]
 

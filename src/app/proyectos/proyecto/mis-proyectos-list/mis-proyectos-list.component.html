@@ -5,23 +5,20 @@
                 <div class="card-header bg-gray" >
                     <div class="row">
                         <div class="col-12">
-                            <span class="letra-cabecera">Listado de Cargo</span>
+                            <span class="letra-cabecera">Listado de Proyectos</span>
                         </div>
                     </div>
                 
                         <div class="row mt-4">
 
                             <div class="col-12 text-right">
-                                <mat-form-field class="w-25" appearance="outline">
-                                    <mat-label>Buscar por nombre cargo:</mat-label>
-                                    <input name="proyecto" autocomplete="off" matInput (keyup)="buscar(txtTermino.value)" #txtTermino >
-                                </mat-form-field>
+                                <!-- <input type="text" class="form-control" (keyup)="buscar(txtTermino.value)" #txtTermino  aria-describedby="basic-addon3"  placeholder="Buscar proyecto"> -->
                             </div>
 
-                            <div class="col-12 text-right">
+                            <!-- <div class="col-12 text-right">
                                 <button class="btn btn-primary" (click)="openCreate()" ><i class="fas fa-plus mr-1"> </i> NUEVO</button>&nbsp;
-                                <button  class="btn btn-success" (click)="export()"><i class="fas fa-file-excel mr-2"> </i>EXPORTAR</button>&nbsp;
-                            </div>
+                                <button  class="btn btn-success"  (click)="export()"><i class="fas fa-file-excel mr-2" > </i>EXPORTAR</button>&nbsp;
+                            </div> -->
                         </div>
                 </div>
 
@@ -41,25 +38,29 @@
                                     <th>Fecha de creación</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin **Ref</th>
                                     <th>Estado</th>
                                     <th class="text-nowrap text-center">Acciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr *ngFor="let data of cargo">
+                                <tr *ngFor="let data of proyecto">
 
                                     <td>{{data._id}}</td>
                                     <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td>
                                     <td>{{data.nombre}}</td>
                                     <td>{{data.descripcion}}</td>
+                                    <td>{{data.fecha_inicio | date: 'dd/MM/yyyy'}}</td>
+                                    <td>{{data.fecha_fin | date: 'dd/MM/yyyy'}}</td>
                                     <td>
                                         {{data.estado}}
                                     </td>
 
                                     <td class="text-nowrap text-center">
-                                        <button  class="cursor btn btn-secondary mr-2"   > <i class="fas fa-info-circle"> </i>  </button> 
-                                        <button  class="cursor btn btn-warning mr-2" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button> 
-                                        <button  class="cursor btn btn-danger mr-2" (click)="openDelete(data)"   > <i class="fas fa-trash-alt"> </i>  </button> 
+                                        <button  class="cursor btn btn-secondary mr-2" (click)="openViewProyect()"  > <i class="fas fa-info-circle"> </i>  </button> 
+                                        <button  class="cursor btn btn-danger mr-2"  (click)="openCreateReport(data)"> <i class="fa fa-plus"> </i>  </button> 
+                                        <!-- <button  class="cursor btn btn-danger mr-2" (click)="openDelete(data)"   > <i class="fas fa-trash-alt"> </i>  </button>  -->
                                     </td>
                                 </tr>
                                 

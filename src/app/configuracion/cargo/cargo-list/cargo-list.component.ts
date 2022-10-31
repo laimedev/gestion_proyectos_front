@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Cargo } from 'src/app/entities/modulos/cargo';
+import { Util } from 'src/app/utils/helpers/util';
 import { CreateCargoComponent } from '../modal/create-cargo/create-cargo.component';
 import { DeleteCargoComponent } from '../modal/delete-cargo/delete-cargo.component';
 import { EditCargoComponent } from '../modal/edit-cargo/edit-cargo.component';
@@ -82,5 +83,23 @@ export class CargoListComponent implements OnInit {
     }
     this.cargarCargos();
   }
+
+
+  export(){
+    this.cargoService.export()
+        .subscribe(res => { Util.download(res['data'], 'cargos'); console.log(res)});
+  }
+
+
+  buscar(termino: string) {
+    if(termino.length === 0 ) {
+      return this.cargo = this.cargoTemp;
+    }
+    this.cargoService.buscar('cargo', termino)
+    .subscribe(resultados => {
+      this.cargo = resultados;
+    });
+  }
+
 
 }
