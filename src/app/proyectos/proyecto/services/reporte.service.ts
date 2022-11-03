@@ -66,9 +66,9 @@ export class ReporteService {
   // }
 
 
-  // getByPersonal(desde: number = 0, proyecto: any): Observable<any> {
-  //   return this.http.post<any>(environment.baseUrl + `proyecto/showByPersonal?desde=${desde}`, proyecto)
-  // }
+  getByReportes(desde: number = 0, reporte: any): Observable<any> {
+    return this.http.post<any>(environment.baseUrl + `reporte/showByProyecto?desde=${desde}`, reporte)
+  }
 
   create(reporte: Reporte): Observable<Reporte> {
     return this.http.post<Reporte>(`${environment.baseUrl}reporte`, reporte)

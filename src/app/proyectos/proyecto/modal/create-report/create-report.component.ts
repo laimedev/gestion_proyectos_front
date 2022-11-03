@@ -65,7 +65,7 @@ export class CreateReportComponent implements OnInit {
   onSubmit() {
     if (this.formGroup.valid) {
       // this.submitEvent.emit(this.formGroup.value)
-      this.trabajoService.create(this.formGroup.value).subscribe(resp => {
+      this.reportService.create(this.formGroup.value).subscribe(resp => {
         this.enableForm()
         SnackbarHelper.show(this.snackBar, { msg: 'Se creó con éxito', })
         this.ngModal.dismissAll();

@@ -6,6 +6,7 @@ import { Util } from 'src/app/utils/helpers/util';
 import { CreateProyectoComponent } from '../modal/create-proyecto/create-proyecto.component';
 import { DeleteProyectoComponent } from '../modal/delete-proyecto/delete-proyecto.component';
 import { EditProyectoComponent } from '../modal/edit-proyecto/edit-proyecto.component';
+import { ViewProyectoComponent } from '../modal/view-proyecto/view-proyecto.component';
 import { ProyectoService } from '../services/proyecto.service';
 
 @Component({
@@ -66,6 +67,15 @@ export class ProyectoListComponent implements OnInit {
 
   openEdit(data: Proyecto) {
     const modalEdit = this.modalService.open(EditProyectoComponent, { size: 'lg', backdrop: 'static' })
+    modalEdit.componentInstance.proyecto = data
+    modalEdit.result.then(res => {
+      // this.dataSource.updateTable(this.paginator.pageIndex)
+      this.cargarProyectos();
+    })
+  }
+
+  openView(data: Proyecto) {
+    const modalEdit = this.modalService.open(ViewProyectoComponent, { size: 'xl', backdrop: 'static' })
     modalEdit.componentInstance.proyecto = data
     modalEdit.result.then(res => {
       // this.dataSource.updateTable(this.paginator.pageIndex)

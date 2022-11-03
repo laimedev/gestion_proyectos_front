@@ -48,7 +48,7 @@ import { ViewProyectoComponent } from './proyecto/modal/view-proyecto/view-proye
     ViewClienteComponent,
     MisProyectosListComponent,
     CreateReportComponent,
-    ViewProyectoComponent
+    ViewProyectoComponent,
   ],
   imports: [
     CommonModule,

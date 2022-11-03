@@ -3,12 +3,12 @@ export interface Reporte {
     trabajo?: string;
     fecha_desde?: string;
     fecha_hasta?: string;
-    horas?: string;
+    horas?: number;
     observacion?: string;
     proyectoNombre?: string;
-    proyectoID?: string;
+    proyectoID?: number;
     personalNombre?: string;
-    personalID?: string;
+    personalID?: number;
 }
 
 export interface RootObject {

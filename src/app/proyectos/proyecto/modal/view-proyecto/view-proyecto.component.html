@@ -1,1 +1,201 @@
-<p>view-proyecto works!</p>
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">DETALLE DEL PROYECTO:</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="text-input">Nombre del proyecto: </label>
+        <div class="col-md-4">
+            <label class="col-md-10 col-form-label" for="text-input">{{proyecto.nombre}} </label>
+        </div>
+        <label class="col-md-2 col-form-label" for="text-input" >Estado del proyecto: </label>
+        <div class="col-md-4">
+            <label class="col-md-10 col-form-label" for="text-input">{{proyecto.estado}} </label>
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="text-input">Fecha de inicio: </label>
+        <div class="col-md-4">
+            <label class="col-md-10 col-form-label" for="text-input">{{proyecto.fecha_inicio | date: 'dd/MM/yyyy'}} </label>
+        </div>
+        <label class="col-md-2 col-form-label" for="text-input" >Fecha de fin: </label>
+        <div class="col-md-4">
+            <label class="col-md-10 col-form-label" for="text-input">{{proyecto.fecha_fin | date: 'dd/MM/yyyy'}} </label>
+        </div>
+    </div>
+
+
+
+
+
+
+
+    
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <br>
+            <p style="font-weight: bold; font-size: 16px;">REPORTES DEL PROYECTO</p>
+
+            <table class="table table-bordered">
+                <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                    <tr>
+                        <!-- <th>ID</th> -->
+                        <th>Fecha de creación</th>
+                        <th>Responsable</th>
+                        <th>Trabajo</th>
+                        <th>Fecha desde</th>
+                        <th>Fecha hasta</th>
+                        <th>Horas</th>
+                        <th class="text-nowrap text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of reporte">
+
+                        <!-- <td>{{data._id}}</td> -->
+                        <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td>
+                        <td>{{data.personalNombre}}</td>
+                        <td>{{data.trabajo}}</td>
+                        <td>{{data.fecha_desde | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                        <td>{{data.fecha_hasta | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
+                        <td> {{data.horas}}</td>
+
+                        <td class="text-nowrap text-center">
+                            <!-- <button  class="cursor btn btn-secondary mr-2" (click)="openView(data)"   > <i class="fas fa-info-circle"> </i>  </button> 
+                            <button  class="cursor btn btn-warning mr-2" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button>  -->
+                            <button  class="cursor btn btn-secondary mr-2"   > <i class="fas fa-check"> </i>  </button> 
+                        </td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+    <button  class="btn btn-secondary" (click)="cambiarPagina(-5)"> <i class="fas fa-arrow-left mr-1"> </i> Anteriores</button>
+        &nbsp;
+        <button  class="btn btn-success" (click)="cambiarPagina(5)">Siguientes  <i class="fas fa-arrow-right mr-1"> </i> </button> 
+
+    </div>
+
+
+
+
+    <!-- <div *ngIf="userData; else loading" class="container-fluid">
+        <div class="row" *ngIf="userData.num_solicitud">
+            <div class="col-sm-5 col-md-4">
+                <strong>Nº de Solicitud</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.num_solicitud }}</div>
+        </div>
+        <div class="row" *ngIf="userData.name ">
+            <div class="col-sm-5 col-md-4">
+                <strong>Nombre</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.name }}</div>
+        </div>
+        <div class="row" *ngIf="userData.proyecto">
+            <div class="col-sm-5 col-md-4">
+                <strong>Proyecto</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.proyecto }}</div>
+        </div>
+        <div class="row" *ngIf="userData.email">
+            <div class="col-sm-5 col-md-4">
+                <strong>Email</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.email }}</div>
+        </div>
+        <div class="row" *ngIf="userData.phone">
+            <div class="col-sm-5 col-md-4">
+                <strong>Telefono</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.phone }}</div>
+        </div>
+        <div class="row" *ngIf="userData.responsable">
+            <div class="col-sm-5 col-md-4">
+                <strong>Responsable</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ responsablesVPN }}</div>
+        </div>
+        <div class="row" *ngIf="userData.fecha_requerimiento">
+            <div class="col-sm-5 col-md-4">
+                <strong>Fecha de Requerimiento</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.fecha_requerimiento }}</div>
+        </div>
+        <div class="row" *ngIf="userData.proposito">
+            <div class="col-sm-5 col-md-4">
+                <strong>Proposito</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.proposito }}</div>
+        </div>
+        <div class="row"  *ngIf="userData.status">
+            <div class="col-sm-5 col-md-4">
+                <strong>Estado</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.status}}</div>
+        </div>
+
+
+
+        <div class="row" *ngIf="userData.fecha_asignacion">
+            <div class="col-sm-5 col-md-4">
+                <strong>Fecha Asignacion</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.fecha_asignacion}}</div>
+        </div>
+        <div class="row" *ngIf="userData.fecha_ejecucion">
+            <div class="col-sm-5 col-md-4">
+                <strong>fecha Ejecucion</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.fecha_ejecucion}}</div>
+        </div>
+        <div class="row" *ngIf="userData.workstation">
+            <div class="col-sm-5 col-md-4">
+                <strong>Puesto de Trabajo</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.workstation}}</div>
+        </div>
+        <div class="row" *ngIf="userData.company">
+            <div class="col-sm-5 col-md-4">
+                <strong>Compañia</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.company}}</div>
+        </div>
+        <div class="row" *ngIf="userData.vicepresidencia">
+            <div class="col-sm-5 col-md-4">
+                <strong>Vicepresidencia</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.vicepresidencia}}</div>
+        </div>
+        <div class="row" *ngIf="userData.type_service">
+            <div class="col-sm-5 col-md-4">
+                <strong>Tipo de Servicio</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.type_service }}</div>
+        </div>
+        <div class="row" *ngIf="userData.script_generado">
+            <div class="col-sm-5 col-md-4">
+                <strong>Script Generado</strong>
+            </div>
+            <div class="col-sm-7 col-md-8">{{ userData.script_generado }}</div>
+        </div>
+        
+    </div>
+    <ng-template #loading>
+        <div class="container-fluid">
+            <div class="col-12">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+            </div>
+        </div>
+    </ng-template> -->
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" (click)="closeMOdal()">CERRAR</button>
+  </div>

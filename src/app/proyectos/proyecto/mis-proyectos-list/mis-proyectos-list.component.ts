@@ -79,9 +79,10 @@ export class MisProyectosListComponent implements OnInit {
   }
 
 
-  openViewProyect(){
-    const modalRef = this.modalService.open(ViewProyectoComponent, { size: 'lg', backdrop: 'static' });
-      modalRef.result.then(res => {
+  openViewProyect(data){
+    const modalRef = this.modalService.open(ViewProyectoComponent, { size: 'xl', backdrop: 'static' });
+    modalRef.componentInstance.proyecto = data
+    modalRef.result.then(res => {
         this.cargarProyectos();
       })
   }

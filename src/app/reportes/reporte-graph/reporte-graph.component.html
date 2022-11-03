@@ -1,0 +1,48 @@
+<div class="main-content">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header bg-gray" >
+                    <div class="row">
+                        <div class="col-12">
+                            <span class="letra-cabecera">Grafica presupuestal</span>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-6"  style="display: block; padding-top: 15px;">
+                          <canvas baseChart
+                                          [datasets]="barChartDataL"
+                                          [labels]="barChartLabelsL"
+                                          [options]="barChartOptionsL"
+                                          [legend]="barChartLegendL"
+                                          [chartType]="barChartTypeL">
+                                      </canvas>
+                        </div>
+                    
+                        <div class="col-6"  style="display: block; padding-top: 15px;">
+                          <canvas baseChart
+                                          [datasets]="barChartDataL"
+                                          [labels]="barChartLabelsL"
+                                          [options]="barChartOptionsL"
+                                          [legend]="barChartLegendL"
+                                          [chartType]="barChartTypeL2">
+                                      </canvas>
+                        </div>
+                    
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+

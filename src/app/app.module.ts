@@ -23,6 +23,7 @@ import { MantenimientoModule } from './mantenimiento/mantenimiento.module';
 import { ProyectoModule } from './proyectos/proyecto.module';
 import { EmpleadoModule } from './empleados/empleado.module';
 import { TrabajoModule } from './trabajos/trabajo/trabajo.module';
+import { ReporteModule } from './reportes/reporte.module';
 import { ConfiguracionModule } from './configuracion/configuracion.module';
 
 
@@ -30,6 +31,14 @@ import { OrganizacionModule } from './organizacion/organizacion.module';
 import { AdministracionModule } from './administracion/administracion.module';
 import { CertificacionModule } from './certificacion/certificacion.module';
 import { UnproductivaModule } from './unproductiva/unproductiva.module';
+
+import { ChartsModule } from 'ng2-charts';
+
+
+import { PdfMakeWrapper } from 'pdfmake-wrapper';
+import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+// Set the fonts to use
+PdfMakeWrapper.setFonts(pdfFonts);
 
 
 @NgModule({
@@ -52,6 +61,7 @@ import { UnproductivaModule } from './unproductiva/unproductiva.module';
     ProyectoModule,
     EmpleadoModule,
     TrabajoModule,
+    ReporteModule,
     ConfiguracionModule,
     OrganizacionModule,
     CertificacionModule,
@@ -59,7 +69,8 @@ import { UnproductivaModule } from './unproductiva/unproductiva.module';
     BrowserAnimationsModule,
     NgbModule,
     HttpClientModule,
-    UtilsModule
+    UtilsModule,
+    ChartsModule
   ],
   providers: [
     Title,
