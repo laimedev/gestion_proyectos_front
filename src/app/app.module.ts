@@ -16,25 +16,14 @@ import {JwtTokenInterceptor} from './services/interceptors/jwt-token-interceptor
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UtilsModule } from './utils/utils.module';
 
-import {SegModule} from './seg/seg.module'
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { MaintenanceModule } from './maintenance/maintenance.module';
-import { MantenimientoModule } from './mantenimiento/mantenimiento.module';
 import { ProyectoModule } from './proyectos/proyecto.module';
 import { EmpleadoModule } from './empleados/empleado.module';
 import { TrabajoModule } from './trabajos/trabajo/trabajo.module';
 import { ReporteModule } from './reportes/reporte.module';
 import { ConfiguracionModule } from './configuracion/configuracion.module';
-
-
-import { OrganizacionModule } from './organizacion/organizacion.module';
 import { AdministracionModule } from './administracion/administracion.module';
-import { CertificacionModule } from './certificacion/certificacion.module';
-import { UnproductivaModule } from './unproductiva/unproductiva.module';
-
 import { ChartsModule } from 'ng2-charts';
-
-
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
 import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
 // Set the fonts to use
@@ -53,18 +42,12 @@ PdfMakeWrapper.setFonts(pdfFonts);
     AppRoutingModule,
     HomeModule,
     LoginModule,
-    SegModule,
     AdministracionModule,
-    UnproductivaModule,
-    MaintenanceModule,
-    MantenimientoModule,
     ProyectoModule,
     EmpleadoModule,
     TrabajoModule,
     ReporteModule,
     ConfiguracionModule,
-    OrganizacionModule,
-    CertificacionModule,
     SecurityModule,
     BrowserAnimationsModule,
     NgbModule,

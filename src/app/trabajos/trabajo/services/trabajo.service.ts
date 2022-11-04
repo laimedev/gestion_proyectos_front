@@ -27,7 +27,7 @@ export class TrabajoService {
                 this.formGroup = this.fb.group({
                   nombre: ['', [Validators.required]],
                   descripcion: ['', [Validators.required]],
-                  estado: [''],
+                  estado: ['Nuevo'],
                 })      
                 
                 

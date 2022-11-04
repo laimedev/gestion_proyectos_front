@@ -63,9 +63,14 @@ export class ClienteFormComponent implements OnInit {
 
     // const date = new Date(Date.parse(this.formGroup.get('fecha_nacimiento').value))
     // this.formGroup.get('fecha_nacimiento')?.setValue(date);
-    console.log(this.formGroup.value);
+      
+    if (this.formGroup.valid) {
+      console.log(this.formGroup.value);
       this.submitEvent.emit(this.formGroup.value)
       this.formGroup.reset();
+    }
+
+     
   }
 
 

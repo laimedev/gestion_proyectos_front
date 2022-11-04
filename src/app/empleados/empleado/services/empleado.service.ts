@@ -34,7 +34,7 @@ export class EmpleadoService {
         departamento: ['', [Validators.required]],
         cargo: ['', [Validators.required]],
         pago: ['', [Validators.required]],
-        email: ['', [Validators.required]],
+        email: ['', [Validators.required, Validators.email]],
         avatar: [''],
         password_show: ['', [Validators.required]],
         estado: ['', [Validators.required]],

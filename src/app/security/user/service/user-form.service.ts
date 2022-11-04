@@ -15,7 +15,7 @@ export class UserFormService {
     this.formGroup = this.fb.group({
      
            nombre: ['', [Validators.required]],
-           email: ['', [Validators.required]],
+           email: ['', [Validators.required, Validators.email]],
            role: ['', [Validators.required]],
            password_show: [''],
          }
