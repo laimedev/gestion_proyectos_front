@@ -27,6 +27,17 @@
                                     </mat-select>
                                 </mat-form-field>
 
+
+                                <mat-form-field class="w-25 ml-4" appearance="outline">
+                                    <mat-label>Mostrar por:</mat-label>
+                                    <mat-select  (selectionChange)="changeCantValidators($event)">
+                                        <mat-option>--</mat-option>
+                                        <mat-option *ngFor="let wType of cantEntity" [value]="wType.value">
+                                            {{wType.label}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+
                                 <!-- <input type="text" class="form-control" (keyup)="buscar(txtTermino.value)" #txtTermino  aria-describedby="basic-addon3"  placeholder="Buscar proyecto"> -->
                             </div>
 

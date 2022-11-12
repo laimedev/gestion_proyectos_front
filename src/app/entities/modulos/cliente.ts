@@ -10,6 +10,7 @@ export interface Cliente {
     provincia?: string;
     distrito?: string;
     telefono?: string;
+    foto?: string;
     correo?: string;
 }
 

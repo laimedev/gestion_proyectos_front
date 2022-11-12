@@ -109,6 +109,23 @@
             </div> -->
 
 
+
+            <div class="row mt-2 text-center" style="text-align: center;">
+                <div class="col-3"></div>
+                <div class="col-6 text-center" style="text-align: center;" >
+                    <br>
+                    <label class="col-form-label" for="text-input">Foto</label>
+                    <br>
+                    <img *ngIf="portadaEdit" src="{{portadaEdit}}"  width="150" height="150" >
+                    <img *ngIf="!portadaEdit" src="{{noportada}}"  width="150" height="150" >
+                    <input style="padding-top: 10px;" type="file" (change)="changeFotoUpdate()" id="fupFoto1" class="form-control" accept="image/*" > <br><br>
+                    <input style="display: none!important;" class="form-control"  name="icono" [(ngModel)]="portadaEdit" value="{{portadaEdit}}" type="text" formControlName="foto"   >
+                </div>
+                <div class="col-3"></div>
+            </div>
+
+
+
     </form>
 </div>
 

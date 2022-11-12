@@ -24,8 +24,10 @@ export class ProyectoFormComponent implements OnInit {
   statusEntity = [
     {value: 'Nuevo', label: 'Nuevo'},
     {value: 'En curso', label: 'En curso'},
-    {value: 'Cerrado', label: 'Cerrado'}
+    {value: 'Terminado', label: 'Terminado'},
+    {value: 'Cancelado', label: 'Cancelado'}
 ]
+
 
   public responsable: any [] = []; 
   public cliente: any [] = []; 
@@ -50,6 +52,7 @@ export class ProyectoFormComponent implements OnInit {
     } else{
       // this.newUser = false;
       this.statusActive = true;
+      this.formGroup.get('estado')?.setValue('Nuevo')
 
     }
 
@@ -57,17 +60,17 @@ export class ProyectoFormComponent implements OnInit {
 
 
   cargarEmpleado(){
-    this.empleadoService.cargarEmpleados().subscribe(resp => {
+    this.empleadoService.export().subscribe(resp => {
       console.log(resp)
-      this.responsable = resp['personal']
+      this.responsable = resp['data']
     })
   }
 
 
   cargarCliente(){
-    this.clienteService.cargarClientes().subscribe(resp => {
+    this.clienteService.export().subscribe(resp => {
       console.log(resp)
-      this.cliente = resp['cliente']
+      this.cliente = resp['data']
     })
   }
 

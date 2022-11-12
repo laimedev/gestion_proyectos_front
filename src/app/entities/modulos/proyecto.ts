@@ -8,6 +8,7 @@ export interface Proyecto {
     fecha_inicio?: string;
     fecha_fin?: string;
     cliente?: string;
+    cotizacion?: string;
     estado?: string;
 }
 

@@ -23,8 +23,9 @@ export class MisProyectosListComponent implements OnInit {
   statusEntity = [
     {value: 'Nuevo', label: 'Nuevo'},
     {value: 'En curso', label: 'En curso'},
-    {value: 'Cerrado', label: 'Cerrado'}
-  ]
+    {value: 'Terminado', label: 'Terminado'},
+    {value: 'Cancelado', label: 'Cancelado'}
+]
 
   public idPersonal
 

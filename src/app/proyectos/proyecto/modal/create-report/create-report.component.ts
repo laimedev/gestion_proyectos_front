@@ -40,8 +40,8 @@ export class CreateReportComponent implements OnInit {
     this.formGroup = this.reportService.form;
 
 
-    this.trabajoService.cargarTrabajos().subscribe(resp => {
-      this.trabajos = resp['trabajo'];
+    this.trabajoService.export().subscribe(resp => {
+      this.trabajos = resp['data'];
     })
 
 

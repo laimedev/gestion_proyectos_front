@@ -23,6 +23,7 @@ export class ProyectoListComponent implements OnInit {
   
   public cargando: boolean = true;
   public desde: number = 0;
+  public limit: number = 5;
   public formSubmited = false;
   public totalProyecto: number = 0;
 
@@ -41,10 +42,17 @@ export class ProyectoListComponent implements OnInit {
   ]
 
 
+  cantEntity = [
+    {value: 5, label: '5'},
+    {value: 10, label: '10'},
+    {value: 20, label: '20'}
+  ]
+
+
 
   cargarProyectos(){
     this.cargando = true; 
-    this.proyectoService.cargarProyectos(this.desde)
+    this.proyectoService.cargarProyectos(this.desde, this.limit)
     .subscribe(({total, proyecto}) => {
         this.totalProyecto = total;
         if(proyecto.length !== 0) { 
@@ -131,6 +139,34 @@ export class ProyectoListComponent implements OnInit {
   }
 
 
+
+  changeCantValidators($res: MatSelectChange){
+    if(!$res.value ) {
+      // return this.proyecto = this.proyectoTemp;
+      return this.cargarProyectos();
+    }
+
+    this.limit = $res.value;
+    console.log(this.desde)
+    // this.cargarProyectos();
+
+    this.cargando = true; 
+    this.proyectoService.cargarProyectos(this.desde,  $res.value)
+    .subscribe(({total, proyecto}) => {
+        this.totalProyecto = total;
+        // if(proyecto.length !== 0) { 
+          this.proyecto = proyecto;
+        //   console.log(proyecto);
+          // this.proyectoTemp = proyecto;
+        // }
+        this.cargando = false;
+    })
+
+
+
+  }
+  
+  
 
   changePwValidators($res: MatSelectChange){
     // console.log($res.value)

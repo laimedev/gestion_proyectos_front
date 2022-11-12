@@ -32,6 +32,7 @@ export class ProyectoService {
                   fecha_inicio: ['', [Validators.required]],
                   fecha_fin: ['', [Validators.required]],
                   cliente: ['', [Validators.required]],
+                  cotizacion: [''],
                   estado: [''],
                 })      
                 
@@ -51,13 +52,14 @@ export class ProyectoService {
   this.formGroup.get('fecha_inicio').setValue(proyecto.fecha_inicio)
   this.formGroup.get('fecha_fin').setValue(proyecto.fecha_fin)
   this.formGroup.get('cliente').setValue(proyecto.cliente)
+  this.formGroup.get('cotizacion').setValue(proyecto.cotizacion)
 
   this.formGroup.get('estado').setValue(proyecto.estado)
   }
 
 
- cargarProyectos(desde: number = 0){
-    const url = `${ base_url}proyecto/show?desde=${desde}`; 
+ cargarProyectos(desde: number = 0, limit: number = 0){
+    const url = `${ base_url}proyecto/show?desde=${desde}&limit=${limit}`; 
     return this.http.get<any>(url)
   }
 

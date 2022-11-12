@@ -23,6 +23,7 @@ export class CreateProyectoComponent implements OnInit {
 
       this.formGroup = formService.form;
 
+
      }
 
   ngOnInit(): void {
@@ -34,7 +35,9 @@ export class CreateProyectoComponent implements OnInit {
 
 
   onSubmit(value: any) {
-    // console.log(value);
+    this.formGroup.get('estado')?.setValue('Nuevo')
+
+    console.log(value);
     this.disableForm()
     this.formService.create(value).subscribe(data => {
       this.enableForm()

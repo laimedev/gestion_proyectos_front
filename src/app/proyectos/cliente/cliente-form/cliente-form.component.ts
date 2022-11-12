@@ -34,6 +34,13 @@ export class ClienteFormComponent implements OnInit {
   ]
 
 
+
+  public portada: any;
+  public noportada = 'assets/img/image_icon.png';
+  public portadaEdit: any;
+  public noportadaEdit = 'assets/img/image_icon.png';
+
+
   constructor(protected fb: FormBuilder,
     protected activeModal: NgbActiveModal,
     private modalService: NgbModal,
@@ -107,6 +114,18 @@ export class ClienteFormComponent implements OnInit {
       }
     });
   }
+  
+
+
+  changeFotoUpdate(){
+    var file = (<HTMLInputElement>document.getElementById("fupFoto1")).files[0];
+    var fileReader = new FileReader();
+    fileReader.onloadend =  () => {
+      this.portadaEdit = fileReader.result
+    }
+    fileReader.readAsDataURL(file);
+  }
+
   
 }
 

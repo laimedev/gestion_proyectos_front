@@ -31,6 +31,7 @@ export class ClienteService {
                   provincia: ['', [Validators.required]],
                   distrito: ['', [Validators.required]],
                   telefono: [''],
+                  foto: [''],
                   correo: [''],
                 })      
               }
@@ -48,6 +49,7 @@ export class ClienteService {
   this.formGroup.get('provincia').setValue(cliente.provincia)
   this.formGroup.get('distrito').setValue(cliente.distrito)
   this.formGroup.get('telefono').setValue(cliente.telefono)
+  this.formGroup.get('foto').setValue(cliente.foto)
   this.formGroup.get('correo').setValue(cliente.correo)
   }
 

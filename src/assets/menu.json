@@ -88,6 +88,13 @@
                     "icon": "fa fa-users",
                     "displayName": "Presupuesto por proyecto",
                     "subMenu": []
+                },
+                {
+                    "id": 3,
+                    "url": "reporte.list",
+                    "icon": "fa fa-users",
+                    "displayName": "Variación de cronograma",
+                    "subMenu": []
                 }
             ]
         },
