@@ -3,7 +3,10 @@ import { MatSelectChange } from '@angular/material/select';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Proyecto } from 'src/app/entities/modulos/proyecto';
 import { Util } from 'src/app/utils/helpers/util';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CreateProyectoComponent } from '../modal/create-proyecto/create-proyecto.component';
+import { CreateReportAdminComponent } from '../modal/create-report-admin/create-report-admin.component';
+import { CloseProyectoComponent } from '../modal/close-proyecto/close-proyecto.component';
 import { DeleteProyectoComponent } from '../modal/delete-proyecto/delete-proyecto.component';
 import { EditProyectoComponent } from '../modal/edit-proyecto/edit-proyecto.component';
 import { ViewProyectoComponent } from '../modal/view-proyecto/view-proyecto.component';
@@ -26,6 +29,12 @@ export class ProyectoListComponent implements OnInit {
   public limit: number = 5;
   public formSubmited = false;
   public totalProyecto: number = 0;
+
+  dateRange = new FormGroup({
+    fecha_inicio: new FormControl('', [Validators.required]),
+    fecha_fin: new FormControl('', [Validators.required])
+  });
+
 
   constructor(public proyectoService: ProyectoService,
     private modalService: NgbModal) { }
@@ -84,6 +93,25 @@ export class ProyectoListComponent implements OnInit {
 
   openView(data: Proyecto) {
     const modalEdit = this.modalService.open(ViewProyectoComponent, { size: 'xl', backdrop: 'static' })
+    modalEdit.componentInstance.proyecto = data
+    modalEdit.result.then(res => {
+      // this.dataSource.updateTable(this.paginator.pageIndex)
+      this.cargarProyectos();
+    })
+  }
+
+
+  openReporte(data) {
+    const modalEdit = this.modalService.open(CreateReportAdminComponent, { size: 'lg', backdrop: 'static' })
+    modalEdit.componentInstance.proyecto = data
+    modalEdit.result.then(res => {
+      // this.dataSource.updateTable(this.paginator.pageIndex)
+      this.cargarProyectos();
+    })
+  }
+
+  closeProyecto(data) {
+    const modalEdit = this.modalService.open(CloseProyectoComponent, { size: 'lg', backdrop: 'static' })
     modalEdit.componentInstance.proyecto = data
     modalEdit.result.then(res => {
       // this.dataSource.updateTable(this.paginator.pageIndex)

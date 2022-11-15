@@ -1,0 +1,142 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">CERRAR PROYECTO:</h4>
+    <button (click)="closeModal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <div class="container-fluid">
+        <!-- <div class="row">
+            <div *ngIf="deleted=== false; else elseBlock" class="col-12">
+                Eliminar:  <strong>{{ proyecto.nombre }}</strong>
+                <div *ngIf="deleting">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="col-12">
+                    Se eliminó correctamente
+                </div>
+            </ng-template>
+        </div> -->
+
+    <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+
+
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha Inicio:</mat-label>
+                    <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker"  formControlName="fecha_inicio" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+
+                <!-- <p>Fecha Inicio:  <br> {{proyecto.fecha_inicio | date: 'dd/MM/yyyy'}}</p> -->
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha Referencial:</mat-label>
+                    <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker2"  formControlName="fecha_fin" readonly>
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2></mat-datepicker>
+                </mat-form-field>
+                <!-- <p>Fecha Referencial:  <br> {{proyecto.fecha_fin | date: 'dd/MM/yyyy'}}</p> -->
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha Terminado:</mat-label>
+                    <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker3"  formControlName="fecha_termino">
+                    <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                    <mat-datepicker #picker3></mat-datepicker>
+                </mat-form-field>
+                <!-- <p>Fecha Fin:  <br> {{proyecto.fecha_termino | date: 'dd/MM/yyyy'}}</p> -->
+            </div>
+        </div>
+
+
+
+        
+
+
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Plazo de dias:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="diasPlazo" >
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Dias terminado:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="diasTerminados" >
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Dias ganados:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="diasGanados" >
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Valor ganado [EV]:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="ev" >
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Valor planificado [PV]:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="pv" >
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Variacion de cronograma [SV]:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="sv" >
+                </mat-form-field>
+            </div>
+        </div>
+
+
+
+        <hr>
+
+
+        <div class="row">
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Costo real [AC]:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="ac">
+                </mat-form-field>
+            </div>
+            <div class="col-4">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Variacion de costo [CV]:</mat-label>
+                    <input name="nombre" autocomplete="off" matInput formControlName="cv"  [(ngModel)]="varCosto" readonly>
+                </mat-form-field>
+            </div>
+        </div>
+
+    </form>
+
+        
+
+
+
+    
+        
+    </div>
+</div>
+<div class="modal-footer">
+    <button  class="btn btn-success" type="submit" (click)="onSubmit()" >CERRAR PROYECTO</button>
+    <button  class="btn btn-primary" type="button" (click)="closeModal()" > CANCELAR</button>
+ 
+  </div>

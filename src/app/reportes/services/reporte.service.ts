@@ -23,7 +23,11 @@ export class ReporteService {
     }
 
 
+    showRangeProyecto(range: any): Observable<any> {
+      return this.http.post<any>(`${environment.baseUrl}proyecto/showRangeDate`, range)
+    }
 
+    
   showReport(range: any): Observable<any> {
     return this.http.post<any>(`${environment.baseUrl}reporte/showRangeDate`, range)
   }

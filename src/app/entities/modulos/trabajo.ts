@@ -3,6 +3,7 @@ export interface Trabajo {
     nombre?: string;
     descripcion?: string;
     created?: string;
+    costo?: number;
     estado?: string;
 }
 

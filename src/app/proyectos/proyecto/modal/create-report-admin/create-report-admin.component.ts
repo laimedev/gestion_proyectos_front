@@ -10,13 +10,14 @@ import { Proyecto } from 'src/app/entities/modulos/proyecto';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
 import { EmpleadoService } from 'src/app/empleados/empleado/services/empleado.service';
+import { MatSelectChange } from '@angular/material/select';
 
 @Component({
-  selector: 'app-create-report',
-  templateUrl: './create-report.component.html',
-  styleUrls: ['./create-report.component.scss']
+  selector: 'app-create-report-admin',
+  templateUrl: './create-report-admin.component.html',
+  styleUrls: ['./create-report-admin.component.scss']
 })
-export class CreateReportComponent implements OnInit {
+export class CreateReportAdminComponent implements OnInit {
 
   formGroup: FormGroup;
   @Input() disableControl: boolean
@@ -62,11 +63,17 @@ export class CreateReportComponent implements OnInit {
   }
 
 
+  changePersonal($event: MatSelectChange ){
+    // console.log($event.value.nombres)
+    this.formGroup.get('personalID')?.setValue($event.value._id)
+    this.formGroup.get('personalNombre')?.setValue($event.value.nombres + ' ' + $event.value.apellidos )
+  }
+
   hora1(){
     this.formGroup.get('proyectoID')?.setValue(this.proyecto._id)
     this.formGroup.get('proyectoNombre')?.setValue(this.proyecto.nombre)
-    this.formGroup.get('personalID')?.setValue(this.loginService.getLogin()?.id)
-    this.formGroup.get('personalNombre')?.setValue(this.loginService.getLogin()?.user)
+    // this.formGroup.get('personalID')?.setValue(this.loginService.getLogin()?.id)
+    // this.formGroup.get('personalNombre')?.setValue(this.loginService.getLogin()?.user)
     const start = moment(new Date(this.formGroup.get('fecha_desde').value))
     const end =   moment(new Date(this.formGroup.get('fecha_hasta').value))
     var diff = end.diff(start, 'h'); // Diff in hours

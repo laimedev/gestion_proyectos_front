@@ -5,7 +5,7 @@
                 <div class="card-header bg-gray" >
                     <div class="row">
                         <div class="col-12">
-                            <span class="letra-cabecera">Listado de Trabajos</span>
+                            <span class="letra-cabecera">Listado de Actvividades</span>
                         </div>
                     </div>
                 
@@ -13,7 +13,7 @@
 
                             <div class="col-12 text-right">
                                 <mat-form-field class="w-25" appearance="outline">
-                                    <mat-label>Buscar por nombre de trabajo:</mat-label>
+                                    <mat-label>Buscar por nombre de actividad:</mat-label>
                                     <input name="proyecto" autocomplete="off" matInput (keyup)="buscar(txtTermino.value)" #txtTermino >
                                 </mat-form-field>
                                 <!-- <input type="text" class="form-control" (keyup)="buscar(txtTermino.value)" #txtTermino  aria-describedby="basic-addon3"  placeholder="Buscar proyecto"> -->
@@ -42,6 +42,7 @@
                                     <th>Fecha de creación</th>
                                     <th>Nombre</th>
                                     <th>Descripción</th>
+                                    <th>Costo</th>
                                     <th>Estado</th>
                                     <th class="text-nowrap text-center">Acciones</th>
                                 </tr>
@@ -53,10 +54,11 @@
                                     <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td>
                                     <td>{{data.nombre}}</td>
                                     <td>{{data.descripcion}}</td>
+                                    <td>{{data.costo}}</td>
                                     <td>{{data.estado}}</td>
 
                                     <td class="text-nowrap text-center">
-                                        <button  class="cursor btn btn-secondary mr-2"   > <i class="fas fa-info-circle"> </i>  </button> 
+                                        <!-- <button  class="cursor btn btn-secondary mr-2"   > <i class="fas fa-info-circle"> </i>  </button>  -->
                                         <button  class="cursor btn btn-warning mr-2" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button> 
                                         <button  class="cursor btn btn-danger mr-2" (click)="openDelete(data)"   > <i class="fas fa-trash-alt"> </i>  </button> 
                                     </td>

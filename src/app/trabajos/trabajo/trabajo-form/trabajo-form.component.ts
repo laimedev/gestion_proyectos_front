@@ -21,10 +21,8 @@ export class TrabajoFormComponent implements OnInit {
   statusActive: boolean = false;
 
   statusEntity = [
-    {value: 'Nuevo', label: 'Nuevo'},
-    {value: 'En curso', label: 'En curso'},
-    {value: 'Pendiente', label: 'Pendiente'},
-    {value: 'Cerrado', label: 'Cerrado'}
+    {value: 'Activo', label: 'Activo'},
+    {value: 'Inactivo', label: 'Inactivo'},
 ]
 
 
@@ -35,7 +33,7 @@ export class TrabajoFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formGroup.reset();
-    if(this.formTitle === 'EDITAR TRABAJO'){
+    if(this.formTitle === 'EDITAR ACTIVIDAD'){
       // this.formGroup.get('username').disable();
       this.statusActive = false;
       // this.formLDAP = false;

@@ -5,7 +5,7 @@
                 <div class="card-header bg-gray" >
                     <div class="row text-center" >
                         <div class="col-12">
-                            <span class="letra-cabecera">Reportes de variación de cornograma de actividades</span>
+                            <span class="letra-cabecera">REPORTES:  Proyectos - Actividades</span>
                         </div>
                     </div>
 
@@ -15,165 +15,202 @@
 
                 <div class="card-body">
 
-                    <div class="row">
-
-
-                        <div class="col-2"></div>
-                        <div class="col-8">
-                            <div class="row">
-                                <div class="col-6" >
-                                    <mat-form-field class="w-100" appearance="outline" [formGroup]="dateRange">
-                                        <mat-label>Fecha de inicio:</mat-label>
-                                        <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker"  formControlName="fecha_inicio">
-                                        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
-                                        <mat-datepicker #picker ></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                
-                                <div class="col-6" >
-                                    <mat-form-field class="w-100" appearance="outline" [formGroup]="dateRange">
-                                        <mat-label>Fecha final:</mat-label>
-                                        <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker2"  formControlName="fecha_fin">
-                                        <mat-datepicker-toggle matSuffix [for]="picker2" ></mat-datepicker-toggle>
-                                        <mat-datepicker #picker2 ></mat-datepicker>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                
-                        </div>
-                        <div class="col-2"></div>
-
-
-                        <!-- <div class="col-6">
-                            <div class="table-responsive">
+                    <ngb-tabset>
+                        <ngb-tab title="Reporte de proyectos">
+                            <ng-template ngbTabContent>
                                 <br>
-                                <table class="table table-bordered">
-                                    <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Fecha Inicio</th>
-                                            <th>Fecha Fin **Ref</th>
-                                            <th>Estado</th>
-                                            <th class="text-nowrap text-center">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let data of proyecto">
-        
-                                            <td>{{data._id}}</td>
-                                            <td>{{data.nombre}}</td>
-                                            <td>{{data.fecha_inicio | date: 'dd/MM/yyyy'}}</td>
-                                            <td>{{data.fecha_fin | date: 'dd/MM/yyyy'}}</td>
-                                            <td>
-                                                {{data.estado}}
-                                            </td>
-        
-                                            <td class="text-nowrap text-center">
-                                                <button  class="cursor btn btn-warning mr-2" (click)="openPrint(data)" > <i class="fa fa-print"> </i>  </button> 
-                                            </td>
-                                        </tr>
+                                    <div class="row">
                                         
-                                    </tbody>
-                                </table>
-                            </div>
-        
-                        <button  class="btn btn-secondary" (click)="cambiarPagina(-5)"> <i class="fas fa-arrow-left mr-1"> </i> Anteriores</button>
-                            &nbsp;
-                            <button  class="btn btn-success" (click)="cambiarPagina(5)">Siguientes  <i class="fas fa-arrow-right mr-1"> </i> </button> 
-        
-                        </div> -->
+                                        <div class="col-2"></div>
+                                        <div class="col-8 text-center" >
+                                            <p>Indicar el rango de fecha en que se inciaron los proyectos.</p> 
+                                            <div class="row">
+                                                
+                                                <div class="col-6" >
+                                                    <mat-form-field class="w-100" appearance="outline" [formGroup]="dateRangeProyecto">
+                                                        <mat-label>Fecha de inicio:</mat-label>
+                                                        <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker3"  formControlName="fecha_inicio">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker3" ></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker3 ></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
+                                
+                                                <div class="col-6" >
+                                                    <mat-form-field class="w-100" appearance="outline" [formGroup]="dateRangeProyecto">
+                                                        <mat-label>Fecha final:</mat-label>
+                                                        <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker4"  formControlName="fecha_fin">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker4" ></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker4 ></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <button type="button" class="btn btn-success" style="margin-right: 10px;" (click)="calcularProyecto()">MOSTRAR REPORTES</button>
+                                            <button type="button" class="btn btn-primary" style="margin-right: 10px;"  (click)="actualizarProyecto()">ACTUALIZAR</button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row text-center" style="margin-top: 20px;">
+                                        <div class="col-2"></div>
+                                        <div class="col-8 text-center">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p>  SV = Variación del cronograma</p>
+                                                    <p>  EV = Valor ganado</p>
+                                                    <p>  PV = Valor planificado</p>
+                                                </div>
+
+                                                <div class="col-6">
+                                                    <p>Formula del indicador</p>
+                                                    <p>SV = EV - PV</p>
+                                                    <p>INDICADOR</p>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-1"></div>
+                                        <div class="col-10">
+                                            <div class="table-responsive">
+                                                <br>
+                                                <table class="table table-bordered">
+                                                    <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Fecha inicial</th>
+                                                            <th>Proyecto</th>
+                                                            <th>Responsable</th>
+                                                            <th>EV</th>
+                                                            <th>PV</th>
+                                                            <th>SV</th>
+                                                            <th>Fecha final</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let data of reporteProyecto">
+                                                            <td *ngIf="data.sv">{{data._id}}</td>
+                                                            <td *ngIf="data.sv">{{data.fecha_inicio  | date: 'dd/MM/yyyy'}}</td>
+                                                            <td *ngIf="data.sv">{{data.nombre}}</td>
+                                                            <td *ngIf="data.sv">
+                                                                <select name="" id="" [(ngModel)]="data.responsable" style="border: none !important; -webkit-appearance: none;
+                                                                -moz-appearance: none;" readonly  aria-disabled="true">
+                                                                    <option  *ngFor="let resp of clientex" [value]="resp._id">{{resp.nombres}} {{resp.apellidos}}</option>
+                                                                </select>
+                                                                <!-- {{data.responsable}} -->
+                                                            </td>
+                                                            <td *ngIf="data.sv">{{data.ev}}</td>
+                                                            <td *ngIf="data.sv">{{data.pv}}</td>
+                                                            <td *ngIf="data.sv">{{data.sv}}</td>
+                                                            <td *ngIf="data.sv">{{data.fecha_termino | date: 'dd/MM/yyyy'}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-1"></div>
+                                    </div>
+                            </ng-template>
+                        </ngb-tab>
 
 
 
 
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-12 text-center">
-                            <button type="button" class="btn btn-success" style="margin-right: 10px;" (click)="calcular()">MOSTRAR REPORTES</button>
-                            <button type="button" class="btn btn-primary" style="margin-right: 10px;"  (click)="actualizar()">ACTUALIZAR</button>
-                            <!-- <button type="button" class="btn btn-secondary" style="margin-right: 10px;" >MOSTRAR REPORTES</button> -->
-                        </div>
-                    </div><!-- <div class="col-6">
-                            <div class="table-responsive">
-                                <br>
-                                <table class="table table-bordered">
-                                    <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nombre</th>
-                                            <th>Fecha Inicio</th>
-                                            <th>Fecha Fin **Ref</th>
-                                            <th>Estado</th>
-                                            <th class="text-nowrap text-center">Acciones</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let data of proyecto">
-        
-                                            <td>{{data._id}}</td>
-                                            <td>{{data.nombre}}</td>
-                                            <td>{{data.fecha_inicio | date: 'dd/MM/yyyy'}}</td>
-                                            <td>{{data.fecha_fin | date: 'dd/MM/yyyy'}}</td>
-                                            <td>
-                                                {{data.estado}}
-                                            </td>
-        
-                                            <td class="text-nowrap text-center">
-                                                <button  class="cursor btn btn-warning mr-2" (click)="openPrint(data)" > <i class="fa fa-print"> </i>  </button> 
-                                            </td>
-                                        </tr>
-                                        
-                                    </tbody>
-                                </table>
-                            </div>
-        
-                        <button  class="btn btn-secondary" (click)="cambiarPagina(-5)"> <i class="fas fa-arrow-left mr-1"> </i> Anteriores</button>
-                            &nbsp;
-                            <button  class="btn btn-success" (click)="cambiarPagina(5)">Siguientes  <i class="fas fa-arrow-right mr-1"> </i> </button> 
-        
-                        </div> -->
 
 
 
-                    <div class="row">
-                        <div class="col-1"></div>
-                        <div class="col-10">
-                            <div class="table-responsive">
-                                <br>
-                                <table class="table table-bordered">
-                                    <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Proyecto</th>
-                                            <th>Actividad</th>
-                                            <th>Responsable</th>
-                                            <th>Horas</th>
-                                            <th>Fecha final</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr *ngFor="let data of reporte">
-                                            <td>{{data._id}}</td>
-                                            <td>{{data.proyectoNombre}}</td>
-                                            <td>{{data.trabajo}}</td>
-                                            <td>{{data.personalNombre}}</td>
-                                            <td>{{data.horas}}</td>
-                                            <td>{{data.fecha_hasta | date: 'dd/MM/yyyy'}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-        
-                        <!-- <button  class="btn btn-secondary" (click)="cambiarPagina(-5)"> <i class="fas fa-arrow-left mr-1"> </i> Anteriores</button>
-                            &nbsp;
-                            <button  class="btn btn-success" (click)="cambiarPagina(5)">Siguientes  <i class="fas fa-arrow-right mr-1"> </i> </button>  -->
-        
-                        </div>
-                        <div class="col-1"></div>
-                    </div>
+                        
+                        <ngb-tab title="Reporte de actividades">
+                            <ng-template ngbTabContent>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-2"></div>
+                                        <div class="col-8 text-center">
+                                            <p>Indicar el rango de fecha en que se inciaron las actividades.</p> 
+                                            
+                                            <div class="row">
+                                                <div class="col-6" >
+                                                    <mat-form-field class="w-100" appearance="outline" [formGroup]="dateRange">
+                                                        <mat-label>Fecha de inicio:</mat-label>
+                                                        <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker"  formControlName="fecha_inicio">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker ></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
+                                
+                                                <div class="col-6" >
+                                                    <mat-form-field class="w-100" appearance="outline" [formGroup]="dateRange">
+                                                        <mat-label>Fecha final:</mat-label>
+                                                        <input matInput datePickerFormat="YYYY/MM/DD" [matDatepicker]="picker2"  formControlName="fecha_fin">
+                                                        <mat-datepicker-toggle matSuffix [for]="picker2" ></mat-datepicker-toggle>
+                                                        <mat-datepicker #picker2 ></mat-datepicker>
+                                                    </mat-form-field>
+                                                </div>
+                                            </div>
+                                
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <button type="button" class="btn btn-success" style="margin-right: 10px;" (click)="calcular()">MOSTRAR REPORTES</button>
+                                            <button type="button" class="btn btn-primary" style="margin-right: 10px;"  (click)="actualizar()">ACTUALIZAR</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-1"></div>
+                                        <div class="col-10">
+                                            <div class="table-responsive">
+                                                <br>
+                                                <table class="table table-bordered">
+                                                    <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                                                        <tr>
+                                                            <th>ID</th>
+                                                            <th>Proyecto</th>
+                                                            <th>Actividad</th>
+                                                            <th>Responsable</th>
+                                                            <th>Horas</th>
+                                                            <th>Fecha final</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr *ngFor="let data of reporte">
+                                                            <td>{{data._id}}</td>
+                                                            <td>{{data.proyectoNombre}}</td>
+                                                            <td>{{data.trabajo}}</td>
+                                                            <td>{{data.personalNombre}}</td>
+                                                            <td>{{data.horas}}</td>
+                                                            <td>{{data.fecha_hasta | date: 'dd/MM/yyyy'}}</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-1"></div>
+                                    </div>
+
+                            </ng-template>
+                        </ngb-tab>
+                    </ngb-tabset>
+
+
+
+
+
 
 
                 </div>
@@ -190,88 +227,5 @@
 
     <br> <br>
 
-    <div class="row" *ngIf="reporte">
-        <div class="col">
-            <div class="card">
-                <div class="card-header bg-gray" >
-                    <div class="row text-center" >
-                        <div class="col-12">
-                            <span class="letra-cabecera">-</span>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8" >
-                        <mat-form-field class="w-100" appearance="outline">
-                            <mat-label>Responsable:</mat-label>
-                            <mat-select (selectionChange)="responsableChange($event)">
-                                <mat-option>--</mat-option>
-                                <mat-option *ngFor="let wType of clientex" [value]="wType.pago">
-                                    {{wType.nombres}} {{wType.apellidos}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-
-
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8" >
-                        <mat-form-field class="w-100" appearance="outline">
-                            <mat-label>Proyecto:</mat-label>
-                            <mat-select (selectionChange)="proyectoChange($event)">
-                                <mat-option>--</mat-option>
-                                <mat-option *ngFor="let wType of proyectox" [value]="wType.presupuesto">
-                                    {{wType.nombre}}
-                                </mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button type="button" class="btn btn-success" style="margin-right: 10px;"  (click)="calc()">CALCULAR</button>
-                    </div>
-                </div>
-                <br>
-
-
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8 text-center" >
-                            <mat-form-field class="w-100" appearance="outline">
-                                <mat-label>Pago total del persona:</mat-label>
-                                <input type="number" name="presupuesto" autocomplete="off" matInput [(ngModel)]="pagoTotalPersonal" >
-                            </mat-form-field>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-
-
-
-                <div class="row">
-                    <div class="col-2"></div>
-                    <div class="col-8  text-center" >
-                            <mat-form-field class="w-100" appearance="outline">
-                                <mat-label>Ganancias del proyecto:</mat-label>
-                                <input type="number" name="presupuesto" autocomplete="off" matInput [(ngModel)]="gananciasProyecto" >
-                            </mat-form-field>
-                    </div>
-                    <div class="col-2"></div>
-                </div>
-
-
-                </div>
-            </div>
-    <div>
-
+   
 </div>

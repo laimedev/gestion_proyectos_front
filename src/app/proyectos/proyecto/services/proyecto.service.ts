@@ -19,6 +19,7 @@ export class ProyectoService {
 
   formGroup: FormGroup;
 
+  fecha_term: boolean = true;
 
   constructor(protected http: HttpClient,
               protected router: Router,
@@ -33,6 +34,19 @@ export class ProyectoService {
                   fecha_fin: ['', [Validators.required]],
                   cliente: ['', [Validators.required]],
                   cotizacion: [''],
+                  fecha_termino: [''],
+                  ev: [''],
+                  pv: [''],
+                  sv: [''],
+
+                  ac: [''],
+                  cv: [''],
+
+                  diasPlazo: [''],
+                  diasTerminados: [''],
+                  diasGanados: [''],
+
+
                   estado: [''],
                 })      
                 
@@ -46,16 +60,31 @@ export class ProyectoService {
   set fillForm(proyecto: Proyecto) {
   this.formGroup.get('nombre').setValue(proyecto.nombre)
   this.formGroup.get('descripcion').setValue(proyecto.descripcion)
-
   this.formGroup.get('responsable').setValue(proyecto.responsable)
   this.formGroup.get('presupuesto').setValue(proyecto.presupuesto)
   this.formGroup.get('fecha_inicio').setValue(proyecto.fecha_inicio)
   this.formGroup.get('fecha_fin').setValue(proyecto.fecha_fin)
   this.formGroup.get('cliente').setValue(proyecto.cliente)
   this.formGroup.get('cotizacion').setValue(proyecto.cotizacion)
-
   this.formGroup.get('estado').setValue(proyecto.estado)
+  this.formGroup.get('fecha_termino').setValue(proyecto.fecha_termino)
+
+
+
+
+  if(this.formGroup.get('estado').value == 'Terminado') {
+    console.log('terminado')
+    this.formGroup.get('fecha_termino').enable
+    this.fecha_term = true;
+  }  else {
+    console.log('otros')
+    // this.formGroup.get('fecha_termino').disable()
+    this.fecha_term = false;
   }
+
+
+
+}
 
 
  cargarProyectos(desde: number = 0, limit: number = 0){
@@ -84,6 +113,10 @@ export class ProyectoService {
     return this.http.post<Proyecto>(environment.baseUrl + 'proyecto/update/' + proyecto._id, proyecto);
   }
 
+  editCerrar(id:any, proyecto: Proyecto): Observable<Proyecto> {
+    return this.http.post<Proyecto>(environment.baseUrl + 'proyecto/update_cerrar/' + id, proyecto);
+  }
+
   delete(proyecto: Proyecto): Observable<Proyecto> {
     return this.http.delete<Proyecto>(environment.baseUrl + 'proyecto/' + proyecto._id)
   }
@@ -105,6 +138,8 @@ export class ProyectoService {
   }
 
 
+
+  
 
 
 }

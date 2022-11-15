@@ -5,6 +5,8 @@ import { ProyectoService } from '../services/proyecto.service';
 import { Proyecto } from '../../../entities/modulos/proyecto';
 import { EmpleadoService } from 'src/app/empleados/empleado/services/empleado.service';
 import { ClienteService } from '../../cliente/services/cliente.service';
+import { MatSelectChange } from '@angular/material/select';
+
 
 @Component({
   selector: 'app-proyecto-form',
@@ -32,18 +34,29 @@ export class ProyectoFormComponent implements OnInit {
   public responsable: any [] = []; 
   public cliente: any [] = []; 
 
+
+  @Input() fecha_term: boolean;
+
   constructor(protected fb: FormBuilder,
               protected activeModal: NgbActiveModal,
               private modalService: NgbModal,
               public proyectoService: ProyectoService,
               public empleadoService: EmpleadoService,
-              public clienteService: ClienteService) { }
+              public clienteService: ClienteService) {
+
+                this.formGroup = this.proyectoService.form;
+
+               }
 
   ngOnInit(): void {
 
     this.cargarEmpleado();
     this.cargarCliente();
 
+
+
+
+ 
     this.formGroup.reset();
     if(this.formTitle === 'EDITAR PROYECTO'){
       // this.formGroup.get('username').disable();
@@ -55,6 +68,8 @@ export class ProyectoFormComponent implements OnInit {
       this.formGroup.get('estado')?.setValue('Nuevo')
 
     }
+
+
 
   }
 
@@ -94,6 +109,23 @@ export class ProyectoFormComponent implements OnInit {
     this.closeEvent.emit(this.refreshTable)
     this.modalService.dismissAll();
   }
+
+
+  changeStatus($event: MatSelectChange){
+    console.log($event.value)
+    if($event.value == 'Terminado') {
+      console.log('terminado')
+      this.fecha_term = true;
+    this.formGroup.get('fecha_termino').enable()
+
+    } else {
+      console.log('reiniciar')
+      this.fecha_term = false;
+    }
+
+  }
+
+
 
 }
 

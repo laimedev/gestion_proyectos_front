@@ -10,17 +10,25 @@
     <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
             <div class="" >
                 <mat-form-field class="w-100" appearance="outline">
-                    <mat-label>Nombre trabajo:</mat-label>
+                    <mat-label>Nombre actividad:</mat-label>
                     <input name="nombre" autocomplete="off" matInput formControlName="nombre" >
                 </mat-form-field>
             </div>
 
             <div class="" >
                 <mat-form-field class="w-100" appearance="outline">
-                    <mat-label>Descripción trabajo:</mat-label>
+                    <mat-label>Descripción actividad:</mat-label>
                     <textarea name="description" autocomplete="off" matInput formControlName="descripcion" rows="5" ></textarea>
                 </mat-form-field>
             </div>
+
+            <div class="" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Costo:</mat-label>
+                    <input name="costo" type="number"  autocomplete="off" matInput formControlName="costo" >
+                </mat-form-field>
+            </div>
+
 
             <div class="" *ngIf="!statusActive" >
                 

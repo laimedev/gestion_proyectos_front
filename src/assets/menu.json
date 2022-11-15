@@ -64,13 +64,13 @@
             "id": 5,
             "url": null,
             "icon": "fa fa-book",
-            "displayName": "TRABAJOS",
+            "displayName": "ACTIVIDADES",
             "subMenu": [
                 {
                     "id": 4,
                     "url": "trabajo.list",
                     "icon": "fa fa-users",
-                    "displayName": "Listado de trabajos",
+                    "displayName": "Listado de actividades",
                     "subMenu": []
                 }
             ]

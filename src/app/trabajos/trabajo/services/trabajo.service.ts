@@ -27,6 +27,7 @@ export class TrabajoService {
                 this.formGroup = this.fb.group({
                   nombre: ['', [Validators.required]],
                   descripcion: ['', [Validators.required]],
+                  costo: ['', [Validators.required]],
                   estado: ['Nuevo'],
                 })      
                 
@@ -40,6 +41,7 @@ export class TrabajoService {
   set fillForm(trabajo: Trabajo) {
   this.formGroup.get('nombre').setValue(trabajo.nombre)
   this.formGroup.get('descripcion').setValue(trabajo.descripcion)
+  this.formGroup.get('costo').setValue(trabajo.costo)
   this.formGroup.get('estado').setValue(trabajo.estado)
   }
 

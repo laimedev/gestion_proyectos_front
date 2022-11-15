@@ -25,7 +25,8 @@ import { ConfiguracionModule } from './configuracion/configuracion.module';
 import { AdministracionModule } from './administracion/administracion.module';
 import { ChartsModule } from 'ng2-charts';
 import { PdfMakeWrapper } from 'pdfmake-wrapper';
-import pdfFonts from "pdfmake/build/vfs_fonts"; // fonts provided for pdfmake
+import pdfFonts from "pdfmake/build/vfs_fonts";
+import { CloseProyectoComponent } from './proyecto/modal/close-proyecto/close-proyecto.component'; // fonts provided for pdfmake
 // Set the fonts to use
 PdfMakeWrapper.setFonts(pdfFonts);
 
@@ -36,6 +37,7 @@ PdfMakeWrapper.setFonts(pdfFonts);
     SidebarComponent,
     HeaderComponent,
     FooterComponent,
+    CloseProyectoComponent,
   ],
   imports: [
     BrowserModule,

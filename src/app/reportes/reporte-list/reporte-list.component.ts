@@ -27,6 +27,7 @@ export class ReporteListComponent implements OnInit {
   public data: any = [];
   public proyecto: any[] = [];
   public reporte: any[] = [];
+  public reporteProyecto: any[] = [];
 
 
   public proyectoTemp: any[] = [];
@@ -44,6 +45,12 @@ export class ReporteListComponent implements OnInit {
 
 
   dateRange = new FormGroup({
+    fecha_inicio: new FormControl('', [Validators.required]),
+    fecha_fin: new FormControl('', [Validators.required])
+  });
+
+
+  dateRangeProyecto = new FormGroup({
     fecha_inicio: new FormControl('', [Validators.required]),
     fecha_fin: new FormControl('', [Validators.required])
   });
@@ -76,6 +83,11 @@ export class ReporteListComponent implements OnInit {
 
   actualizar(){
     this.reporte = [];
+  }
+
+
+  actualizarProyecto(){
+    this.reporteProyecto = [];
   }
 
   calc(){
@@ -128,6 +140,42 @@ export class ReporteListComponent implements OnInit {
   }
 
 
+
+
+
+  calcularProyecto(){
+
+    if (this.dateRangeProyecto.valid) {
+      let start = new Date(Date.parse(this.dateRangeProyecto.get('fecha_inicio').value))
+      let end = new Date(Date.parse(this.dateRangeProyecto.get('fecha_fin').value))
+
+      let startStr = new DatePipe('en').transform(start, 'yyyy-MM-dd') + ' 00:00:00';
+      // let startStr = new Intl.DateTimeFormat('en-US', { year: 'numeric',  month: '2-digit', day: '2-digit'}).format(start) + ' 00:00:00'
+      let endStr = new DatePipe('en').transform(end, 'yyyy-MM-dd') + ' 23:59:59';
+      // let endStr = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: '2-digit', day: '2-digit'  }).format(end) + ' 23:59:59'
+      this.dateRangeProyecto.get('fecha_inicio')?.setValue(startStr)
+      this.dateRangeProyecto.get('fecha_fin')?.setValue(endStr)
+      
+      console.log(startStr);
+
+      
+
+      this.reportService.showRangeProyecto(this.dateRangeProyecto.value)
+      .subscribe(res => {  
+        this.reporteProyecto = res['data']; 
+        console.log(res['data']);
+        // this.totalHorasTrabajadas = res['data'].reduce((sum, value) => (typeof value.horas == "number" ? sum + value.horas : sum), 0);
+        // console.log('CANTIDAD DE HORAS TRABAJDAS');
+        // console.log(this.totalHorasTrabajadas);
+      
+      })
+    }
+  }
+
+  formatDecimales2(numero){
+    return parseFloat(Number(numero).toFixed(2));
+  }
+  
   responsableChange($event) {
     console.log($event.value)
     this.pagoResponsable = $event.value;
