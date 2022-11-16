@@ -96,6 +96,8 @@
                                                             <th>EV</th>
                                                             <th>PV</th>
                                                             <th>SV</th>
+                                                            <th>AC</th>
+                                                            <th>CV</th>
                                                             <th>Fecha final</th>
                                                         </tr>
                                                     </thead>
@@ -114,6 +116,10 @@
                                                             <td *ngIf="data.sv">{{data.ev}}</td>
                                                             <td *ngIf="data.sv">{{data.pv}}</td>
                                                             <td *ngIf="data.sv">{{data.sv}}</td>
+
+                                                            <td *ngIf="data.sv">{{data.ac}}</td>
+                                                            <td *ngIf="data.sv">{{data.cv}}</td>
+
                                                             <td *ngIf="data.sv">{{data.fecha_termino | date: 'dd/MM/yyyy'}}</td>
                                                         </tr>
                                                     </tbody>
@@ -189,6 +195,10 @@
                                                             <th>PV</th>
                                                             <th>SV</th>
 
+                                                            <th>AC</th>
+                                                            <th>CV</th>
+
+
                                                             <th>Fecha final</th>
                                                         </tr>
                                                     </thead>
@@ -203,6 +213,10 @@
                                                             <td *ngIf="data.sv">{{data.ev}}</td>
                                                             <td *ngIf="data.sv">{{data.pv}}</td>
                                                             <td *ngIf="data.sv">{{data.sv}}</td>
+
+                                                            <td *ngIf="data.sv">{{data.ac}}</td>
+                                                            <td *ngIf="data.sv">{{data.cv}}</td>
+
 
                                                             <td *ngIf="data.sv">{{data.fecha_fin | date: 'dd/MM/yyyy'}}</td>
                                                         </tr>
