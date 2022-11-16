@@ -41,7 +41,9 @@ export class CreateReportAdminComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.formGroup = this.reportService.form;
+
 
 
     this.trabajoService.export().subscribe(resp => {
@@ -68,6 +70,12 @@ export class CreateReportAdminComponent implements OnInit {
     this.formGroup.get('personalID')?.setValue($event.value._id)
     this.formGroup.get('personalNombre')?.setValue($event.value.nombres + ' ' + $event.value.apellidos )
   }
+
+  changeActividad($event: MatSelectChange ){
+    this.formGroup.get('trabajo')?.setValue($event.value.nombre);
+    this.formGroup.get('presupuesto')?.setValue($event.value.costo);
+  }
+
 
   hora1(){
     this.formGroup.get('proyectoID')?.setValue(this.proyecto._id)

@@ -24,12 +24,27 @@ export class ReporteService {
                   trabajo: ['', [Validators.required]],
                   fecha_desde: ['', [Validators.required]],
                   fecha_hasta: ['', [Validators.required]],
+                  fecha_fin: [''],
+                  presupuesto: [''],
                   horas: ['', [Validators.required]],
                   observacion: ['', [Validators.required]],
                   proyectoNombre: ['', [Validators.required]],
                   proyectoID: ['', [Validators.required]],
                   personalNombre: ['', [Validators.required]],
                   personalID: ['', [Validators.required]],
+
+                  ev: [''],
+                  pv: [''],
+                  sv: [''],
+
+                  ac: [''],
+                  cv: [''],
+
+                  horasPlazo: [''],
+                  horasTerminados: [''],
+                  horasGanados: [''],
+
+
                 })      
                 
                 
@@ -43,12 +58,14 @@ export class ReporteService {
   this.formGroup.get('trabajo').setValue(reporte.trabajo)
   this.formGroup.get('fecha_desde').setValue(reporte.fecha_desde)
   this.formGroup.get('fecha_hasta').setValue(reporte.fecha_hasta)
+  this.formGroup.get('fecha_fin').setValue(reporte.fecha_fin)
   this.formGroup.get('horas').setValue(reporte.horas)
   this.formGroup.get('observacion').setValue(reporte.observacion)
   this.formGroup.get('proyectoNombre').setValue(reporte.proyectoNombre)
   this.formGroup.get('proyectoID').setValue(reporte.proyectoID)
   this.formGroup.get('personalNombre').setValue(reporte.personalNombre)
   this.formGroup.get('personalID').setValue(reporte.personalID)
+  this.formGroup.get('presupuesto').setValue(reporte.presupuesto)
   }
 
 
@@ -72,6 +89,10 @@ export class ReporteService {
 
   create(reporte: Reporte): Observable<Reporte> {
     return this.http.post<Reporte>(`${environment.baseUrl}reporte`, reporte)
+  }
+
+  editCerrar(id:any, reporte: Reporte): Observable<Reporte> {
+    return this.http.post<Reporte>(environment.baseUrl + 'reporte/update_cerrar/' + id, reporte);
   }
 
   // edit(proyecto: Proyecto): Observable<Proyecto> {

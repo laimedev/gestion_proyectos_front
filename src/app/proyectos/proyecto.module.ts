@@ -33,6 +33,8 @@ import { CreateReportComponent } from './proyecto/modal/create-report/create-rep
 import { ViewProyectoComponent } from './proyecto/modal/view-proyecto/view-proyecto.component';
 import { CloseProyectoComponent } from './proyecto/modal/close-proyecto/close-proyecto.component';
 import { CreateReportAdminComponent } from './proyecto/modal/create-report-admin/create-report-admin.component';
+import { EditReportComponent } from './proyecto/modal/edit-report/edit-report.component';
+import { DeleteReportComponent } from './proyecto/modal/delete-report/delete-report.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { CreateReportAdminComponent } from './proyecto/modal/create-report-admin
     ViewProyectoComponent,
     CloseProyectoComponent,
     CreateReportAdminComponent,
+    EditReportComponent,
+    DeleteReportComponent,
   ],
   imports: [
     CommonModule,

@@ -184,17 +184,27 @@
                                                             <th>Actividad</th>
                                                             <th>Responsable</th>
                                                             <th>Horas</th>
+
+                                                            <th>EV</th>
+                                                            <th>PV</th>
+                                                            <th>SV</th>
+
                                                             <th>Fecha final</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
                                                         <tr *ngFor="let data of reporte">
-                                                            <td>{{data._id}}</td>
-                                                            <td>{{data.proyectoNombre}}</td>
-                                                            <td>{{data.trabajo}}</td>
-                                                            <td>{{data.personalNombre}}</td>
-                                                            <td>{{data.horas}}</td>
-                                                            <td>{{data.fecha_hasta | date: 'dd/MM/yyyy'}}</td>
+                                                            <td *ngIf="data.sv">{{data._id}}</td>
+                                                            <td *ngIf="data.sv">{{data.proyectoNombre}}</td>
+                                                            <td *ngIf="data.sv">{{data.trabajo}}</td>
+                                                            <td *ngIf="data.sv">{{data.personalNombre}}</td>
+                                                            <td *ngIf="data.sv">{{data.horas}}</td>
+
+                                                            <td *ngIf="data.sv">{{data.ev}}</td>
+                                                            <td *ngIf="data.sv">{{data.pv}}</td>
+                                                            <td *ngIf="data.sv">{{data.sv}}</td>
+
+                                                            <td *ngIf="data.sv">{{data.fecha_fin | date: 'dd/MM/yyyy'}}</td>
                                                         </tr>
                                                     </tbody>
                                                 </table>

@@ -80,12 +80,14 @@
                 <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
                     <tr>
                         <!-- <th>ID</th> -->
-                        <th>Fecha de creación</th>
+                        <!-- <th>Fecha de creación</th> -->
                         <th>Responsable</th>
-                        <th>Trabajo</th>
+                        <th>Actividad</th>
                         <th>Fecha desde</th>
                         <th>Fecha hasta</th>
                         <th>Horas</th>
+                        <th>Presupuesto</th>
+                        <th>Fecha Fin</th>
                         <th class="text-nowrap text-center">Acciones</th>
                     </tr>
                 </thead>
@@ -93,17 +95,19 @@
                     <tr *ngFor="let data of reporte">
 
                         <!-- <td>{{data._id}}</td> -->
-                        <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td>
+                        <!-- <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td> -->
                         <td>{{data.personalNombre}}</td>
                         <td>{{data.trabajo}}</td>
                         <td>{{data.fecha_desde | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
                         <td>{{data.fecha_hasta | date: 'dd/MM/yyyy HH:mm:ss'}}</td>
                         <td> {{data.horas}}</td>
+                        <td> {{data.presupuesto}}</td>
+                        <td> {{data.fecha_fin}}</td>
 
                         <td class="text-nowrap text-center">
-                            <!-- <button  class="cursor btn btn-secondary mr-2" (click)="openView(data)"   > <i class="fas fa-info-circle"> </i>  </button> 
-                            <button  class="cursor btn btn-warning mr-2" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button>  -->
-                            <button  class="cursor btn btn-secondary mr-2"   > <i class="fas fa-check"> </i>  </button> 
+                            <!-- <button  class="cursor btn btn-secondary mr-2" (click)="openView(data)"   > <i class="fas fa-info-circle"> </i>  </button>  -->
+                            <button  class="cursor btn btn-warning mr-2"  (click)="openEdit(data)" > <i class="fas fa-edit"> </i>  </button> 
+                            <button  class="cursor btn btn-danger mr-2" (click)="openDelete(data)" > <i class="fa fa-trash"> </i>  </button> 
                         </td>
                     </tr>
                     

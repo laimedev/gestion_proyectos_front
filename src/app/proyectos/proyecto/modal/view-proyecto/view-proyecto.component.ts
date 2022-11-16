@@ -1,12 +1,14 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EmpleadoService } from 'src/app/empleados/empleado/services/empleado.service';
 import { Proyecto } from 'src/app/entities/modulos/proyecto';
 import { LoginService } from 'src/app/services/security/login.service';
 import { ProyectoService } from '../../services/proyecto.service';
 import { ReporteService } from '../../services/reporte.service';
+import { EditReportComponent } from '../edit-report/edit-report.component';
+import { DeleteReportComponent } from '../delete-report/delete-report.component';
 
 @Component({
   selector: 'app-view-proyecto',
@@ -44,6 +46,7 @@ export class ViewProyectoComponent implements OnInit {
     protected reporteService: ReporteService,
     protected activeModal: NgbActiveModal,
     private snackBar: MatSnackBar,
+    private modalService: NgbModal,
     protected loginService: LoginService) {
   }
 
@@ -88,6 +91,25 @@ export class ViewProyectoComponent implements OnInit {
     // this.formGroup = this.formService.form;
   }
 
+
+
+  openEdit(data){
+    // console.log(data)
+    const modalEdit = this.modalService.open(EditReportComponent, { size: 'lg', backdrop: 'static' })
+    modalEdit.componentInstance.proyecto = data
+    modalEdit.result.then(res => {
+      this.ngOnInit();
+    })
+  }
+
+
+  openDelete(data: Proyecto) {
+    const deleteModal = this.modalService.open(DeleteReportComponent, { size: 'lg', backdrop: 'static' })
+    deleteModal.componentInstance.proyecto = data
+    deleteModal.result.then(res => {
+      this.ngOnInit();
+    })
+  }
 
 
 

@@ -24,17 +24,26 @@
 
 
 
-            <div class="" >
+        <div class="row" >
+            <div class="col-6">
                 <mat-form-field class="w-100" appearance="outline">
                     <mat-label>Tipo de actividad:</mat-label>
-                    <mat-select  formControlName="trabajo">
+                    <mat-select  formControlName="trabajo" (selectionChange)="changeActividad($event)">
                         <mat-option>--</mat-option>
-                        <mat-option *ngFor="let wType of trabajos" [value]="wType.nombre">
+                        <mat-option *ngFor="let wType of trabajos" [value]="wType">
                             {{wType.nombre}}
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
+
+            <div class="col-6">
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Presupuesto:</mat-label>
+                    <input name="presupuesto" autocomplete="off" matInput formControlName="presupuesto" disable readonly>
+                </mat-form-field>
+            </div>
+        </div>
 
 
             <div class="row">
@@ -70,6 +79,14 @@
                     <textarea name="description" autocomplete="off" matInput formControlName="observacion" rows="5" ></textarea>
                 </mat-form-field>
             </div>
+
+
+            <!-- <div class="" >
+                <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Fecha fin:</mat-label>
+                    <input type="datetime-local"    name="nombre" autocomplete="off" matInput formControlName="fecha_fin" >
+                </mat-form-field>
+            </div> -->
 
     </form>
 </div>
