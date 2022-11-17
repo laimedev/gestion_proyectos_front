@@ -38,7 +38,7 @@ export class EditProyectoComponent implements OnInit {
 
   onSubmit(value: any) {
     console.log("enviar")
-  this.disableForm()
+    this.disableForm()
       value._id = this.proyecto._id
       this.formService.edit(value).subscribe(data => {
         SnackbarHelper.show(this.snackBar, { msg: 'Editó con éxito', })

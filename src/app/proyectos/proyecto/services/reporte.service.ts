@@ -26,6 +26,7 @@ export class ReporteService {
                   fecha_hasta: ['', [Validators.required]],
                   fecha_fin: [''],
                   presupuesto: [''],
+                  trabajo_fake: [''],
                   horas: ['', [Validators.required]],
                   observacion: ['', [Validators.required]],
                   proyectoNombre: ['', [Validators.required]],

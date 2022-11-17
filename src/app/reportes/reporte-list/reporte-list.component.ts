@@ -175,7 +175,7 @@ export class ReporteListComponent implements OnInit {
   formatDecimales2(numero){
     return parseFloat(Number(numero).toFixed(2));
   }
-  
+
   responsableChange($event) {
     console.log($event.value)
     this.pagoResponsable = $event.value;
@@ -185,6 +185,10 @@ export class ReporteListComponent implements OnInit {
     console.log($event.value)
     this.prepuestoProyecto = $event.value;
   }
+
+
+
+
 
   cargarProyectos(){
     this.cargando = true; 

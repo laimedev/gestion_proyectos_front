@@ -58,7 +58,7 @@ export class CloseProyectoComponent implements OnInit {
     this.valorPlanificado = cala22;
     this.varCronograma = this.formatDecimales2(this.valorPlanificado - this.valorGanado );
 
-    this.varCosto = this.proyecto.presupuesto - this.proyecto.ac
+    this.varCosto =  this.proyecto.ac - this.valorGanado
     // this.formService.form.get('cv')?.setValue(this.varCosto);
 
 

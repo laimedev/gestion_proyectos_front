@@ -73,6 +73,7 @@ export class CreateReportAdminComponent implements OnInit {
 
   changeActividad($event: MatSelectChange ){
     this.formGroup.get('trabajo')?.setValue($event.value.nombre);
+    this.formGroup.get('trabajo_fake')?.setValue($event.value);
     this.formGroup.get('presupuesto')?.setValue($event.value.costo);
   }
 
