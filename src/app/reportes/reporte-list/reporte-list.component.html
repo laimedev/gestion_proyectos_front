@@ -93,6 +93,7 @@
                                                             <th>Fecha inicial</th>
                                                             <th>Proyecto</th>
                                                             <th>Responsable</th>
+                                                            <th>Presupuesto</th>
                                                             <th>EV</th>
                                                             <th>PV</th>
                                                             <th>SV</th>
@@ -113,6 +114,7 @@
                                                                 </select>
                                                                 <!-- {{data.responsable}} -->
                                                             </td>
+                                                            <td *ngIf="data.sv">{{data.presupuesto}}</td>
                                                             <td *ngIf="data.sv">{{data.ev}}</td>
                                                             <td *ngIf="data.sv">{{data.pv}}</td>
                                                             <td *ngIf="data.sv">{{data.sv}}</td>
@@ -215,6 +217,7 @@
                                                             <th>Actividad</th>
                                                             <th>Responsable</th>
                                                             <th>Horas</th>
+                                                            <th>Presupuesto</th>
 
                                                             <th>EV</th>
                                                             <th>PV</th>
@@ -234,6 +237,7 @@
                                                             <td *ngIf="data.sv">{{data.trabajo}}</td>
                                                             <td *ngIf="data.sv">{{data.personalNombre}}</td>
                                                             <td *ngIf="data.sv">{{data.horas}}</td>
+                                                            <td *ngIf="data.sv">{{data.presupuesto}}</td>
 
                                                             <td *ngIf="data.sv">{{data.ev}}</td>
                                                             <td *ngIf="data.sv">{{data.pv}}</td>
