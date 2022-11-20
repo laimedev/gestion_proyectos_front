@@ -11,6 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SnackbarHelper } from 'src/app/utils/helpers/snackbar-helper';
 import { EmpleadoService } from 'src/app/empleados/empleado/services/empleado.service';
 import { MatSelectChange } from '@angular/material/select';
+import { TareaService } from 'src/app/trabajos/trabajo/services/tarea.service';
 
 @Component({
   selector: 'app-create-report-admin',
@@ -23,6 +24,7 @@ export class CreateReportAdminComponent implements OnInit {
   @Input() disableControl: boolean
 
   trabajos: any [] = [];
+  tareas: any [] = [];
 
   @Input() proyecto: Proyecto
   public responsable: any [] = []; 
@@ -33,6 +35,7 @@ export class CreateReportAdminComponent implements OnInit {
     public trabajoService: TrabajoService,
     protected loginService: LoginService,
     public empleadoService: EmpleadoService,
+    public tareaService: TareaService,
     public ngModal: NgbModal) { 
 
     this.cargarEmpleado();
@@ -48,8 +51,15 @@ export class CreateReportAdminComponent implements OnInit {
 
     this.trabajoService.export().subscribe(resp => {
       this.trabajos = resp['data'];
+
+    
+
+
     })
 
+    // this.reportService.getTrabajosxIDProyecto(this.proyecto._id).subscribe( resp => {
+    //   this.trabajos = resp['trabajo'];
+    // })
 
     console.log(this.proyecto);
     // console.log(this.proyecto);
@@ -75,6 +85,21 @@ export class CreateReportAdminComponent implements OnInit {
     this.formGroup.get('trabajo')?.setValue($event.value.nombre);
     this.formGroup.get('trabajo_fake')?.setValue($event.value);
     this.formGroup.get('presupuesto')?.setValue($event.value.costo);
+
+    this.tareaService.cargarTareas($event.value._id).subscribe(resp => {
+      this.tareas = resp['tarea']
+      console.log(resp['tarea'])
+
+    })
+
+
+  }
+
+
+  changeTarea($event: MatSelectChange ){
+    this.formGroup.get('tareaID')?.setValue($event.value._id);
+    this.formGroup.get('tarea_fake')?.setValue($event.value);
+    this.formGroup.get('tareaNombre')?.setValue($event.value.nombre);
   }
 
 

@@ -1,15 +1,13 @@
-export interface Trabajo {
+export interface Tarea {
     _id: any;
     nombre?: string;
-    descripcion?: string;
+    actividad?: string;
     created?: string;
-    costo?: number;
-    estado?: string;
 }
 
 export interface RootObject {
-    total: number;
-    data: Trabajo[];
+    total: any;
+    data: Tarea[];
     pageNumber: number;
     pageSize: number;
 }

@@ -21,6 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import { TrabajoRoutingModule } from './trabajo-routing.module';
+import { CreateTareaComponent } from './modal/create-tarea/create-tarea.component';
+import { DeleteTareaComponent } from './modal/delete-tarea/delete-tarea.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { TrabajoRoutingModule } from './trabajo-routing.module';
     EditTrabajoComponent,
     ViewTrabajoComponent,
     TrabajoFormComponent,
-    TrabajoListComponent
+    TrabajoListComponent,
+    CreateTareaComponent,
+    DeleteTareaComponent
   ],
   imports: [
     CommonModule,

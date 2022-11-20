@@ -1,0 +1,77 @@
+<div class="modal-header btn-primary">
+    <h4 class="modal-title text-white">{{ formTitle }} - {{trabajo.nombre}}</h4>
+    <button (click)="closeMOdal()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+<div class="modal-body">
+    <form (ngSubmit)="onSubmit()" id="formUser" [formGroup]="formGroup">
+
+            <div class="row">
+                <div class="col-10" >
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Nombre tarea:</mat-label>
+                        <input name="nombre" autocomplete="off" matInput formControlName="nombre" >
+                    </mat-form-field>
+                </div>
+    
+                <div class="col-2">
+                     <button type="submit" class="btn btn-success">AGREGAR TAREA</button>
+                </div>
+            </div>
+
+    </form>
+
+
+
+
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead style="background-color: #007BFF; color: #fff; font-weight: lighter;">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre Tarea</th>
+                    <th>Fecha de creación</th>
+                    <th class="text-nowrap text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of tareas">
+
+                    <td>{{data._id}}</td>
+                    <td>{{data.nombre}}</td>
+                    <td>{{data.created | date: 'dd/MM/yyyy   HH:mm:ss'}}</td>
+
+
+                    <td class="text-nowrap text-center">
+                        <!-- <button  class="cursor btn btn-info mr-2" title="Agregar tareas" (click)="openCreateTarea(data)" > <i class="fas fa-plus"> </i>  </button> 
+                        <button  class="cursor btn btn-warning mr-2" title="Editar actividad" (click)="openEdit(data)" > <i class="fa fa-edit"> </i>  </button>  -->
+                        <button  class="cursor btn btn-danger mr-2" title="Eliminar actividad" (click)="openDelete(data)"   > <i class="fas fa-trash-alt"> </i>  </button> 
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+
+    
+
+
+<div class="modal-footer">
+    <!-- <button type="button" class="btn btn-success" [disabled]="disableControl" (click)="closeMOdal()">CANCELAR</button>
+    <button type="submit" [ngClass]="{'btn-dark': (disableControl === false), 'btn-warning': (disableControl === true)}"
+        class="btn btn-primary" [disabled]="disableControl" form="formUser">
+        <i *ngIf="disableControl" class="fas fa-spin fa-cog"></i>
+        {{ disableControl === true ? 'ENVIANDO' : 'ACEPTAR' }}</button> -->
+</div>

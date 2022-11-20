@@ -34,6 +34,10 @@ export class ReporteService {
                   personalNombre: ['', [Validators.required]],
                   personalID: ['', [Validators.required]],
 
+                  tareaNombre: ['', [Validators.required]],
+                  tareaID: ['', [Validators.required]],
+                  tarea_fake: [''],
+
                   ev: [''],
                   pv: [''],
                   sv: [''],
@@ -86,6 +90,11 @@ export class ReporteService {
 
   getByReportes(desde: number = 0, reporte: any): Observable<any> {
     return this.http.post<any>(environment.baseUrl + `reporte/showByProyecto?desde=${desde}`, reporte)
+  }
+
+
+  getTrabajosxIDProyecto( proyecto: any): Observable<any> {
+    return this.http.post<any>(environment.baseUrl + `trabajo/showByProyecto`, { proyecto })
   }
 
   create(reporte: Reporte): Observable<Reporte> {

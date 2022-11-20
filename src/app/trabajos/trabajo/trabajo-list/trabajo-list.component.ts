@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Trabajo } from 'src/app/entities/modulos/trabajo';
+import { ProyectoService } from 'src/app/proyectos/proyecto/services/proyecto.service';
 import { Util } from 'src/app/utils/helpers/util';
+import { CreateTareaComponent } from '../modal/create-tarea/create-tarea.component';
 import { CreateTrabajoComponent } from '../modal/create-trabajo/create-trabajo.component';
 import { DeleteTrabajoComponent } from '../modal/delete-trabajo/delete-trabajo.component';
 import { EditTrabajoComponent } from '../modal/edit-trabajo/edit-trabajo.component';
@@ -18,6 +20,9 @@ export class TrabajoListComponent implements OnInit {
   public data: any = [];
   public trabajo: any[] = [];
   public trabajoTemp: any[] = [];
+
+proyectos: [] = [];
+
   
   public cargando: boolean = true;
   public desde: number = 0;
@@ -25,10 +30,12 @@ export class TrabajoListComponent implements OnInit {
   public totalTrabajo: number = 0;
 
   constructor(public trabajoService: TrabajoService,
-    private modalService: NgbModal) { }
+    private modalService: NgbModal,
+    public proyectoService: ProyectoService) { }
 
   ngOnInit(): void {
     this.cargarTrabajos();
+    this.cargarProyectos();
   }
 
 
@@ -47,9 +54,28 @@ export class TrabajoListComponent implements OnInit {
   }
 
 
+  cargarProyectos(){
+    this.proyectoService.export()
+        .subscribe(res => { 
+          this.proyectos = res['data'];
+          console.log(res['data'])
+        });
+  }
+
+
+
   openCreate(){
     const modalRef = this.modalService.open(CreateTrabajoComponent, { size: 'lg', backdrop: 'static' });
       modalRef.result.then(res => {
+        this.cargarTrabajos();
+      })
+  }
+
+
+  openCreateTarea(data){
+    const modalRef = this.modalService.open(CreateTareaComponent, { size: 'lg', backdrop: 'static' });
+    modalRef.componentInstance.trabajo = data
+    modalRef.result.then(res => {
         this.cargarTrabajos();
       })
   }

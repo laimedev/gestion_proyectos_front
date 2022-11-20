@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Trabajo } from 'src/app/entities/modulos/trabajo';
+import { ProyectoService } from 'src/app/proyectos/proyecto/services/proyecto.service';
 import { TrabajoService } from '../services/trabajo.service';
 
 
@@ -25,13 +26,16 @@ export class TrabajoFormComponent implements OnInit {
     {value: 'Inactivo', label: 'Inactivo'},
 ]
 
+proyectos: [] = [];
 
   constructor(protected fb: FormBuilder,
               protected activeModal: NgbActiveModal,
               private modalService: NgbModal,
+              public proyectoService: ProyectoService,
               public trabajoService: TrabajoService) { }
 
   ngOnInit(): void {
+    this.cargarProyectos();
     this.formGroup.reset();
     if(this.formTitle === 'EDITAR ACTIVIDAD'){
       // this.formGroup.get('username').disable();
@@ -46,6 +50,14 @@ export class TrabajoFormComponent implements OnInit {
   }
 
 
+
+  cargarProyectos(){
+    this.proyectoService.export()
+        .subscribe(res => { 
+          this.proyectos = res['data'];
+          console.log(res['data'])
+        });
+  }
 
 
   onSubmit() {
