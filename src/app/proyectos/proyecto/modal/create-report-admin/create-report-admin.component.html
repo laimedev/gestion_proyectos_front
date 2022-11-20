@@ -31,7 +31,7 @@
                     <mat-select  formControlName="trabajo_fake" (selectionChange)="changeActividad($event)">
                         <mat-option>--</mat-option>
                         <mat-option *ngFor="let wType of trabajos" [value]="wType">
-                            {{wType.nombre}} - {{wType._id}}
+                            {{wType.nombre}} 
                         </mat-option>
                     </mat-select>
                 </mat-form-field>
